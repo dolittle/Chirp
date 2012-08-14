@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chirp.Web", "..\Chirp.Web\Chirp.Web.csproj", "{80B5AE44-3C94-4514-87ED-B4321B46D900}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chirp.Domain", "..\Chirp.Domain\Chirp.Domain.csproj", "{7291BED5-B67C-416A-9EBF-B0E75A0C7B06}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chirp.Application", "..\Chirp.Application\Chirp.Application.csproj", "{86785AFC-C3E9-462E-A13C-21DD4D769DCD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{80B5AE44-3C94-4514-87ED-B4321B46D900}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80B5AE44-3C94-4514-87ED-B4321B46D900}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80B5AE44-3C94-4514-87ED-B4321B46D900}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80B5AE44-3C94-4514-87ED-B4321B46D900}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7291BED5-B67C-416A-9EBF-B0E75A0C7B06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7291BED5-B67C-416A-9EBF-B0E75A0C7B06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7291BED5-B67C-416A-9EBF-B0E75A0C7B06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7291BED5-B67C-416A-9EBF-B0E75A0C7B06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86785AFC-C3E9-462E-A13C-21DD4D769DCD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86785AFC-C3E9-462E-A13C-21DD4D769DCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86785AFC-C3E9-462E-A13C-21DD4D769DCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86785AFC-C3E9-462E-A13C-21DD4D769DCD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

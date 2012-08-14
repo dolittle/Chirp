@@ -1,0 +1,30 @@
+﻿<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div class="alert alert-error" data-bind="text: message, fadeInOrOut: { fadeIn: false, delay: 1000, duration: 3000 }, visible: message().length > 0">
+    </div>
+	<div class="hero-unit">
+		<h2>Login</h2>
+
+        <div>
+            <label>
+                Username
+            </label>
+            <input type="text" data-bind="value:login.parameters.userName" />
+            <span data-bind="validationMessageFor: login.parameters.userName"></span>
+        </div>
+
+        <div>
+            <label>
+                Password
+            </label>
+            <input type="password" data-bind="value:login.parameters.password"/>
+            <span data-bind="validationMessageFor: login.parameters.password"></span>
+        </div>
+        <button data-bind="command: login">Login</button>
+        <a href="">Forgot password</a>
+	</div>
+</body>
+</html>
