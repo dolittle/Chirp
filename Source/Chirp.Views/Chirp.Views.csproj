@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{86785AFC-C3E9-462E-A13C-21DD4D769DCD}</ProjectGuid>
+    <ProjectGuid>{47084FCF-9F9E-4419-97BE-2D23E4BD9078}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Chirp.Application</RootNamespace>
-    <AssemblyName>Chirp.Application</AssemblyName>
+    <RootNamespace>Chirp.Views</RootNamespace>
+    <AssemblyName>Chirp.Views</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -34,27 +34,6 @@
     <Reference Include="Bifrost">
       <HintPath>..\Solutions\Packages\Bifrost\Bifrost.dll</HintPath>
     </Reference>
-    <Reference Include="Bifrost.JSON">
-      <HintPath>..\Solutions\Packages\Bifrost\Bifrost.JSON.dll</HintPath>
-    </Reference>
-    <Reference Include="Bifrost.Ninject">
-      <HintPath>..\Solutions\Packages\Bifrost\Bifrost.Ninject.dll</HintPath>
-    </Reference>
-    <Reference Include="Bifrost.RavenDb.Embeddable">
-      <HintPath>..\Solutions\Packages\Bifrost\Bifrost.RavenDb.Embeddable.dll</HintPath>
-    </Reference>
-    <Reference Include="Bifrost.Services">
-      <HintPath>..\Solutions\Packages\Bifrost\Bifrost.Services.dll</HintPath>
-    </Reference>
-    <Reference Include="Bifrost.Web">
-      <HintPath>..\Solutions\Packages\Bifrost\Bifrost.Web.dll</HintPath>
-    </Reference>
-    <Reference Include="FluentValidation">
-      <HintPath>..\Solutions\packages\FluentValidation.3.3.1.0\lib\Net40\FluentValidation.dll</HintPath>
-    </Reference>
-    <Reference Include="Ninject">
-      <HintPath>..\Solutions\packages\Ninject.2.2.1.4\lib\net40-Full\Ninject.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -64,22 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Modules\UsersModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Security\UserService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup />
-  <ItemGroup>
-    <ProjectReference Include="..\Chirp.Domain\Chirp.Domain.csproj">
-      <Project>{7291BED5-B67C-416A-9EBF-B0E75A0C7B06}</Project>
-      <Name>Chirp.Domain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Chirp.Infrastructure\Chirp.Infrastructure.csproj">
-      <Project>{CD263131-2F39-4BED-9989-B7EB67966B8A}</Project>
-      <Name>Chirp.Infrastructure</Name>
+    <ProjectReference Include="..\Chirp.Events\Chirp.Events.csproj">
+      <Project>{BBD2E25A-A196-4196-A80B-7978BEEFD0E4}</Project>
+      <Name>Chirp.Events</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

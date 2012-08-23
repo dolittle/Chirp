@@ -51,9 +51,22 @@
     <Compile Include="Users\Commands\Login.cs" />
     <Compile Include="Users\Commands\LoginBusinessValidator.cs" />
     <Compile Include="Users\Commands\LoginInputValidator.cs" />
+    <Compile Include="Users\Commands\ResetPassword.cs" />
+    <Compile Include="Users\Commands\ResetPasswordInputValidator.cs" />
+    <Compile Include="Users\User.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Chirp.Events\Chirp.Events.csproj">
+      <Project>{BBD2E25A-A196-4196-A80B-7978BEEFD0E4}</Project>
+      <Name>Chirp.Events</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Chirp.Infrastructure\Chirp.Infrastructure.csproj">
+      <Project>{CD263131-2F39-4BED-9989-B7EB67966B8A}</Project>
+      <Name>Chirp.Infrastructure</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

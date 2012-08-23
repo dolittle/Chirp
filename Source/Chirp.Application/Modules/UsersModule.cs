@@ -1,6 +1,9 @@
-﻿using Ninject.Modules;
-using System;
+﻿using System;
 using Chirp.Domain.Users.Commands;
+using Chirp.Infrastructure.Security;
+using Ninject;
+using Ninject.Modules;
+using Chirp.Application.Security;
 
 namespace Chirp.Application.Modules
 {
@@ -8,12 +11,14 @@ namespace Chirp.Application.Modules
     {
         public override void Load()
         {
+            Bind<IUserService>().To<UserService>();
             Bind<Func<string, string, bool>>().ToMethod(a => CanLogin).WhenInjectedInto<LoginBusinessValidator>();
         }
 
         bool CanLogin(string userName, string password)
         {
-            return false;
+            var service = Kernel.Get<IUserService>();
+            return service.CanLogin(userName, password);
         }
     }
 }

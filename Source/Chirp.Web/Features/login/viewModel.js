@@ -23,5 +23,22 @@
                 }
             }
         });
+
+        this.resetPassword = Bifrost.commands.Command.create({
+            name: "ResetPassword",
+            context: self,
+            parameters: {
+                userName: ko.computed(function () {
+                    return self.login.parameters.userName();
+                })
+            },
+            beforeExecute: function (command) {
+            },
+            success: function () {
+                self.message("Password has been reset, you will receive an email with the new password");
+            },
+            error: function () {
+            }
+        });
     });
 })();

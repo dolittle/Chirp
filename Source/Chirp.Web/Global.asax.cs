@@ -22,6 +22,7 @@ namespace Chirp.Web
         {
             RouteTable.Routes.AddService<Bifrost.Services.ValidationService>();
             RouteTable.Routes.AddService<Bifrost.Services.Commands.CommandCoordinatorService>();
+            RouteTable.Routes.AddService<Bifrost.Services.Events.EventService>("Events");
             base.OnStarted();
         }
 
@@ -31,9 +32,8 @@ namespace Chirp.Web
             configure
                 .Sagas.WithoutLibrarian()
                 .Serialization.UsingJson()
-                .UsingRavenEmbedded(path)
+                .UsingMongoDb("mongodb://10.4.100.128", "Chirp")
                 .AsSinglePageApplication()
-                
                 ;
             base.OnConfigure(configure);
         }
