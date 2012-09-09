@@ -153,6 +153,7 @@
     <Content Include="Features\stream\view.html" />
     <Content Include="Features\stream\viewModel.js" />
     <Content Include="Global.asax" />
+    <Content Include="Images\small_spinner.gif" />
     <Content Include="index.html" />
     <Content Include="index.js" />
     <Content Include="ClientBin\Bifrost.Mimir.xap" />

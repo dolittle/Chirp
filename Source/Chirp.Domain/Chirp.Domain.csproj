@@ -45,6 +45,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Streams\Commands\Chirp.cs" />
+    <Compile Include="Streams\Commands\CommandHandlers.cs" />
     <Compile Include="Streams\Stream.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Users\Commands\CommandHandlers.cs" />
