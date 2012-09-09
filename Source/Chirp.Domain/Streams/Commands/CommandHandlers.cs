@@ -6,8 +6,6 @@ namespace Chirp.Domain.Streams.Commands
     {
         public void Handle(Chirp chirp)
         {
-            int i = 0;
-            i++;
         }
     }
 }
