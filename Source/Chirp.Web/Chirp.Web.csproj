@@ -14,6 +14,8 @@
     <AssemblyName>Chirp.Web</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <UseIISExpress>false</UseIISExpress>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\Solutions\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -61,7 +63,7 @@
       <HintPath>..\Solutions\packages\RavenDB-Embedded.1.0.573\lib\net40\Esent.Interop.dll</HintPath>
     </Reference>
     <Reference Include="FluentValidation">
-      <HintPath>..\Solutions\packages\FluentValidation.3.3.1.0\lib\Net40\FluentValidation.dll</HintPath>
+      <HintPath>..\Solutions\packages\FluentValidation.3.4.6.0\lib\Net40\FluentValidation.dll</HintPath>
     </Reference>
     <Reference Include="ICSharpCode.NRefactory">
       <HintPath>..\Solutions\packages\RavenDB-Embedded.1.0.573\lib\net40\ICSharpCode.NRefactory.dll</HintPath>
@@ -238,6 +240,7 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

@@ -32,7 +32,7 @@ namespace Chirp.Web
             configure
                 .Sagas.WithoutLibrarian()
                 .Serialization.UsingJson()
-                .UsingMongoDb("mongodb://10.4.100.128", "Chirp")
+                .UsingMongoDb("mongodb://10.0.1.53", "Chirp")
                 .AsSinglePageApplication()
                 ;
             base.OnConfigure(configure);
