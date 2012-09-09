@@ -6,6 +6,10 @@
             name: "Chirp",
             parameters: {
                 message: ko.observable("")
+            },
+            complete: function () {
+                self.chirpCommand.parameters.message("");
+                $.publish("reload");
             }
         });
         this.isEditing = ko.observable(false);

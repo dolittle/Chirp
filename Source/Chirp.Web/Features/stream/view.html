@@ -5,7 +5,10 @@
 </head>
 <body>
     <pre>
-        Chirps
+        <div data-bind="foreach: chirps">
+            <span data-bind="text: message"></span>
+            <hr />
+        </div>
     </pre>
 </body>
 </html>

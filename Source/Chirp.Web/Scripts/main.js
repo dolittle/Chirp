@@ -13,7 +13,8 @@ require.config({
 	    "text": "text",
 	    "bootstrap": "bootstrap",
 	    "bootstrap-collapse": "bootstrap-collapse",
-	    "marked": "marked"
+	    "marked": "marked",
+        "pubsub": "pubsub-min"
 	}
 });
 
@@ -22,7 +23,7 @@ require.config({
 require(
     ["jquery", "knockout"],
 	function() {
-		require(["jquery.history"],
+		require(["jquery.history", "pubsub"],
 		    function () {
 		        require(["knockout.mapping", "bifrost", "bootstrap", "knockout.plugins"],
 		            function () {
