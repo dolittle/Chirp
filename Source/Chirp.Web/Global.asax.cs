@@ -10,6 +10,7 @@ using Chirp.Web.Services;
 using System;
 using System.Web;
 using Chirp.Views.Streams;
+using System.Configuration;
 
 namespace Chirp.Web
 {
@@ -41,11 +42,14 @@ namespace Chirp.Web
 
         public override void OnConfigure(IConfigure configure)
         {
+            var connectionString = ConfigurationManager.AppSettings["MONGOHQ_URL"];
+            var database = ConfigurationManager.AppSettings["MONGO_DB"];
+
             var path = Server.MapPath("~/Data");
             configure
                 .Sagas.WithoutLibrarian()
                 .Serialization.UsingJson()
-                .UsingMongoDb("mongodb://10.0.1.53", "Chirp")
+                .UsingMongoDb(connectionString, database)
                 .AsSinglePageApplication()
                 ;
             base.OnConfigure(configure);
