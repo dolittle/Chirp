@@ -35,9 +35,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AsyncCtpLibrary">
-      <HintPath>..\Solutions\packages\RavenDB-Embedded.1.0.573\lib\net40\AsyncCtpLibrary.dll</HintPath>
-    </Reference>
     <Reference Include="Bifrost">
       <HintPath>..\Solutions\Packages\Bifrost\Bifrost.dll</HintPath>
     </Reference>
@@ -50,32 +47,14 @@
     <Reference Include="Bifrost.Ninject">
       <HintPath>..\Solutions\Packages\Bifrost\Bifrost.Ninject.dll</HintPath>
     </Reference>
-    <Reference Include="Bifrost.RavenDb.Embeddable">
-      <HintPath>..\Solutions\Packages\Bifrost\Bifrost.RavenDb.Embeddable.dll</HintPath>
-    </Reference>
     <Reference Include="Bifrost.Services">
       <HintPath>..\Solutions\Packages\Bifrost\Bifrost.Services.dll</HintPath>
     </Reference>
     <Reference Include="Bifrost.Web">
       <HintPath>..\Solutions\Packages\Bifrost\Bifrost.Web.dll</HintPath>
     </Reference>
-    <Reference Include="Esent.Interop">
-      <HintPath>..\Solutions\packages\RavenDB-Embedded.1.0.573\lib\net40\Esent.Interop.dll</HintPath>
-    </Reference>
     <Reference Include="FluentValidation">
       <HintPath>..\Solutions\packages\FluentValidation.3.4.6.0\lib\Net40\FluentValidation.dll</HintPath>
-    </Reference>
-    <Reference Include="ICSharpCode.NRefactory">
-      <HintPath>..\Solutions\packages\RavenDB-Embedded.1.0.573\lib\net40\ICSharpCode.NRefactory.dll</HintPath>
-    </Reference>
-    <Reference Include="Lucene.Net">
-      <HintPath>..\Solutions\packages\RavenDB-Embedded.1.0.573\lib\net40\Lucene.Net.dll</HintPath>
-    </Reference>
-    <Reference Include="Lucene.Net.Contrib.Spatial">
-      <HintPath>..\Solutions\packages\RavenDB-Embedded.1.0.573\lib\net40\Lucene.Net.Contrib.Spatial.dll</HintPath>
-    </Reference>
-    <Reference Include="Lucene.Net.Contrib.SpellChecker">
-      <HintPath>..\Solutions\packages\RavenDB-Embedded.1.0.573\lib\net40\Lucene.Net.Contrib.SpellChecker.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Practices.ServiceLocation">
@@ -99,27 +78,6 @@
     </Reference>
     <Reference Include="NLog, Version=2.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
       <HintPath>..\Solutions\packages\NLog.2.0.0.2000\lib\net40\NLog.dll</HintPath>
-    </Reference>
-    <Reference Include="Raven.Abstractions">
-      <HintPath>..\Solutions\packages\RavenDB-Embedded.1.0.573\lib\net40\Raven.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="Raven.Client.Embedded">
-      <HintPath>..\Solutions\packages\RavenDB-Embedded.1.0.573\lib\net40\Raven.Client.Embedded.dll</HintPath>
-    </Reference>
-    <Reference Include="Raven.Client.Lightweight">
-      <HintPath>..\Solutions\packages\RavenDB-Embedded.1.0.573\lib\net40\Raven.Client.Lightweight.dll</HintPath>
-    </Reference>
-    <Reference Include="Raven.Database">
-      <HintPath>..\Solutions\packages\RavenDB-Embedded.1.0.573\lib\net40\Raven.Database.dll</HintPath>
-    </Reference>
-    <Reference Include="Raven.Munin">
-      <HintPath>..\Solutions\packages\RavenDB-Embedded.1.0.573\lib\net40\Raven.Munin.dll</HintPath>
-    </Reference>
-    <Reference Include="Raven.Storage.Esent">
-      <HintPath>..\Solutions\packages\RavenDB-Embedded.1.0.573\lib\net40\Raven.Storage.Esent.dll</HintPath>
-    </Reference>
-    <Reference Include="Raven.Storage.Managed">
-      <HintPath>..\Solutions\packages\RavenDB-Embedded.1.0.573\lib\net40\Raven.Storage.Managed.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
@@ -172,6 +130,7 @@
     <Content Include="Scripts\main.js" />
     <Content Include="Scripts\marked.js" />
     <Content Include="Scripts\order.js" />
+    <Content Include="Scripts\pubsub-min.js" />
     <Content Include="Scripts\require.js" />
     <Content Include="Scripts\text.js" />
     <Content Include="css\bootstrap-responsive.css" />
