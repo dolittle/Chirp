@@ -21,6 +21,9 @@ namespace Chirp.Web.Services
                     Url = ConfigurationManager.AppSettings["Database"]
                 };
                 store.Initialize();
+
+                var session = store.OpenSession();
+                session.Store(new { Debugging = "This is a debug message" });
             } catch( Exception ex )  {
                 return new
                 {
