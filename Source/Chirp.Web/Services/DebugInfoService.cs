@@ -24,6 +24,7 @@ namespace Chirp.Web.Services
 
                 var session = store.OpenSession();
                 session.Store(new { Debugging = "This is a debug message" });
+                session.SaveChanges();
             } catch( Exception ex )  {
                 return new
                 {
