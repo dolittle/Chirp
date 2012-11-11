@@ -37,6 +37,7 @@ namespace Chirp.Web
             RouteTable.Routes.AddService<Bifrost.Services.Commands.CommandCoordinatorService>();
             RouteTable.Routes.AddService<Bifrost.Services.Events.EventService>("Events");
             RouteTable.Routes.AddService<StreamService>();
+            RouteTable.Routes.AddService<DebugInfoService>();
             base.OnStarted();
         }
 
