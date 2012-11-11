@@ -41,14 +41,35 @@
     <Reference Include="Bifrost.JSON">
       <HintPath>..\Solutions\Packages\Bifrost\Bifrost.JSON.dll</HintPath>
     </Reference>
+    <Reference Include="Bifrost.Mimir.Domain">
+      <HintPath>..\Solutions\packages\Bifrost\Bifrost.Mimir.Domain.dll</HintPath>
+    </Reference>
+    <Reference Include="Bifrost.Mimir.Events">
+      <HintPath>..\Solutions\packages\Bifrost\Bifrost.Mimir.Events.dll</HintPath>
+    </Reference>
+    <Reference Include="Bifrost.Mimir.Views">
+      <HintPath>..\Solutions\packages\Bifrost\Bifrost.Mimir.Views.dll</HintPath>
+    </Reference>
+    <Reference Include="Bifrost.Mimir.Web">
+      <HintPath>..\Solutions\packages\Bifrost\Bifrost.Mimir.Web.dll</HintPath>
+    </Reference>
     <Reference Include="Bifrost.MongoDB">
       <HintPath>..\Solutions\Packages\Bifrost\Bifrost.MongoDB.dll</HintPath>
+    </Reference>
+    <Reference Include="Bifrost.MSpec">
+      <HintPath>..\Solutions\packages\Bifrost\Bifrost.MSpec.dll</HintPath>
     </Reference>
     <Reference Include="Bifrost.Ninject">
       <HintPath>..\Solutions\Packages\Bifrost\Bifrost.Ninject.dll</HintPath>
     </Reference>
+    <Reference Include="Bifrost.RavenDB">
+      <HintPath>..\Solutions\packages\Bifrost\Bifrost.RavenDB.dll</HintPath>
+    </Reference>
     <Reference Include="Bifrost.Services">
       <HintPath>..\Solutions\Packages\Bifrost\Bifrost.Services.dll</HintPath>
+    </Reference>
+    <Reference Include="Bifrost.SignalR">
+      <HintPath>..\Solutions\packages\Bifrost\Bifrost.SignalR.dll</HintPath>
     </Reference>
     <Reference Include="Bifrost.Web">
       <HintPath>..\Solutions\Packages\Bifrost\Bifrost.Web.dll</HintPath>
@@ -70,14 +91,21 @@
     <Reference Include="MongoDB.Driver">
       <HintPath>..\Solutions\packages\mongocsharpdriver.1.3.1\lib\net35\MongoDB.Driver.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\Solutions\packages\Newtonsoft.Json.4.0.5\lib\net40\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Solutions\packages\Newtonsoft.Json.4.5.7\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Ninject">
       <HintPath>..\Solutions\packages\Ninject.2.2.1.4\lib\net40-Full\Ninject.dll</HintPath>
     </Reference>
     <Reference Include="NLog, Version=2.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
       <HintPath>..\Solutions\packages\NLog.2.0.0.2000\lib\net40\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="Raven.Abstractions">
+      <HintPath>..\Solutions\packages\RavenDB.Client.1.0.972\lib\net40\Raven.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Raven.Client.Lightweight">
+      <HintPath>..\Solutions\packages\RavenDB.Client.1.0.972\lib\net40\Raven.Client.Lightweight.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
@@ -114,7 +142,6 @@
     <Content Include="Images\small_spinner.gif" />
     <Content Include="index.html" />
     <Content Include="index.js" />
-    <Content Include="ClientBin\Bifrost.Mimir.xap" />
     <Content Include="Features\mimir\Mimir.html" />
     <Content Include="Scripts\Bifrost.debug.js" />
     <Content Include="Scripts\bootstrap-collapse.js" />

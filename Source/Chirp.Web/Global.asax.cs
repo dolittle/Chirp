@@ -42,15 +42,15 @@ namespace Chirp.Web
 
         public override void OnConfigure(IConfigure configure)
         {
-            var connectionString = ConfigurationManager.AppSettings["MONGOHQ_URL"];
-            var database = ConfigurationManager.AppSettings["MONGO_DB"];
+            var connectionString = ConfigurationManager.AppSettings["Database"];
 
             var path = Server.MapPath("~/Data");
             configure
                 .Sagas.WithoutLibrarian()
                 .Serialization.UsingJson()
-                .UsingMongoDb(connectionString, database)
+                .UsingRaven(connectionString)
                 .AsSinglePageApplication()
+                .WithMimir()
                 ;
             base.OnConfigure(configure);
         }
