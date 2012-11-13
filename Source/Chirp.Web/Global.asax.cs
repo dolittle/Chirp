@@ -8,6 +8,8 @@ using Bifrost.Web;
 using Chirp.Application.Modules;
 using Chirp.Web.Services;
 using Ninject;
+using System.Net;
+using System.Linq;
 
 namespace Chirp.Web
 {
@@ -33,10 +35,17 @@ namespace Chirp.Web
         public override void OnConfigure(IConfigure configure)
         {
             var connectionString = ConfigurationManager.AppSettings["Database"];
+            var userName = ConfigurationManager.AppSettings["RavenUsername"];
+            var password = ConfigurationManager.AppSettings["RavenPassword"];
             configure
                 .Sagas.WithoutLibrarian()
                 .Serialization.UsingJson()
-                .UsingRaven(connectionString)
+                .UsingRaven(connectionString, c =>
+                {
+                    c.DefaultDatabase = "Chirp";
+                    if (!string.IsNullOrEmpty(userName))
+                        c.Credentials = new NetworkCredential(userName, password);
+                })
                 .AsSinglePageApplication()
                 .WithMimir()
                 ;
