@@ -42,8 +42,8 @@
     <Reference Include="Bifrost.Ninject">
       <HintPath>..\Solutions\Packages\Bifrost\Bifrost.Ninject.dll</HintPath>
     </Reference>
-    <Reference Include="Bifrost.RavenDb.Embeddable">
-      <HintPath>..\Solutions\Packages\Bifrost\Bifrost.RavenDb.Embeddable.dll</HintPath>
+    <Reference Include="Bifrost.RavenDB">
+      <HintPath>..\Solutions\packages\Bifrost\Bifrost.RavenDB.dll</HintPath>
     </Reference>
     <Reference Include="Bifrost.Services">
       <HintPath>..\Solutions\Packages\Bifrost\Bifrost.Services.dll</HintPath>
