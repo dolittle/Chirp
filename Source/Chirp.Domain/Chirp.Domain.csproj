@@ -45,6 +45,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Messages\Chirp.cs" />
+    <Compile Include="Messages\Commands\ChirpMessageInputValidator.cs" />
+    <Compile Include="Messages\Commands\MessageCommandHandler.cs" />
+    <Compile Include="Messages\Commands\ChirpMessage.cs" />
+    <Compile Include="Messages\Message.cs" />
+    <Compile Include="Messages\Publisher.cs" />
     <Compile Include="Streams\Commands\Chirp.cs" />
     <Compile Include="Streams\Commands\CommandHandlers.cs" />
     <Compile Include="Streams\Stream.cs" />
