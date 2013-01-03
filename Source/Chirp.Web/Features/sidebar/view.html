@@ -6,12 +6,12 @@
 <body>
     <pre>
         <div class="text-area">
-            <textarea placeholder="Compose new Chirp..." data-bind="hasfocus: isEditing, value: chirpCommand.parameters.message, valueUpdate: 'afterkeydown'"></textarea>
+            <textarea style="width:100px;" placeholder="Compose new Chirp..." data-bind="hasfocus: isEditing, value: chirpCommand.parameters.message, valueUpdate: 'afterkeydown'"></textarea>
         </div>
         <div>
             <div data-bind="visible: isEditing() || availableLettersCount() != 140">
                 <span class="badge" data-bind="text: availableLettersCount"></span>
-                    <button data-bind="command: chirpCommand" class="btn btn-primary">Chirp</button>
+                    <button data-bind="command: chirpCommand" class="btn btn-primary">Chirp now</button>
                 
             </div>
         </div>
