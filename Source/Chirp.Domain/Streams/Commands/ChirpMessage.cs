@@ -1,12 +1,11 @@
-﻿using System;
 using Bifrost.Commands;
+using Chirp.Concepts;
 
-namespace Chirp.Domain.Messages.Commands
+namespace Chirp.Domain.Streams.Commands
 {
     public class ChirpMessage : Command
     {
-        public Publisher Publisher { get; set; }
+        public PublisherId PublisherId { get; set; }
         public Message Message { get; set; }
-
     }
 }

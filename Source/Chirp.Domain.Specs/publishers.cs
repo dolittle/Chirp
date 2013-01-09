@@ -1,12 +1,12 @@
 ﻿using System;
-using Chirp.Domain.Messages;
+using Chirp.Concepts;
 
 namespace Chirp.Domain.Specs
 {
     public class publishers
     {
-        public static readonly Guid valid_publisher_id = Guid.NewGuid();
-
-        public static Publisher valid = new Publisher {Id = valid_publisher_id };
+        public static PublisherId valid = new PublisherId { Value = Guid.NewGuid() };
+        public static PublisherId valid_id_that_does_not_exist = new PublisherId { Value = Guid.NewGuid() };
+        public static PublisherId invalid = new PublisherId { Value = Guid.Empty };
     }
 }

@@ -1,24 +1,25 @@
 ﻿using System;
 using Bifrost.Domain;
+using Chirp.Events.Messages;
 using Chirp.Events.Streams;
 
 namespace Chirp.Domain.Streams
 {
     public class Stream : AggregatedRoot
     {
-        public Stream(Guid userId)
-            : base(userId)
+        public Stream(Guid publishedBy)
+            : base(publishedBy)
         {
         }
 
-        public void Publish(string message)
+        public void Publish(Message message)
         {
-            Apply(new MessagePublished(Id) { Message = message });
-        }
-
-        public void DirectMessage(Guid receiver, string message)
-        {
-            Apply(new DirectMessageSent(Id) { Receiver = receiver, Message = message });
+            Apply(new MessageChirped(Id)
+                      {
+                          PublishedBy = Id,
+                          PublishedAt = Bifrost.Time.SystemClock.GetCurrentTime(),
+                          Content = message.Content
+                      });
         }
     }
 }

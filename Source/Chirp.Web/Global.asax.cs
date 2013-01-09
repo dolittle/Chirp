@@ -9,7 +9,6 @@ using Chirp.Application.Modules;
 using Chirp.Web.Services;
 using Ninject;
 using System.Net;
-using System.Linq;
 
 namespace Chirp.Web
 {
@@ -38,7 +37,7 @@ namespace Chirp.Web
             var userName = ConfigurationManager.AppSettings["RavenUsername"];
             var password = ConfigurationManager.AppSettings["RavenPassword"];
             configure
-                .UsingCommonServiceLocator()
+                //.UsingCommonServiceLocator()
                 .Sagas.WithoutLibrarian()
                 .Serialization.UsingJson()
                 .DefaultStorage.UsingRaven(connectionString, c =>

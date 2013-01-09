@@ -47,9 +47,14 @@
     <Compile Include="Streams\Chirp.cs" />
     <Compile Include="Streams\EventSubscribers.cs" />
     <Compile Include="Streams\IStreamRepository.cs" />
+    <Compile Include="Streams\Publisher.cs" />
     <Compile Include="Streams\StreamRepository.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Chirp.Concepts\Chirp.Concepts.csproj">
+      <Project>{711ECF13-9FA3-437B-B284-747C24B0C6E5}</Project>
+      <Name>Chirp.Concepts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Chirp.Events\Chirp.Events.csproj">
       <Project>{BBD2E25A-A196-4196-A80B-7978BEEFD0E4}</Project>
       <Name>Chirp.Events</Name>

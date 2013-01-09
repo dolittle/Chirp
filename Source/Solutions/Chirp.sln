@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chirp.Views.Specs", "..\Chi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chirp.Web.Specs", "..\Chirp.Web.Specs\Chirp.Web.Specs.csproj", "{C5C2F7BC-2235-4154-BC9C-3D7EF6D2ABE3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chirp.Concepts", "..\Chirp.Concepts\Chirp.Concepts.csproj", "{711ECF13-9FA3-437B-B284-747C24B0C6E5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -73,6 +75,10 @@ Global
 		{C5C2F7BC-2235-4154-BC9C-3D7EF6D2ABE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C5C2F7BC-2235-4154-BC9C-3D7EF6D2ABE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C5C2F7BC-2235-4154-BC9C-3D7EF6D2ABE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{711ECF13-9FA3-437B-B284-747C24B0C6E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{711ECF13-9FA3-437B-B284-747C24B0C6E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{711ECF13-9FA3-437B-B284-747C24B0C6E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{711ECF13-9FA3-437B-B284-747C24B0C6E5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

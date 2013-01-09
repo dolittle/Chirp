@@ -45,14 +45,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Messages\Chirp.cs" />
-    <Compile Include="Messages\Commands\ChirpMessageInputValidator.cs" />
-    <Compile Include="Messages\Commands\MessageCommandHandler.cs" />
-    <Compile Include="Messages\Commands\ChirpMessage.cs" />
-    <Compile Include="Messages\Message.cs" />
-    <Compile Include="Messages\Publisher.cs" />
     <Compile Include="Streams\Commands\Chirp.cs" />
-    <Compile Include="Streams\Commands\CommandHandlers.cs" />
+    <Compile Include="Streams\Commands\ChirpMessage.cs" />
+    <Compile Include="Streams\Commands\ChirpMessageBusinessValidator.cs" />
+    <Compile Include="Streams\Commands\ChirpMessageInputValidator.cs" />
+    <Compile Include="Streams\Commands\MessageCommandHandler.cs" />
+    <Compile Include="Streams\Message.cs" />
     <Compile Include="Streams\Stream.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Users\Commands\CommandHandlers.cs" />
@@ -64,6 +62,10 @@
     <Compile Include="Users\User.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Chirp.Concepts\Chirp.Concepts.csproj">
+      <Project>{711ECF13-9FA3-437B-B284-747C24B0C6E5}</Project>
+      <Name>Chirp.Concepts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Chirp.Events\Chirp.Events.csproj">
       <Project>{BBD2E25A-A196-4196-A80B-7978BEEFD0E4}</Project>
       <Name>Chirp.Events</Name>

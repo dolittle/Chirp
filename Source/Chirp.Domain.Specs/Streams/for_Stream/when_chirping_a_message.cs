@@ -1,14 +1,15 @@
-﻿using System;
+using System;
 using Bifrost.Commands;
-using Chirp.Domain.Messages.Commands;
+using Bifrost.MSpec.Extensions;
+using Chirp.Domain.Specs.Streams.for_Stream.given;
+using Chirp.Domain.Streams.Commands;
 using Chirp.Events.Messages;
 using Machine.Specifications;
-using Bifrost.MSpec.Events;
 
-namespace Chirp.Domain.Specs.Messages.Commands
+namespace Chirp.Domain.Specs.Streams.for_Stream
 {
     [Subject(typeof (MessageCommandHandler))]
-    public class when_handling_a_chirp : given.a_scenario_with_a_<ChirpMessage>
+    public class when_chirping_a_message : a_scenario_with_a_chirp_message
     {
         static ChirpMessage chirp_message;
         static DateTime current_time;
@@ -20,8 +21,8 @@ namespace Chirp.Domain.Specs.Messages.Commands
 
                                     chirp_message = new ChirpMessage
                                                 {
-                                                    Publisher = publishers.valid,
-                                                    Message = messages.valid_chirp
+                                                    PublisherId = publishers.valid,
+                                                    Message = messages.valid_chirp_with_no_tags
                                                 };
                                 };
 
@@ -33,11 +34,12 @@ namespace Chirp.Domain.Specs.Messages.Commands
                             }
                          };
 
-        It should_chirp_the_message = () => chirp.ShouldHaveEvent<MessageChirped>().AtBeginning().Where(
+        It should_persist_the_events = () => command_scenario.HasGeneratedEvents.ShouldBeTrue();
+        It should_chirp_the_message = () => command_scenario.GeneratedEvents.ShouldHaveEvent<MessageChirped>().AtBeginning().Where(
             e =>
                 {
-                    e.Content.ShouldEqual(messages.valid_chirp.Content);
-                    e.PublishedBy.ShouldEqual(publishers.valid_publisher_id);
+                    e.Content.ShouldEqual(messages.valid_chirp_with_no_tags.Content);
+                    e.PublishedBy.ShouldEqual(publishers.valid.Value);
                     e.PublishedAt.ShouldEqual(current_time);
                 });
     }

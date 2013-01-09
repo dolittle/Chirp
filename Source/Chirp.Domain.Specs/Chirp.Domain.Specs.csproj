@@ -39,6 +39,9 @@
     <Reference Include="Bifrost.MSpec">
       <HintPath>..\Solutions\packages\Bifrost\Bifrost.MSpec.dll</HintPath>
     </Reference>
+    <Reference Include="Bifrost.Testing">
+      <HintPath>..\Solutions\packages\Bifrost\Bifrost.Testing.dll</HintPath>
+    </Reference>
     <Reference Include="FluentValidation, Version=3.4.6.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\Solutions\packages\FluentValidation.3.4.6.0\lib\Net40\FluentValidation.dll</HintPath>
     </Reference>
@@ -60,15 +63,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommandScenarioBase.cs" />
     <Compile Include="messages.cs" />
-    <Compile Include="Messages\Commands\given\a_scenario_with_a_.cs" />
-    <Compile Include="Messages\Commands\when_handling_a_chirp.cs" />
-    <Compile Include="Messages\Commands\when_handling_a_chirp_with_an_empty_message.cs" />
-    <Compile Include="Messages\Commands\when_handling_a_chirp_with_a_message_that_is_too_long.cs" />
-    <Compile Include="Messages\Commands\when_handling_a_chirp_with_no_message.cs" />
     <Compile Include="publishers.cs" />
-    <Compile Include="Streams\for_Stream\given\a_stream.cs" />
+    <Compile Include="Streams\for_Stream\given\a_scenario_with_a_chirp_message.cs" />
+    <Compile Include="Streams\for_Stream\when_chirping_an_empty_message.cs" />
+    <Compile Include="Streams\for_Stream\when_chirping_a_message.cs" />
+    <Compile Include="Streams\for_Stream\when_chirping_a_message_that_is_too_long.cs" />
+    <Compile Include="Streams\for_Stream\when_chirping_no_message.cs" />
     <Compile Include="Streams\for_Stream\when_publishing_a_message.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Streams\for_Stream\when_sending_a_direct_message.cs" />
@@ -83,6 +84,10 @@
     <Folder Include="Users\for_User\Commands\for_CommandHandlers\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Chirp.Concepts\Chirp.Concepts.csproj">
+      <Project>{711ECF13-9FA3-437B-B284-747C24B0C6E5}</Project>
+      <Name>Chirp.Concepts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Chirp.Domain\Chirp.Domain.csproj">
       <Project>{7291BED5-B67C-416A-9EBF-B0E75A0C7B06}</Project>
       <Name>Chirp.Domain</Name>
