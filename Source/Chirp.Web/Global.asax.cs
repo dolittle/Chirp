@@ -38,7 +38,6 @@ namespace Chirp.Web
             var userName = ConfigurationManager.AppSettings["RavenUsername"];
             var password = ConfigurationManager.AppSettings["RavenPassword"];
             configure
-                .UsingCommonServiceLocator()
                 .Sagas.WithoutLibrarian()
                 .Serialization.UsingJson()
                 .DefaultStorage.UsingRaven(connectionString, c =>
