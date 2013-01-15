@@ -1,5 +1,4 @@
-﻿using System;
-using FluentValidation;
+﻿using FluentValidation;
 
 namespace Chirp.Concepts.Validation
 {
@@ -10,6 +9,13 @@ namespace Chirp.Concepts.Validation
             return ruleBuilder
                 .NotNull()
                 .SetValidator(new PublisherIdInputValidator());
+        }
+
+        public static IRuleBuilderOptions<T, MessageId> MustBeAValidMessageId<T>(this IRuleBuilder<T, MessageId> ruleBuilder, string propertyName = "")
+        {
+            return ruleBuilder
+                .NotNull()
+                .SetValidator(new MessageIdInputValidator());
         } 
     }
 }

@@ -64,15 +64,28 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="messages.cs" />
+    <Compile Include="Messaging\Funcs.cs" />
+    <Compile Include="Messaging\Scenarios.cs" />
+    <Compile Include="Messaging\when_deleting\a_chirp.cs" />
+    <Compile Include="Messaging\when_deleting\given\a_scenario_with_a_delete_chirp_command.cs" />
+    <Compile Include="Messaging\when_deleting\with_a_message_not_for_this_publisher.cs" />
+    <Compile Include="Messaging\when_deleting\with_a_non_existant_publisher.cs" />
+    <Compile Include="Messaging\when_deleting\with_no_message.cs" />
+    <Compile Include="Messaging\when_deleting\with_no_publisher.cs" />
     <Compile Include="publishers.cs" />
-    <Compile Include="Streams\for_Stream\given\a_scenario_with_a_chirp_message.cs" />
-    <Compile Include="Streams\for_Stream\when_chirping_an_empty_message.cs" />
-    <Compile Include="Streams\for_Stream\when_chirping_a_message.cs" />
-    <Compile Include="Streams\for_Stream\when_chirping_a_message_that_is_too_long.cs" />
-    <Compile Include="Streams\for_Stream\when_chirping_no_message.cs" />
-    <Compile Include="Streams\for_Stream\when_publishing_a_message.cs" />
+    <Compile Include="Messaging\when_chirping\given\a_scenario_with_a_chirp_message.cs" />
+    <Compile Include="Messaging\when_chirping\with_an_empty_message.cs" />
+    <Compile Include="Messaging\when_chirping\with_a_duplicate_message.cs" />
+    <Compile Include="Messaging\when_chirping\a_message.cs" />
+    <Compile Include="Messaging\when_chirping\with_a_message_from_nonexistant_publisher.cs" />
+    <Compile Include="Messaging\when_chirping\with_a_message_that_is_too_long.cs" />
+    <Compile Include="Messaging\when_chirping\with_a_message_with_no_id.cs" />
+    <Compile Include="Messaging\when_chirping\with_no_message.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Streams\for_Stream\when_sending_a_direct_message.cs" />
+    <Compile Include="subscribers.cs" />
+    <Compile Include="Subscriptions\Funcs.cs" />
+    <Compile Include="Subscriptions\Scenarios.cs" />
+    <Compile Include="Subscriptions\when_subscribing\given\a_scenario_with_a_subscribe_command.cs" />
     <Compile Include="Users\for_User\given\a_user.cs" />
     <Compile Include="Users\for_User\when_logging_in.cs" />
     <Compile Include="Users\for_User\when_resetting_password.cs" />

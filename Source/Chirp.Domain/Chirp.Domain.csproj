@@ -45,14 +45,23 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Streams\Commands\Chirp.cs" />
-    <Compile Include="Streams\Commands\ChirpMessage.cs" />
-    <Compile Include="Streams\Commands\ChirpMessageBusinessValidator.cs" />
-    <Compile Include="Streams\Commands\ChirpMessageInputValidator.cs" />
-    <Compile Include="Streams\Commands\MessageCommandHandler.cs" />
-    <Compile Include="Streams\Message.cs" />
-    <Compile Include="Streams\Stream.cs" />
+    <Compile Include="Messaging\Commands\ChirpMessage.cs" />
+    <Compile Include="Messaging\Commands\ChirpMessageBusinessValidator.cs" />
+    <Compile Include="Messaging\Commands\ChirpMessageInputValidator.cs" />
+    <Compile Include="Messaging\Commands\DeleteChirp.cs" />
+    <Compile Include="Messaging\Commands\DeleteChirpBusinessValidator.cs" />
+    <Compile Include="Messaging\Commands\DeleteChirpInputValidator.cs" />
+    <Compile Include="Messaging\Commands\MessageCommandHandler.cs" />
+    <Compile Include="Messaging\Message.cs" />
+    <Compile Include="Messaging\MessageInputValidator.cs" />
+    <Compile Include="Messaging\MessageStream.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Messaging\ValidationRuleExtensions.cs" />
+    <Compile Include="Subscriptions\Commands\SubscribeToPublisher.cs" />
+    <Compile Include="Subscriptions\Commands\SubscribeToPublisherBusinessValidator.cs" />
+    <Compile Include="Subscriptions\Commands\SubscribeToPublisherInputValidator.cs" />
+    <Compile Include="Subscriptions\Commands\SubscriptionsCommandHandler.cs" />
+    <Compile Include="Subscriptions\Subscriptions.cs" />
     <Compile Include="Users\Commands\CommandHandlers.cs" />
     <Compile Include="Users\Commands\Login.cs" />
     <Compile Include="Users\Commands\LoginBusinessValidator.cs" />
