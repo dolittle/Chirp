@@ -25,7 +25,7 @@ namespace Chirp.Web
         {
             RouteTable.Routes.AddService<Bifrost.Services.ValidationService>();
             RouteTable.Routes.AddService<Bifrost.Services.Commands.CommandCoordinatorService>();
-            RouteTable.Routes.AddService<Bifrost.Services.Events.EventService>("Events");
+            //RouteTable.Routes.AddService<Bifrost.Services.Events.EventService>("Events");
             RouteTable.Routes.AddService<StreamService>();
             RouteTable.Routes.AddService<DebugInfoService>();
             base.OnStarted();
@@ -40,7 +40,8 @@ namespace Chirp.Web
                 //.UsingCommonServiceLocator()
                 .Sagas.WithoutLibrarian()
                 .Serialization.UsingJson()
-                .DefaultStorage.UsingRaven(connectionString, c =>
+                .Events.Asynchronous()
+                .DefaultStorage.UsingRavenDB(connectionString, c =>
                 {
                     c.DefaultDatabase = "Chirp";
                     if (!string.IsNullOrEmpty(userName))
@@ -49,6 +50,7 @@ namespace Chirp.Web
                 .AsSinglePageApplication()
                 .WithMimir()
                 ;
+
             base.OnConfigure(configure);
         }
     }
