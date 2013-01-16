@@ -38,9 +38,6 @@
     <Reference Include="Bifrost">
       <HintPath>..\Solutions\Packages\Bifrost\Bifrost.dll</HintPath>
     </Reference>
-    <Reference Include="Bifrost.CommonServiceLocator">
-      <HintPath>..\Solutions\packages\Bifrost\Bifrost.CommonServiceLocator.dll</HintPath>
-    </Reference>
     <Reference Include="Bifrost.JSON">
       <HintPath>..\Solutions\Packages\Bifrost\Bifrost.JSON.dll</HintPath>
     </Reference>
