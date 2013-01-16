@@ -6,7 +6,7 @@
 <body>
     <pre>
         <div class="text-area">
-            <textarea placeholder="Compose new Chirp..." data-bind="hasfocus: isEditing, value: chirpCommand.parameters.message, valueUpdate: 'afterkeydown'"></textarea>
+            <textarea placeholder="Compose new Chirp..." data-bind="hasfocus: isEditing, value: chirpCommand.message, valueUpdate: 'afterkeydown'"></textarea>
         </div>
         <div>
             <div data-bind="visible: isEditing() || availableLettersCount() != 140">
