@@ -14,17 +14,17 @@
                     <label>
                         Username
                     </label>
-                    <input type="text" data-bind="value:login.parameters.userName" />
-                    <span data-bind="validationMessageFor: login.parameters.userName"></span>
-                    <span data-bind="validationMessageFor: resetPassword.parameters.userName"></span>
+                    <input type="text" data-bind="value:login.userName" />
+                    <span data-bind="validationMessageFor: login.userName"></span>
+                    <span data-bind="validationMessageFor: resetPassword.userName"></span>
                 </div>
 
                 <div>
                     <label>
                         Password
                     </label>
-                    <input type="password" data-bind="value:login.parameters.password"/>
-                    <span data-bind="validationMessageFor: login.parameters.password"></span>
+                    <input type="password" data-bind="value:login.password"/>
+                    <span data-bind="validationMessageFor: login.password"></span>
                 </div>
                 
                 <button data-bind="command: login">Login</button>
