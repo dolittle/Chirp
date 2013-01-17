@@ -45,23 +45,23 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Messaging\Commands\ChirpMessage.cs" />
-    <Compile Include="Messaging\Commands\ChirpMessageBusinessValidator.cs" />
-    <Compile Include="Messaging\Commands\ChirpMessageInputValidator.cs" />
-    <Compile Include="Messaging\Commands\DeleteChirp.cs" />
-    <Compile Include="Messaging\Commands\DeleteChirpBusinessValidator.cs" />
-    <Compile Include="Messaging\Commands\DeleteChirpInputValidator.cs" />
-    <Compile Include="Messaging\Commands\MessageCommandHandler.cs" />
-    <Compile Include="Messaging\Message.cs" />
-    <Compile Include="Messaging\MessageInputValidator.cs" />
-    <Compile Include="Messaging\MessageStream.cs" />
+    <Compile Include="Chirping\Commands\ChirpMessage.cs" />
+    <Compile Include="Chirping\Commands\ChirpMessageBusinessValidator.cs" />
+    <Compile Include="Chirping\Commands\ChirpMessageInputValidator.cs" />
+    <Compile Include="Chirping\Commands\DeleteChirp.cs" />
+    <Compile Include="Chirping\Commands\DeleteChirpBusinessValidator.cs" />
+    <Compile Include="Chirping\Commands\DeleteChirpInputValidator.cs" />
+    <Compile Include="Chirping\Commands\ChirpCommandHandler.cs" />
+    <Compile Include="Chirping\Chirp.cs" />
+    <Compile Include="Chirping\ChirpInputValidator.cs" />
+    <Compile Include="Chirping\ChirpStream.cs" />
+    <Compile Include="Chirping\ValidationRuleExtensions.cs" />
+    <Compile Include="Follow\Commands\FollowChirper.cs" />
+    <Compile Include="Follow\Commands\FollowCommandHandler.cs" />
+    <Compile Include="Follow\Commands\FollowChirperBusinessValidator.cs" />
+    <Compile Include="Follow\Commands\FollowChirperInputValidator.cs" />
+    <Compile Include="Follow\Following.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Messaging\ValidationRuleExtensions.cs" />
-    <Compile Include="Subscriptions\Commands\SubscribeToPublisher.cs" />
-    <Compile Include="Subscriptions\Commands\SubscribeToPublisherBusinessValidator.cs" />
-    <Compile Include="Subscriptions\Commands\SubscribeToPublisherInputValidator.cs" />
-    <Compile Include="Subscriptions\Commands\SubscriptionsCommandHandler.cs" />
-    <Compile Include="Subscriptions\Subscriptions.cs" />
     <Compile Include="Users\Commands\CommandHandlers.cs" />
     <Compile Include="Users\Commands\Login.cs" />
     <Compile Include="Users\Commands\LoginBusinessValidator.cs" />

@@ -10,6 +10,6 @@ namespace Chirp.Domain.Specs.Users.for_User
     {
         Because of = () => user.ResetPassword();
 
-        It should_apply_password_resetted_event = () => user.ShouldHaveEvent<PasswordResetted>();
+        It should_apply_password_resetted_event = () => user.ShouldHaveEvent<PasswordReset>();
     }
 }

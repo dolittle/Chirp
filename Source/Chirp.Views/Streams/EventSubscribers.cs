@@ -17,4 +17,19 @@ namespace Chirp.Views.Streams
             _streamRepository.AddPublic(@event.Message);
         }
     }
+
+    public class PublishEventSubscribers : IEventSubscriber
+    {
+        IStreamRepository _streamRepository;
+
+        public PublishEventSubscribers(IStreamRepository streamRepository)
+        {
+            _streamRepository = streamRepository;
+        }
+
+        public void Process(MessagePublished @event)
+        {
+            _streamRepository.AddPublic(@event.Message);
+        }
+    }
 }

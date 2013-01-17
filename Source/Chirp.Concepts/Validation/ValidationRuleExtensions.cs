@@ -4,18 +4,18 @@ namespace Chirp.Concepts.Validation
 {
     public static class ValidationRuleExtensions
     {
-        public static IRuleBuilderOptions<T, PublisherId> MustBeAValidPublisherId<T>(this IRuleBuilder<T, PublisherId> ruleBuilder, string propertyName = "")
+        public static IRuleBuilderOptions<T, ChirperId> MustBeAValidChirperId<T>(this IRuleBuilder<T, ChirperId> ruleBuilder, string propertyName = "")
         {
             return ruleBuilder
                 .NotNull()
-                .SetValidator(new PublisherIdInputValidator());
+                .SetValidator(new ChirperIdInputValidator());
         }
 
-        public static IRuleBuilderOptions<T, MessageId> MustBeAValidMessageId<T>(this IRuleBuilder<T, MessageId> ruleBuilder, string propertyName = "")
+        public static IRuleBuilderOptions<T, ChirpId> MustBeAValidChirpId<T>(this IRuleBuilder<T, ChirpId> ruleBuilder, string propertyName = "")
         {
             return ruleBuilder
                 .NotNull()
-                .SetValidator(new MessageIdInputValidator());
+                .SetValidator(new ChirpIdInputValidator());
         } 
     }
 }
