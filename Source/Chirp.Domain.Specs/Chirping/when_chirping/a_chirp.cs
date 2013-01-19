@@ -34,13 +34,14 @@ namespace Chirp.Domain.Specs.Chirping.when_chirping
                          };
 
         It should_be_a_successful_scenario = () => command_scenario.ShouldBeASuccessfulScenario();
-        It should_persist_the_events = () => command_scenario.HasGeneratedEvents.ShouldBeTrue();
+        It should_generate_the_events = () => command_scenario.HasGeneratedEvents.ShouldBeTrue();
         It should_chirp_the_message = () => command_scenario.GeneratedEvents.ShouldHaveEvent<MessageChirped>().AtBeginning().Where(
             e =>
                 {
                     e.Content.ShouldEqual(chirps.valid_chirp_with_no_tags.Content);
                     e.ChirpedBy.ShouldEqual(chirpers.valid.Value);
                     e.ChirpedAt.ShouldEqual(current_time);
+                    e.ChirpId.ShouldEqual(chirps.valid_chirp_with_no_tags.Id.Value);
                 });
     }
 }

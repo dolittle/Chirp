@@ -5,9 +5,9 @@ namespace Chirp.Concepts
 {
     public class ChirperId : ConceptAs<Guid>
     {
-        public static implicit operator ChirperId(Guid publisher)
+        public static implicit operator ChirperId(Guid chirper)
         {
-            return new ChirperId { Value = publisher };
+            return new ChirperId { Value = chirper };
         }
     }
 }

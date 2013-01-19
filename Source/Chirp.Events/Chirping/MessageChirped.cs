@@ -9,6 +9,7 @@ namespace Chirp.Events.Chirping
         {
         }
 
+        public Guid ChirpId { get; set; }
         public Guid ChirpedBy { get; set; }
         public string Content { get; set; }
         public DateTime ChirpedAt { get; set; }

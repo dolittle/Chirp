@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Chirp.Concepts;
 
-namespace Chirp.Views.Follow
+namespace Chirp.Read.Domain.Follow
 {
     public class MyFollowers
     {

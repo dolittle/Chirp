@@ -16,6 +16,7 @@ namespace Chirp.Domain.Chirping
         {
             Apply(new MessageChirped(Id)
                       {
+                          ChirpId = chirp.Id,
                           ChirpedBy = Id,
                           ChirpedAt = Bifrost.Time.SystemClock.GetCurrentTime(),
                           Content = chirp.Content

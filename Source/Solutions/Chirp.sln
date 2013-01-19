@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chirp.Application", "..\Chi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chirp.Events", "..\Chirp.Events\Chirp.Events.csproj", "{BBD2E25A-A196-4196-A80B-7978BEEFD0E4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chirp.Views", "..\Chirp.Views\Chirp.Views.csproj", "{47084FCF-9F9E-4419-97BE-2D23E4BD9078}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chirp.Infrastructure", "..\Chirp.Infrastructure\Chirp.Infrastructure.csproj", "{CD263131-2F39-4BED-9989-B7EB67966B8A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chirp.Domain.Specs", "..\Chirp.Domain.Specs\Chirp.Domain.Specs.csproj", "{CFF20623-4391-4494-B31E-70175EF64933}"
@@ -19,11 +17,17 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chirp.Application.Specs", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chirp.Infrastructure.Specs", "..\Chirp.Infrastructure.Specs\Chirp.Infrastructure.Specs.csproj", "{EF65EE70-7D02-4F3A-AAAA-C7800E15F8E6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chirp.Views.Specs", "..\Chirp.Views.Specs\Chirp.Views.Specs.csproj", "{A5556F72-DA47-4399-ADE9-763DC4B76281}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chirp.Web.Specs", "..\Chirp.Web.Specs\Chirp.Web.Specs.csproj", "{C5C2F7BC-2235-4154-BC9C-3D7EF6D2ABE3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chirp.Concepts", "..\Chirp.Concepts\Chirp.Concepts.csproj", "{711ECF13-9FA3-437B-B284-747C24B0C6E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chirp.Read", "..\Chirp.Read\Chirp.Read.csproj", "{831B77A4-FEC6-4819-B068-B8BCF376F71A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chirp.Read.Domain", "..\Chirp.Read.Domain\Chirp.Read.Domain.csproj", "{9F21173B-3B9F-4706-8AB2-13EFD4E1A0CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chirp.Read.Domain.Specs", "Chirp.Read.Domain.Specs\Chirp.Read.Domain.Specs.csproj", "{408CFAAD-1D9F-4092-95F3-92370ACADDB5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chirp.Read.Specs", "Chirp.Read.Specs\Chirp.Read.Specs.csproj", "{E244C388-CD8C-41C5-957F-349E88657C09}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,10 +51,6 @@ Global
 		{BBD2E25A-A196-4196-A80B-7978BEEFD0E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BBD2E25A-A196-4196-A80B-7978BEEFD0E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BBD2E25A-A196-4196-A80B-7978BEEFD0E4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{47084FCF-9F9E-4419-97BE-2D23E4BD9078}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{47084FCF-9F9E-4419-97BE-2D23E4BD9078}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{47084FCF-9F9E-4419-97BE-2D23E4BD9078}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{47084FCF-9F9E-4419-97BE-2D23E4BD9078}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CD263131-2F39-4BED-9989-B7EB67966B8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CD263131-2F39-4BED-9989-B7EB67966B8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CD263131-2F39-4BED-9989-B7EB67966B8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -67,10 +67,6 @@ Global
 		{EF65EE70-7D02-4F3A-AAAA-C7800E15F8E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EF65EE70-7D02-4F3A-AAAA-C7800E15F8E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EF65EE70-7D02-4F3A-AAAA-C7800E15F8E6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A5556F72-DA47-4399-ADE9-763DC4B76281}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A5556F72-DA47-4399-ADE9-763DC4B76281}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A5556F72-DA47-4399-ADE9-763DC4B76281}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A5556F72-DA47-4399-ADE9-763DC4B76281}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C5C2F7BC-2235-4154-BC9C-3D7EF6D2ABE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C5C2F7BC-2235-4154-BC9C-3D7EF6D2ABE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C5C2F7BC-2235-4154-BC9C-3D7EF6D2ABE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -79,6 +75,22 @@ Global
 		{711ECF13-9FA3-437B-B284-747C24B0C6E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{711ECF13-9FA3-437B-B284-747C24B0C6E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{711ECF13-9FA3-437B-B284-747C24B0C6E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{831B77A4-FEC6-4819-B068-B8BCF376F71A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{831B77A4-FEC6-4819-B068-B8BCF376F71A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{831B77A4-FEC6-4819-B068-B8BCF376F71A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{831B77A4-FEC6-4819-B068-B8BCF376F71A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F21173B-3B9F-4706-8AB2-13EFD4E1A0CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F21173B-3B9F-4706-8AB2-13EFD4E1A0CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F21173B-3B9F-4706-8AB2-13EFD4E1A0CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F21173B-3B9F-4706-8AB2-13EFD4E1A0CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{408CFAAD-1D9F-4092-95F3-92370ACADDB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{408CFAAD-1D9F-4092-95F3-92370ACADDB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{408CFAAD-1D9F-4092-95F3-92370ACADDB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{408CFAAD-1D9F-4092-95F3-92370ACADDB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E244C388-CD8C-41C5-957F-349E88657C09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E244C388-CD8C-41C5-957F-349E88657C09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E244C388-CD8C-41C5-957F-349E88657C09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E244C388-CD8C-41C5-957F-349E88657C09}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

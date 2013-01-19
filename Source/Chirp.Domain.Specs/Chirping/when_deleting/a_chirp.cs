@@ -27,7 +27,7 @@ namespace Chirp.Domain.Specs.Chirping.when_deleting
         };
 
         It should_be_a_successful_scenario = () => command_scenario.ShouldBeASuccessfulScenario();
-        It should_persist_the_events = () => command_scenario.HasGeneratedEvents.ShouldBeTrue();
+        It should_generate_the_events = () => command_scenario.HasGeneratedEvents.ShouldBeTrue();
         It should_delete_the_chirp = () => command_scenario.GeneratedEvents.ShouldHaveEvent<ChirpDeleted>().AtBeginning().Where(
              e =>
              {

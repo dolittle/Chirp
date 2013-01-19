@@ -26,7 +26,7 @@ namespace Chirp.Domain.Specs.Chirping.when_deleting
                          };
 
         It should_be_an_unsuccessful_scenario = () => command_scenario.ShouldBeAnUnsuccessfulScenario();
-        It should_not_delete_the_message = () => command_scenario.GeneratedEvents.ShouldBeEmpty();
+        It should_not_delete_the_message = () => command_scenario.HasGeneratedEvents.ShouldBeFalse();
         It should_fail_validation = () => result.Invalid.ShouldBeTrue();
     }
 }
