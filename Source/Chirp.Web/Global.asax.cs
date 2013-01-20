@@ -32,11 +32,12 @@ namespace Chirp.Web
         {
             RouteTable.Routes.AddService<Bifrost.Services.ValidationService>();
             RouteTable.Routes.AddService<Bifrost.Services.Commands.CommandCoordinatorService>();
-            //RouteTable.Routes.AddService<Bifrost.Services.Events.EventService>("Events");
             RouteTable.Routes.AddService<Streamer>();
             RouteTable.Routes.AddService<DebugInfoService>();
 
             base.OnStarted();
+            EnsureScottAndHannahAreSetup(base.Container);
+
         }
 
         public override void OnConfigure(IConfigure configure)
@@ -44,11 +45,11 @@ namespace Chirp.Web
             var connectionString = ConfigurationManager.AppSettings["Database"];
             var userName = ConfigurationManager.AppSettings["RavenUsername"];
             var password = ConfigurationManager.AppSettings["RavenPassword"];
+
             configure
-                //.UsingCommonServiceLocator()
                 .Sagas.WithoutLibrarian()
+                .Events.WithoutEventStore()
                 .Serialization.UsingJson()
-                .Events.Asynchronous()
                 .DefaultStorage.UsingRavenDB(connectionString, c =>
                 {
                     c.DefaultDatabase = "Chirp";
@@ -56,12 +57,10 @@ namespace Chirp.Web
                         c.Credentials = new NetworkCredential(userName, password);
                 })
                 .AsSinglePageApplication()
-                .WithMimir()
-                ;
+                .WithMimir();
 
             base.OnConfigure(configure);
 
-            EnsureScottAndHannahAreSetup(configure.Container);
         }
 
         static Guid hannah = Guid.Parse("{03F1D667-063B-4D15-B892-06F89818E9A8}");

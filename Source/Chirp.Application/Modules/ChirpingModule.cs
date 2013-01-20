@@ -17,8 +17,8 @@ namespace Chirp.Application.Modules
             Bind<Func<ChirperId, ChirpId, bool>>().ToMethod(a => ChirpIsNotADuplicate).WhenInjectedInto<ChirpMessageBusinessValidator>();
             Bind<Func<ChirperId, bool>>().ToMethod(a => ChirperExists).WhenInjectedInto<ChirpMessageBusinessValidator>();
 
-            Bind(typeof(IEntityContext<>)).To(typeof(Bifrost.RavenDB.EntityContext<>)).InRequestScope();
-            Bind<ISerializer>().To<Bifrost.JSON.Serialization.Serializer>().InSingletonScope();
+            //Bind(typeof(IEntityContext<>)).To(typeof(Bifrost.RavenDB.EntityContext<>)).InRequestScope();
+            //Bind<ISerializer>().To<Bifrost.JSON.Serialization.Serializer>().InSingletonScope();
         }
 
         bool ChirpHasBeenChirpedByChirper(ChirperId chirper, ChirpId chirp)
