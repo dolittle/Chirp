@@ -2,11 +2,18 @@
     Bifrost.features.featureManager.get("sidebar").defineViewModel(function () {
         var self = this;
 
-        this.chirpCommand = Bifrost.commands.Command.create({
+        this.chirpMessageCommand = Bifrost.commands.Command.create({
             options: {
-                name: "Chirp",
+                name: "ChirpMessage",
                 properties: {
-                    message: ko.observable("")
+                    publisher: ko.observable(Bifrost.Guid.empty),
+                    message: {
+                        id: ko.observable(Bifrost.Guid.empty),
+                        content: ko.observable("")
+                    }
+                },
+                beforeExecute: function (command) {
+//                    command.message.id.value(Bifrost.Guid.create());
                 },
                 complete: function () {
                     self.chirpCommand.parameters.message("");
@@ -16,8 +23,11 @@
         });
         this.isEditing = ko.observable(false);
         this.availableLettersCount = ko.computed(function () {
-            return 140 - self.chirpCommand.message().length;
-        });
+            return 140 - this.chirpMessageCommand.message().content().length;
+        }, this);
 
+        this.shouldShowRemainingCharCount = ko.computed(function () {
+            return this.isEditing() && this.availableLettersCount() < 50;
+        }, this);
     });
 })();
