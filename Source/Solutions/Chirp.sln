@@ -29,6 +29,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chirp.Read.Domain.Specs", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chirp.Read.Specs", "Chirp.Read.Specs\Chirp.Read.Specs.csproj", "{E244C388-CD8C-41C5-957F-349E88657C09}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Forseti", "Forseti", "{A423FECC-6EAE-4C52-84A2-6E192CF3BD3A}"
+	ProjectSection(SolutionItems) = preProject
+		..\forseti.yaml = ..\forseti.yaml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -91,97 +96,6 @@ Global
 		{E244C388-CD8C-41C5-957F-349E88657C09}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E244C388-CD8C-41C5-957F-349E88657C09}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E244C388-CD8C-41C5-957F-349E88657C09}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-EndGlobal
-﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chirp.Web", "..\Chirp.Web\Chirp.Web.csproj", "{80B5AE44-3C94-4514-87ED-B4321B46D900}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chirp.Domain", "..\Chirp.Domain\Chirp.Domain.csproj", "{7291BED5-B67C-416A-9EBF-B0E75A0C7B06}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chirp.Application", "..\Chirp.Application\Chirp.Application.csproj", "{86785AFC-C3E9-462E-A13C-21DD4D769DCD}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chirp.Events", "..\Chirp.Events\Chirp.Events.csproj", "{BBD2E25A-A196-4196-A80B-7978BEEFD0E4}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chirp.Views", "..\Chirp.Views\Chirp.Views.csproj", "{47084FCF-9F9E-4419-97BE-2D23E4BD9078}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chirp.Infrastructure", "..\Chirp.Infrastructure\Chirp.Infrastructure.csproj", "{CD263131-2F39-4BED-9989-B7EB67966B8A}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chirp.Domain.Specs", "..\Chirp.Domain.Specs\Chirp.Domain.Specs.csproj", "{CFF20623-4391-4494-B31E-70175EF64933}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chirp.Application.Specs", "..\Chirp.Application.Specs\Chirp.Application.Specs.csproj", "{89D12923-F68C-4A4B-B25A-8B52F9EAADF3}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chirp.Infrastructure.Specs", "..\Chirp.Infrastructure.Specs\Chirp.Infrastructure.Specs.csproj", "{EF65EE70-7D02-4F3A-AAAA-C7800E15F8E6}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chirp.Views.Specs", "..\Chirp.Views.Specs\Chirp.Views.Specs.csproj", "{A5556F72-DA47-4399-ADE9-763DC4B76281}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chirp.Web.Specs", "..\Chirp.Web.Specs\Chirp.Web.Specs.csproj", "{C5C2F7BC-2235-4154-BC9C-3D7EF6D2ABE3}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chirp.Concepts", "..\Chirp.Concepts\Chirp.Concepts.csproj", "{711ECF13-9FA3-437B-B284-747C24B0C6E5}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Forseti", "Forseti", "{A423FECC-6EAE-4C52-84A2-6E192CF3BD3A}"
-	ProjectSection(SolutionItems) = preProject
-		..\forseti.yaml = ..\forseti.yaml
-	EndProjectSection
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{80B5AE44-3C94-4514-87ED-B4321B46D900}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{80B5AE44-3C94-4514-87ED-B4321B46D900}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{80B5AE44-3C94-4514-87ED-B4321B46D900}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{80B5AE44-3C94-4514-87ED-B4321B46D900}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7291BED5-B67C-416A-9EBF-B0E75A0C7B06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7291BED5-B67C-416A-9EBF-B0E75A0C7B06}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7291BED5-B67C-416A-9EBF-B0E75A0C7B06}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7291BED5-B67C-416A-9EBF-B0E75A0C7B06}.Release|Any CPU.Build.0 = Release|Any CPU
-		{86785AFC-C3E9-462E-A13C-21DD4D769DCD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{86785AFC-C3E9-462E-A13C-21DD4D769DCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{86785AFC-C3E9-462E-A13C-21DD4D769DCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{86785AFC-C3E9-462E-A13C-21DD4D769DCD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BBD2E25A-A196-4196-A80B-7978BEEFD0E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BBD2E25A-A196-4196-A80B-7978BEEFD0E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BBD2E25A-A196-4196-A80B-7978BEEFD0E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BBD2E25A-A196-4196-A80B-7978BEEFD0E4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{47084FCF-9F9E-4419-97BE-2D23E4BD9078}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{47084FCF-9F9E-4419-97BE-2D23E4BD9078}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{47084FCF-9F9E-4419-97BE-2D23E4BD9078}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{47084FCF-9F9E-4419-97BE-2D23E4BD9078}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CD263131-2F39-4BED-9989-B7EB67966B8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CD263131-2F39-4BED-9989-B7EB67966B8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CD263131-2F39-4BED-9989-B7EB67966B8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CD263131-2F39-4BED-9989-B7EB67966B8A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CFF20623-4391-4494-B31E-70175EF64933}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CFF20623-4391-4494-B31E-70175EF64933}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CFF20623-4391-4494-B31E-70175EF64933}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CFF20623-4391-4494-B31E-70175EF64933}.Release|Any CPU.Build.0 = Release|Any CPU
-		{89D12923-F68C-4A4B-B25A-8B52F9EAADF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{89D12923-F68C-4A4B-B25A-8B52F9EAADF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{89D12923-F68C-4A4B-B25A-8B52F9EAADF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{89D12923-F68C-4A4B-B25A-8B52F9EAADF3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EF65EE70-7D02-4F3A-AAAA-C7800E15F8E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EF65EE70-7D02-4F3A-AAAA-C7800E15F8E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EF65EE70-7D02-4F3A-AAAA-C7800E15F8E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EF65EE70-7D02-4F3A-AAAA-C7800E15F8E6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A5556F72-DA47-4399-ADE9-763DC4B76281}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A5556F72-DA47-4399-ADE9-763DC4B76281}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A5556F72-DA47-4399-ADE9-763DC4B76281}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A5556F72-DA47-4399-ADE9-763DC4B76281}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C5C2F7BC-2235-4154-BC9C-3D7EF6D2ABE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C5C2F7BC-2235-4154-BC9C-3D7EF6D2ABE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C5C2F7BC-2235-4154-BC9C-3D7EF6D2ABE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C5C2F7BC-2235-4154-BC9C-3D7EF6D2ABE3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{711ECF13-9FA3-437B-B284-747C24B0C6E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{711ECF13-9FA3-437B-B284-747C24B0C6E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{711ECF13-9FA3-437B-B284-747C24B0C6E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{711ECF13-9FA3-437B-B284-747C24B0C6E5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
