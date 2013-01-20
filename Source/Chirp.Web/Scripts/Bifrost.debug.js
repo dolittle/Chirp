@@ -166,7 +166,7 @@ Bifrost.namespace("Bifrost", {
 		return Object.prototype.toString.call(o) === '[object Array]';
 	}
 });
-Bifrost.namespace("Bifrost", {
+﻿Bifrost.namespace("Bifrost", {
     path: {
         getPathWithoutFilename: function (fullPath) {
             var lastIndex = fullPath.lastIndexOf("/");
@@ -223,7 +223,7 @@ Bifrost.namespace("Bifrost", {
 		}
 	}
 });
-Bifrost.namespace("Bifrost", {
+﻿Bifrost.namespace("Bifrost", {
     assetsManager: {
         initialize: function () {
             var promise = Bifrost.execution.Promise.create();
@@ -313,6 +313,7 @@ Bifrost.namespace("Bifrost", {
                 }
 
                 if (resolvedSystem instanceof Bifrost.execution.Promise) {
+                    console.log("'" + name + "' was resolved as an asynchronous dependency, consider using beginCreate() or make the dependency available prior to calling create");
                     throw new Bifrost.AsynchronousDependenciesDetected();
                 }
 
@@ -362,7 +363,7 @@ Bifrost.namespace("Bifrost", {
         };
     })()
 });
-Bifrost.namespace("Bifrost", {
+﻿Bifrost.namespace("Bifrost", {
     DefaultDependencyResolver: function () {
         var self = this;
 
@@ -446,7 +447,7 @@ Bifrost.namespace("Bifrost", {
     }
 });
 
-Bifrost.namespace("Bifrost", {
+﻿Bifrost.namespace("Bifrost", {
     WellKnownTypesDependencyResolver: function () {
         var self = this;
         this.types = Bifrost.WellKnownTypesDependencyResolver.types;
@@ -717,6 +718,8 @@ Bifrost.namespace("Bifrost", {
                             }
                         }
 
+                        print("Instances : "+dependencyInstances.something);
+
                         var instance = self.create(dependencyInstances);
                         promise.signal(instance);
                     });
@@ -727,7 +730,7 @@ Bifrost.namespace("Bifrost", {
         return promise;
     };
 })();
-Bifrost.namespace("Bifrost", {
+﻿Bifrost.namespace("Bifrost", {
     Singleton: function (typeDefinition) {
         return Bifrost.Type.extend(typeDefinition).scopeTo(window);
     }
@@ -1028,7 +1031,7 @@ Bifrost.validation.Validator = (function () {
     }
 })();
 
-if (typeof ko !== 'undefined') {
+﻿if (typeof ko !== 'undefined') {
     Bifrost.namespace("Bifrost.validation", {
         ValidationSummary: function (commands) {
             var self = this;
@@ -1097,7 +1100,7 @@ if (typeof ko !== 'undefined') {
     };
 }
 
-Bifrost.namespace("Bifrost.validation", {
+﻿Bifrost.namespace("Bifrost.validation", {
     validationService: Bifrost.Singleton(function () {
         this.getForCommand = function (name) {
             var promise = Bifrost.execution.Promise.create();
@@ -1387,7 +1390,7 @@ Bifrost.namespace("Bifrost.commands", {
     })
 });
 Bifrost.WellKnownTypesDependencyResolver.types.commandCoordinator = Bifrost.commands.commandCoordinator;
-Bifrost.namespace("Bifrost.commands", {
+﻿Bifrost.namespace("Bifrost.commands", {
     commandValidationService: Bifrost.Singleton(function (validationService) {
         var self = this;
         this.validationService = validationService;
@@ -1731,7 +1734,7 @@ Bifrost.commands.CommandResult = (function () {
         }
     };
 })();
-Bifrost.dependencyResolvers.command = {
+﻿Bifrost.dependencyResolvers.command = {
     canResolve: function (namespace, name) {
         if (typeof commands !== "undefined") {
             return name in commands;
@@ -2206,7 +2209,7 @@ Bifrost.namespace("Bifrost.messaging", {
 });
 Bifrost.messaging.Messenger.global = Bifrost.messaging.Messenger.create();
 
-if (typeof ko !== 'undefined') {
+﻿if (typeof ko !== 'undefined') {
     ko.observableMessage = function (message, defaultValue) {
         var observable = ko.observable(defaultValue);
 
@@ -2284,7 +2287,7 @@ Bifrost.namespace("Bifrost.navigation", {
         }
     }
 });
-if (typeof History !== "undefined" && typeof History.Adapter !== "undefined" && typeof ko !== "undefined") {
+﻿if (typeof History !== "undefined" && typeof History.Adapter !== "undefined" && typeof ko !== "undefined") {
     ko.observableQueryParameter = function (parameterName, defaultValue) {
         var self = this;
         var observable = null;
@@ -2330,7 +2333,7 @@ if (typeof History !== "undefined" && typeof History.Adapter !== "undefined" && 
         return observable;
     }
 }
-Bifrost.namespace("Bifrost", {
+﻿Bifrost.namespace("Bifrost", {
     configure: (function () {
         var self = this;
 

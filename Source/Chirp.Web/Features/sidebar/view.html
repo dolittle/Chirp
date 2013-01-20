@@ -5,15 +5,15 @@
 </head>
 <body>
     <div class="text-area">
-        <textarea class="input-block-level" placeholder="Compose new Chirp..." data-bind="hasfocus: isEditing, value: chirpCommand.message, valueUpdate: 'afterkeydown'"></textarea>
+        <textarea class="input-block-level" placeholder="Compose new Chirp..." data-bind="hasfocus: isEditing, value: chirpMessageCommand.message.content, valueUpdate: 'afterkeydown'"></textarea>
     </div>
     <div>
-        <div data-bind="visible: isEditing() || availableLettersCount() != 140">
+        <div data-bind="visible: shouldShowRemainingCharCount">
             <span class="badge" data-bind="text: availableLettersCount"></span>
-                <button data-bind="command: chirpCommand" class="btn btn-primary">Chirp</button>
+                <button data-bind="command: chirpMessageCommand" class="btn btn-primary">Chirp</button>
             
         </div>
     </div>
-    <img src="/Images/small_spinner.gif" data-bind="visible: chirpCommand.isBusy" />
+    <img src="/Images/small_spinner.gif" data-bind="visible: chirpMessageCommand.isBusy" />
 </body>
 </html>
