@@ -13,6 +13,11 @@ namespace Chirp.Read.Domain.Follow
             _followers = new HashSet<FollowerId>();
         }
 
+        public MyFollowers(ChirperId chirper) : this()
+        {
+            Chirper = chirper;
+        }
+
         public ChirperId Chirper { get; set; }
         public IEnumerable<FollowerId> Followers
         {

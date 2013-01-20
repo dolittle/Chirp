@@ -10,17 +10,13 @@ namespace Chirp.Domain.Specs.Chirping
         {
             return pId => pId == chirpers.valid;
         }
-        public override Func<ChirpId, bool> ChirpExists()
-        {
-            return mId => mId != chirps.does_not_exist;
-        }
         public override Func<ChirperId,ChirpId, bool> ChirpIsNotADuplicate()
         {
              return (x,y) => y != chirps.duplicate.Id; 
         }
-        public override Func<ChirpId, bool> ChirpHasBeenChirpedByChirper()
+        public override Func<ChirperId, ChirpId, bool> ChirpHasBeenChirpedByChirper()
         {
-            return id => id != chirps.from_a_different_chirper; 
+            return (x,y) => y != chirps.from_a_different_chirper; 
         } 
     }
 }

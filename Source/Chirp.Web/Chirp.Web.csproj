@@ -178,7 +178,6 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\DebugInfoService.cs" />
-    <Compile Include="Services\StreamService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -205,6 +204,10 @@
     <ProjectReference Include="..\Chirp.Events\Chirp.Events.csproj">
       <Project>{BBD2E25A-A196-4196-A80B-7978BEEFD0E4}</Project>
       <Name>Chirp.Events</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Chirp.Read.Domain\Chirp.Read.Domain.csproj">
+      <Project>{9F21173B-3B9F-4706-8AB2-13EFD4E1A0CE}</Project>
+      <Name>Chirp.Read.Domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\Chirp.Read\Chirp.Read.csproj">
       <Project>{831B77A4-FEC6-4819-B068-B8BCF376F71A}</Project>

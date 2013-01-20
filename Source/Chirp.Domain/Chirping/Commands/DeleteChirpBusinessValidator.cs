@@ -7,30 +7,30 @@ namespace Chirp.Domain.Chirping.Commands
 {
     public class DeleteChirpBusinessValidator : CommandBusinessValidator<DeleteChirp>
     {
-        readonly Func<ChirperId, bool> _publisherExists;
-        readonly Func<ChirpId, bool> _messageHasBeenPublishedByPublisher;
+        readonly Func<ChirperId, bool> _chirperExists;
+        readonly Func<ChirperId, ChirpId, bool> _chirpHasBeenChirpedByChirper;
 
-        public DeleteChirpBusinessValidator(Func<ChirperId, bool> publisherExists, Func<ChirpId, bool> messageHasBeenPublishedByPublisher)
+        public DeleteChirpBusinessValidator(Func<ChirperId, bool> chirperExists, Func<ChirperId,ChirpId, bool> chirpHasBeenChirpedByChirper)
         {
-            _publisherExists = publisherExists;
-            _messageHasBeenPublishedByPublisher = messageHasBeenPublishedByPublisher;
+            _chirperExists = chirperExists;
+            _chirpHasBeenChirpedByChirper = chirpHasBeenChirpedByChirper;
             
             RuleFor(c => c.ChirpedBy)
-                .Must(BeAnExistingPublisher)
-                .WithMessage("The publisher with Id '{PropertyValue}' does not exist");
-            RuleFor(c => c.ChirpToDelete)
-                .Must(BePublishedByThisPublisher)
-                .WithMessage("No message with Id '{PropertyValue}' has been published by this publisher. ");
+                .Must(BeAnExistingChirper)
+                .WithMessage("The chirper with Id '{PropertyValue}' does not exist");
+            ModelRule()
+                .Must(BeChirpedByThisChirper)
+                .WithMessage("No message with Id '{PropertyValue}' has been chirped by this chirper. ");
         }
 
-        bool BeAnExistingPublisher(ChirperId chirper)
+        bool BeAnExistingChirper(ChirperId chirper)
         {
-            return _publisherExists.Invoke(chirper);
+            return _chirperExists.Invoke(chirper);
         }
 
-        bool BePublishedByThisPublisher(ChirpId chirp_id)
+        bool BeChirpedByThisChirper(DeleteChirp deleteChirp)
         {
-            return _messageHasBeenPublishedByPublisher.Invoke(chirp_id);
+            return _chirpHasBeenChirpedByChirper.Invoke(deleteChirp.ChirpedBy,deleteChirp.ChirpToDelete);
         }
     }
 }

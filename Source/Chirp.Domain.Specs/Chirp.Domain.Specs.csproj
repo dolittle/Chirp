@@ -81,7 +81,7 @@
     <Compile Include="Chirping\when_deleting\with_no_chirper.cs" />
     <Compile Include="chirps.cs" />
     <Compile Include="chirpers.cs" />
-    <Compile Include="Follow\Funcs.cs" />
+    <Compile Include="Follow\TestFuncs.cs" />
     <Compile Include="Follow\Scenarios.cs" />
     <Compile Include="Follow\when_following_a_chirper\given\a_scenario_with_a_follow_chirper_command.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

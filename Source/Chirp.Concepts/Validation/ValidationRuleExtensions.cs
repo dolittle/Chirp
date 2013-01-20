@@ -16,6 +16,20 @@ namespace Chirp.Concepts.Validation
             return ruleBuilder
                 .NotNull()
                 .SetValidator(new ChirpIdInputValidator());
-        } 
+        }
+
+        public static IRuleBuilderOptions<T, FollowerId> MustBeAValidFollowerId<T>(this IRuleBuilder<T, FollowerId> ruleBuilder, string propertyName = "")
+        {
+            return ruleBuilder
+                .NotNull()
+                .SetValidator(new FollowerIdInputValidator());
+        }
+
+        public static IRuleBuilderOptions<T, ReaderId> MustBeAValidReaderId<T>(this IRuleBuilder<T, ReaderId> ruleBuilder, string propertyName = "")
+        {
+            return ruleBuilder
+                .NotNull()
+                .SetValidator(new ReaderIdInputValidator());
+        }
     }
 }

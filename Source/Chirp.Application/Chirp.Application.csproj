@@ -66,6 +66,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Modules\ChirpingModule.cs" />
     <Compile Include="Modules\UsersModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\UserService.cs" />
@@ -75,6 +76,10 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <ProjectReference Include="..\Chirp.Concepts\Chirp.Concepts.csproj">
+      <Project>{711ECF13-9FA3-437B-B284-747C24B0C6E5}</Project>
+      <Name>Chirp.Concepts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Chirp.Domain\Chirp.Domain.csproj">
       <Project>{7291BED5-B67C-416A-9EBF-B0E75A0C7B06}</Project>
       <Name>Chirp.Domain</Name>
@@ -82,6 +87,14 @@
     <ProjectReference Include="..\Chirp.Infrastructure\Chirp.Infrastructure.csproj">
       <Project>{CD263131-2F39-4BED-9989-B7EB67966B8A}</Project>
       <Name>Chirp.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Chirp.Read.Domain\Chirp.Read.Domain.csproj">
+      <Project>{9F21173B-3B9F-4706-8AB2-13EFD4E1A0CE}</Project>
+      <Name>Chirp.Read.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Chirp.Read\Chirp.Read.csproj">
+      <Project>{831B77A4-FEC6-4819-B068-B8BCF376F71A}</Project>
+      <Name>Chirp.Read</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

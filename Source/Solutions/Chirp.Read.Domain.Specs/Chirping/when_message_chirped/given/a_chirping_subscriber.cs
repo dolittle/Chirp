@@ -14,7 +14,7 @@ namespace Chirp.Read.Domain.Specs.Chirping.when_message_chirped.given
         protected static MyChirps my_chirps;
         protected static int initial_chirp_count;
 
-        protected static EventSubscriber event_subscriber;
+        protected static MyChirpsSubscriber event_subscriber;
         protected static Mock<IEntityContext<MyChirps>> my_chirps_entity_context;
 
         protected static IEnumerable<ChirpId> existing_chirps;
@@ -41,7 +41,7 @@ namespace Chirp.Read.Domain.Specs.Chirping.when_message_chirped.given
                                   };
 
             my_chirps_entity_context = new Mock<IEntityContext<MyChirps>>();
-            event_subscriber = new EventSubscriber(my_chirps_entity_context.Object);
+            event_subscriber = new MyChirpsSubscriber(my_chirps_entity_context.Object);
 
             my_chirps = new MyChirps();
             foreach (var existingChirp in existing_chirps)
