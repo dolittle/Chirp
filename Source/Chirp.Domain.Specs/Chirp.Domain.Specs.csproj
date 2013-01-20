@@ -63,7 +63,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Chirping\Funcs.cs" />
+    <Compile Include="Chirping\TestFuncs.cs" />
     <Compile Include="Chirping\Scenarios.cs" />
     <Compile Include="Chirping\when_chirping\a_chirp.cs" />
     <Compile Include="Chirping\when_chirping\given\a_scenario_with_a_chirp_message.cs" />

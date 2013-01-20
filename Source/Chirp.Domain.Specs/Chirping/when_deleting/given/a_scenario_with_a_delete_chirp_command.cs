@@ -21,13 +21,15 @@ namespace Chirp.Domain.Specs.Chirping.when_deleting.given
 
         protected static CommandScenario<DeleteChirp> command_scenario;
 
+
         Establish context = () =>
         {
+            var funcs = new TestFuncs();
             chirper_id = chirpers.valid;
             chirp_stream = new ChirpStream(chirper_id);
             stream_repository = new Mock<IAggregatedRootRepository<ChirpStream>>();
             input_validator = new DeleteChirpInputValidator();
-            business_validator = new DeleteChirpBusinessValidator(Funcs.PublisherExists, Funcs.MessageHasBeenPublishedByPublisher);
+            business_validator = new DeleteChirpBusinessValidator(funcs.ChirperExists(), funcs.ChirpHasBeenChirpedByChirper());
             command_handler = new ChirpCommandHandler(stream_repository.Object);
 
             command_scenario = new CommandScenario<DeleteChirp>();

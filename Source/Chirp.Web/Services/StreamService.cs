@@ -1,22 +1,20 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Chirp.Concepts;
-using Chirp.Read.Streams;
+﻿using Chirp.Views.Streams;
+using System.Collections.Generic;
 
 namespace Chirp.Web.Services
 {
     public class StreamService
     {
-        readonly IStreamer _streamer;
+        IStreamRepository _streamRepository;
 
-        public StreamService(IStreamer streamer)
+        public StreamService(IStreamRepository streamRepository)
         {
-            _streamer = streamer;
+            _streamRepository = streamRepository;
         }
 
-        public IEnumerable<Read.Streams.Chirp> GetMyChirps(ChirperId chirper)
+        public IEnumerable<Views.Streams.Chirp> GetPublic()
         {
-            return _streamer.GetMyChirps(chirper).OrderByDescending(c => c.ChirpedAt);
+            return _streamRepository.GetPublic();
         }
     }
 }

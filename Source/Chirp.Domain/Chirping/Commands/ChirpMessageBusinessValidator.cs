@@ -7,30 +7,30 @@ namespace Chirp.Domain.Chirping.Commands
 {
     public class ChirpMessageBusinessValidator : CommandBusinessValidator<ChirpMessage>
     {
-        readonly Func<ChirperId, bool> _publisherExists;
-        readonly Func<Chirp, bool> _messageIsUnique;
+        readonly Func<ChirperId, bool> _chirperExists;
+        readonly Func<ChirperId, ChirpId, bool> _chirpIsNotDuplicate;
 
-        public ChirpMessageBusinessValidator(Func<ChirperId, bool> publisherExists, Func<Chirp, bool> messageIsUnique)
+        public ChirpMessageBusinessValidator(Func<ChirperId, bool> chirperExists, Func<ChirperId, ChirpId, bool> chirpIsNotDuplicate)
         {
-            _publisherExists = publisherExists;
-            _messageIsUnique = messageIsUnique;
+            _chirperExists = chirperExists;
+            _chirpIsNotDuplicate = chirpIsNotDuplicate;
 
             RuleFor(c => c.Chirper)
-                .Must(BeAnExistingPublisher)
-                .WithMessage("The publisher with Id '{PropertyValue}' does not exist");
-            RuleFor(c => c.Chirp)
-                .Must(MustBeAUniqueMessage)
+                .Must(BeAnExistingChirper)
+                .WithMessage("The chriper with Id '{PropertyValue}' does not exist");
+            ModelRule()
+                .Must(NotBeADuplicateChirp)
                 .WithMessage("A message with Id '{PropertyValue}' already exists.");
         }
 
-        bool BeAnExistingPublisher(ChirperId chirper)
+        bool BeAnExistingChirper(ChirperId chirper)
         {
-            return _publisherExists.Invoke(chirper);
+            return _chirperExists.Invoke(chirper);
         }
 
-        bool MustBeAUniqueMessage(Chirp chirpId)
+        bool NotBeADuplicateChirp(ChirpMessage chirp)
         {
-            return _messageIsUnique.Invoke(chirpId);
+            return _chirpIsNotDuplicate.Invoke(chirp.Chirper, chirp.Chirp.Id);
         }
     }
 }
