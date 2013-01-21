@@ -31,7 +31,7 @@ namespace Chirp.Read.Streams
 
 
             var readers = myFollowers.Followers.Select(f => new ReaderId{ Value = f.Value}).ToArray();
-            var chirper = _chirperView.Query.Single(c => c.Id == messageChirped.ChirpedBy);
+            var chirper = _chirperView.Query.Single(c => c.ChirperId == messageChirped.ChirpedBy);
             var chirpToAppend = new Chirp()
                                {
                                    Id = messageChirped.ChirpId,

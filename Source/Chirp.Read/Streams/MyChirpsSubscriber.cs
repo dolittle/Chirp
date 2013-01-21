@@ -20,7 +20,7 @@ namespace Chirp.Read.Streams
 
         public void Process(MessageChirped messageChirped)
         {
-            var chirper = _chirperView.Query.Single(c => c.Id == messageChirped.ChirpedBy);
+            var chirper = _chirperView.Query.Single(c => c.ChirperId == messageChirped.ChirpedBy);
             var newChirp = new read.Chirp()
                             {
                                 Id = messageChirped.ChirpId,

@@ -17,7 +17,7 @@ namespace Chirp.Read.Streams
 
         public OrderedStream GetMyChirpsFor(ChirperId chirper)
         {
-            return new OrderedStream(_chirpView.Query.Where(c => c.ChirpedBy.Id == chirper).AsEnumerable());
+            return new OrderedStream(_chirpView.Query.Where(c => c.ChirpedBy.ChirperId == chirper).AsEnumerable());
         }
 
         public ReadingStream GetReadingStreamFor(ReaderId reader)

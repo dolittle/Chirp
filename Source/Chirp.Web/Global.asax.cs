@@ -69,10 +69,10 @@ namespace Chirp.Web
        void EnsureScottAndHannahAreSetup(IContainer container)
        {
            var chirpersEntityContext = container.Get<IEntityContext<Chirper>>();
-           if (!chirpersEntityContext.Entities.Any(c => c.Id == hannah || c.Id == scott))
+           if (!chirpersEntityContext.Entities.Any(c => c.ChirperId.Value == hannah || c.ChirperId.Value == scott))
            {
-               chirpersEntityContext.Insert(new Chirper(){ Id = scott, DisplayName = "@Scott"});
-               chirpersEntityContext.Insert(new Chirper() { Id = hannah, DisplayName = "@Hannah" });
+               chirpersEntityContext.Insert(new Chirper() { ChirperId = scott, DisplayName = "@Scott" });
+               chirpersEntityContext.Insert(new Chirper() { ChirperId = hannah, DisplayName = "@Hannah" });
                chirpersEntityContext.Commit();
            }
 
@@ -85,7 +85,7 @@ namespace Chirp.Web
            }
 
            var myChirpsEntityContext = container.Get<IEntityContext<MyChirps>>();
-           if (!myChirpsEntityContext.Entities.Any(c => c.Chirper == hannah || c.Chirper == scott))
+           if (!myChirpsEntityContext.Entities.Any(c => c.Chirper.Value == hannah || c.Chirper.Value == scott))
            {
                myChirpsEntityContext.Insert(new MyChirps(hannah));
                myChirpsEntityContext.Insert(new MyChirps(scott));
@@ -93,7 +93,7 @@ namespace Chirp.Web
            }
 
            var myFollowersEntityContext = container.Get<IEntityContext<MyFollowers>>();
-           if (!myFollowersEntityContext.Entities.Any(c => c.Chirper == hannah || c.Chirper == scott))
+           if (!myFollowersEntityContext.Entities.Any(c => c.Chirper.Value == hannah || c.Chirper.Value == scott))
            {
                var hannahsFollowers = new MyFollowers(hannah);
                hannahsFollowers.AddFollower(scott);

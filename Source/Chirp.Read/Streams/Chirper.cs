@@ -4,7 +4,7 @@ namespace Chirp.Read.Streams
 {
     public class Chirper
     {
-        public ChirperId Id { get; set; }
+        public ChirperId ChirperId { get; set; }
         public string DisplayName { get; set; }
     }
 }

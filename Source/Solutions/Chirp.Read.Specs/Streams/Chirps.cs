@@ -55,10 +55,10 @@ namespace Chirp.Read.Specs.Streams
 
         public static MessageChirped BuildCorrespondingMessageChirpedEventFrom(read.Chirp chirp)
         {
-            return new MessageChirped(chirp.ChirpedBy.Id)
+            return new MessageChirped(chirp.ChirpedBy.ChirperId)
                        {
                            ChirpId = chirp.Id,
-                           ChirpedBy = chirp.ChirpedBy.Id,
+                           ChirpedBy = chirp.ChirpedBy.ChirperId,
                            Content = chirp.Content,
                            ChirpedAt = chirp.ChirpedAt,
                        };
