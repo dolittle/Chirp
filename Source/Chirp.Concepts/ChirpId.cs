@@ -9,5 +9,10 @@ namespace Chirp.Concepts
         {
             return new ChirpId { Value = id };
         }
+
+        public static implicit operator ChirpId(string chirper)
+        {
+            return new ChirpId { Value = Guid.Parse(chirper) };
+        }
     }
 }

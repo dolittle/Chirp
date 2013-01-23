@@ -18,14 +18,14 @@ namespace Chirp.Read.Domain.Chirping
 
         public override Func<ChirperId, bool> ChirperExists()
         {
-            return x => _chirperView.Query.Any(c => c == x);
+            return x => _chirperView.Query.Any(c => c.Value == x.Value);
         }
 
         public override Func<ChirperId, ChirpId, bool> ChirpIsNotADuplicate()
         {
             return (x, y) =>
                        {
-                           var myChirps = _myChirpsView.Query.SingleOrDefault(c => c.Chirper == x);
+                           var myChirps = _myChirpsView.Query.SingleOrDefault(c => c.Chirper.Value == x.Value);
                            return myChirps == null || !myChirps.Exists(y);
                        };
         }
@@ -34,7 +34,7 @@ namespace Chirp.Read.Domain.Chirping
         {
             return (x, y) =>
             {
-                var myChirps = _myChirpsView.Query.SingleOrDefault(c => c.Chirper == x);
+                var myChirps = _myChirpsView.Query.SingleOrDefault(c => c.Chirper.Value == x.Value);
                 return myChirps != null && myChirps.Exists(y);
             };
         }

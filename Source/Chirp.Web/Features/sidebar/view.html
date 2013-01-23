@@ -5,10 +5,10 @@
 </head>
 <body>
     <div class="text-area">
-        <textarea class="input-block-level" placeholder="Compose new Chirp..." data-bind="hasfocus: isEditing, value: chirpMessageCommand.message.content, valueUpdate: 'afterkeydown'"></textarea>
+        <textarea class="input-block-level" placeholder="Compose new Chirp..." data-bind="hasfocus: isEditing, value: chirpMessageCommand.chirp().content, valueUpdate: 'afterkeydown'"></textarea>
     </div>
     <div>
-        <div data-bind="visible: shouldShowRemainingCharCount">
+        <div>
             <span class="badge" data-bind="text: availableLettersCount"></span>
                 <button data-bind="command: chirpMessageCommand" class="btn btn-primary">Chirp</button>
             

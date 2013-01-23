@@ -48,6 +48,13 @@ namespace Chirp.Web
 
             configure
                 .Events.Asynchronous()
+                .Events.UsingRavenDB( c =>
+                {
+                    c.Url = "http://localhost:8080";
+                    c.DefaultDatabase = "Chirp";
+                    if (!string.IsNullOrEmpty(userName))
+                        c.Credentials = new NetworkCredential(userName, password);
+                })
                 .Serialization.UsingJson()
                 .Sagas.WithoutLibrarian()
                 .DefaultStorage.UsingRavenDB(connectionString, c =>
