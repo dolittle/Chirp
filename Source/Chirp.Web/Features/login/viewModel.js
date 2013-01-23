@@ -1,6 +1,9 @@
 ﻿(function (undefined) {
     Bifrost.features.featureManager.get("login").defineViewModel(function () {
         var self = this;
+        var session = Bifrost.dependencyResolver.resolve(Chirp, "Session");
+
+        console.log(session);
 
         function clearMessages() {
             self.message("");
@@ -20,7 +23,10 @@
                 },
                 beforeExecute: clearMessages,
                 success: function () {
-                    History.pushState({}, "", "/home");
+                    session.getUserIdFor(self.loginCommand.userName()).continueWith(function (userId) {
+                        session.setSessionId(userId);
+                        History.pushState({}, "", "/home");
+                    });
                 },
                 error: function (e) {
                     if (e.validationResults.length) {

@@ -1,6 +1,8 @@
 ﻿(function (undefined) {
     Bifrost.features.featureManager.get("sidebar").defineViewModel(function () {
         var self = this;
+        var session = Bifrost.dependencyResolver.resolve(Chirp, "Session");
+
 
         function newChirp() {
             return ko.observable({
@@ -13,7 +15,7 @@
             options: {
                 name: "ChirpMessage",
                 properties: {
-                    chirper: ko.observable("03F1D667-063B-4D15-B892-06F89818E9A8"),
+                    chirper: ko.observable(session.getCurrentUserId()),
                     chirp: newChirp()
                 },
                 beforeExecute: function (command) {
@@ -21,9 +23,7 @@
                     var chirp = command.chirp();
                     chirp.id(Bifrost.Guid.create());
                     command.chirp(chirp);
-                    //                    command.id(Bifrost.Guid.create);
                 },
-                success: function () { debugger; },
                 error: function () { debugger; },
                 complete: function () {
                     self.chirpMessageCommand.chirp = newChirp()

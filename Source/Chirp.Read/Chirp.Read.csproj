@@ -47,7 +47,7 @@
     <Compile Include="Streams\Chirp.cs" />
     <Compile Include="Streams\Chirper.cs" />
     <Compile Include="Streams\Content.cs" />
-    <Compile Include="Streams\IChirpQueries.cs" />
+    <Compile Include="Streams\StreamerService.cs" />
     <Compile Include="Streams\IChirpStream.cs" />
     <Compile Include="Streams\IChirpStreamer.cs" />
     <Compile Include="Streams\MutableStream.cs" />

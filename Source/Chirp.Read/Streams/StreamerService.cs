@@ -4,12 +4,12 @@ using Chirp.Concepts;
 
 namespace Chirp.Read.Streams
 {
-    public class Streamer : IChirpStreamer
+    public class StreamerService : IChirpStreamer
     {
         readonly IView<Chirp> _chirpView;
         readonly IView<ReadingStream> _readingStreamView;
 
-        public Streamer(IView<Chirp> chirpView, IView<ReadingStream> readingStreamView )
+        public StreamerService(IView<Chirp> chirpView, IView<ReadingStream> readingStreamView )
         {
             _chirpView = chirpView;
             _readingStreamView = readingStreamView;

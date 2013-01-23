@@ -5,7 +5,7 @@ using Machine.Specifications;
 
 namespace Chirp.Read.Specs.Streams.for_chirp_streamer
 {
-    [Subject(typeof (Streamer))]
+    [Subject(typeof (StreamerService))]
     public class when_getting_my_chirps_for_Scott : a_chirp_streamer
     {
         static OrderedStream results;

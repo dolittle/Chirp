@@ -147,6 +147,7 @@
     <Content Include="Scripts\custom.js" />
     <Content Include="Scripts\domReady.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
+    <Content Include="Scripts\jquery.cookies.2.2.0.js" />
     <Content Include="Scripts\jquery.history.js" />
     <Content Include="Scripts\knockout-2.0.0.js" />
     <Content Include="Scripts\knockout.mapping-2.0.0.js" />
@@ -156,6 +157,7 @@
     <Content Include="Scripts\order.js" />
     <Content Include="Scripts\pubsub-min.js" />
     <Content Include="Scripts\require.js" />
+    <Content Include="Scripts\session.js" />
     <Content Include="Scripts\text.js" />
     <Content Include="css\bootstrap-responsive.css" />
     <Content Include="css\bootstrap-responsive.min.css" />
@@ -204,6 +206,10 @@
     <ProjectReference Include="..\Chirp.Events\Chirp.Events.csproj">
       <Project>{BBD2E25A-A196-4196-A80B-7978BEEFD0E4}</Project>
       <Name>Chirp.Events</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Chirp.Infrastructure\Chirp.Infrastructure.csproj">
+      <Project>{CD263131-2F39-4BED-9989-B7EB67966B8A}</Project>
+      <Name>Chirp.Infrastructure</Name>
     </ProjectReference>
     <ProjectReference Include="..\Chirp.Read.Domain\Chirp.Read.Domain.csproj">
       <Project>{9F21173B-3B9F-4706-8AB2-13EFD4E1A0CE}</Project>

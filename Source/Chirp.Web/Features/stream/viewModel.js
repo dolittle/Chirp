@@ -1,13 +1,15 @@
 ﻿(function (undefined) {
     Bifrost.features.featureManager.get("stream").defineViewModel(function () {
         var self = this;
+        var session = Bifrost.dependencyResolver.resolve(Chirp, "Session");
+
 
         this.chirps = ko.observableArray();
 
         this.loadChirps = function () {
-            $.get("/Stream/GetPublic", function (e) {
+            $.get("/Streamer/GetReadingStreamFor", { reader : session.getCurrentUserId()}, function (e) {
                 self.chirps(e);
-            }, "json");
+            });
         }
 
         $.subscribe("reload", function () {

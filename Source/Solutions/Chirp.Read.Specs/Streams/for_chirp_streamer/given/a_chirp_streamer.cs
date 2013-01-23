@@ -8,13 +8,13 @@ namespace Chirp.Read.Specs.Streams.for_chirp_streamer.given
     {
         protected static Mock<IView<Read.Streams.Chirp>> chirp_view;
         protected static Mock<IView<ReadingStream>> reading_stream_view;
-        protected static Streamer streamer;
+        protected static StreamerService streamer;
 
         public a_chirp_streamer()
         {
             chirp_view = Chirps.GetMockedChirpView();
             reading_stream_view = new Mock<IView<ReadingStream>>();
-            streamer = new Streamer(chirp_view.Object, reading_stream_view.Object);
+            streamer = new StreamerService(chirp_view.Object, reading_stream_view.Object);
         }
     }
 }

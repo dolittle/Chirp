@@ -16,6 +16,7 @@ using Chirp.Read.Streams;
 using Chirp.Web.Services;
 using Ninject;
 using System.Net;
+using Chirp.Application.Security;
 
 namespace Chirp.Web
 {
@@ -32,7 +33,8 @@ namespace Chirp.Web
         {
             RouteTable.Routes.AddService<Bifrost.Services.ValidationService>(); 
             RouteTable.Routes.AddService<Bifrost.Services.Commands.CommandCoordinatorService>();
-            RouteTable.Routes.AddService<Streamer>();
+            RouteTable.Routes.AddService<StreamerService>();
+            RouteTable.Routes.AddService<UserService>();
             RouteTable.Routes.AddService<DebugInfoService>();
 
             base.OnStarted();
