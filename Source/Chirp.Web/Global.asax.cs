@@ -30,7 +30,7 @@ namespace Chirp.Web
 
         public override void OnStarted()
         {
-            RouteTable.Routes.AddService<Bifrost.Services.ValidationService>();
+            RouteTable.Routes.AddService<Bifrost.Services.ValidationService>(); 
             RouteTable.Routes.AddService<Bifrost.Services.Commands.CommandCoordinatorService>();
             RouteTable.Routes.AddService<Streamer>();
             RouteTable.Routes.AddService<DebugInfoService>();
@@ -47,9 +47,9 @@ namespace Chirp.Web
             var password = ConfigurationManager.AppSettings["RavenPassword"];
 
             configure
-                .Sagas.WithoutLibrarian()
-                .Events.WithoutEventStore()
+                .Events.Asynchronous()
                 .Serialization.UsingJson()
+                .Sagas.WithoutLibrarian()
                 .DefaultStorage.UsingRavenDB(connectionString, c =>
                 {
                     c.DefaultDatabase = "Chirp";

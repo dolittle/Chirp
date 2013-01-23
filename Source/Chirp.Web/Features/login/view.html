@@ -2,31 +2,30 @@
 <head>
     <title></title>
 </head>
-<body>
-    <div class="alert alert-error" data-bind="text: message, fadeInOrOut: { fadeIn: false, delay: 1000, duration: 3000 }, visible: message().length > 0">
-    </div>
+<body>    
 	<div class="row">
 		<div class="span5" >
 	        <div class="hero-unit">
+            <div class="alert alert-error" data-bind="text: message, fadeInOrOut: { fadeIn: false, delay: 1000, duration: 5000 }, visible: message().length > 0"></div>
 		        <h2>Login</h2>
 
                 <div>
                     <label>
                         Username
                     </label>
-                    <input type="text" data-bind="value:login.userName" />
-                    <span data-bind="validationMessageFor: login.userName"></span>
+                    <input type="text" data-bind="value:loginCommand.userName" />
+                    <span data-bind="validationMessageFor: loginCommand.userName"></span>
                 </div>
 
                 <div>
                     <label>
                         Password
                     </label>
-                    <input type="password" data-bind="{value:login.password, enabled : canEnterPassword}"/>
-                    <span data-bind="validationMessageFor: login.password"></span>
+                    <input type="password" data-bind="{value:loginCommand.password, enabled: canEnterPassword()}"/>
+                    <span data-bind="validationMessageFor: loginCommand.password"></span>
                 </div>
                 
-                <button data-bind="command: login">Login</button>
+                <button data-bind="command: loginCommand">Login</button>
 	        </div>
         </div>
     </div>
