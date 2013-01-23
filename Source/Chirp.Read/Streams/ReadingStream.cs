@@ -7,6 +7,9 @@ namespace Chirp.Read.Streams
     {
         public ReaderId Reader { get; set; }
 
+        public ReadingStream()
+        {}
+
         public ReadingStream(ReaderId reader)
         {
             Reader = reader;

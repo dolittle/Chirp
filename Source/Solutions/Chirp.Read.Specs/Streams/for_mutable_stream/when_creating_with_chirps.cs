@@ -19,6 +19,6 @@ namespace Chirp.Read.Specs.Streams.for_mutable_stream
         Because of = () => stream = new MutableStream(existing_chirps);
 
         It should_create_a_mutable_stream = () => stream.ShouldNotBeNull();
-        It should_should_contain_the_supplied_chirps = () => stream.SequenceEqual(Chirps.GetAll()).ShouldBeTrue();
+        It should_should_contain_the_supplied_chirps = () => stream.Chirps().SequenceEqual(Chirps.GetAll()).ShouldBeTrue();
     }
 }

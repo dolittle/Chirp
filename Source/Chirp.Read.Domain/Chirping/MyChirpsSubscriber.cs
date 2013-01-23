@@ -1,4 +1,5 @@
-﻿using Bifrost.Entities;
+﻿using System.Linq;
+using Bifrost.Entities;
 using Bifrost.Events;
 using Chirp.Concepts;
 using Chirp.Events.Chirping;
@@ -18,7 +19,7 @@ namespace Chirp.Read.Domain.Chirping
         {
             ChirpId chirp = messageChirped.ChirpId;
             ChirperId chirper = messageChirped.ChirpedBy;
-            var myChirps = _myChirpsEntityContext.GetById(chirper);
+            var myChirps = _myChirpsEntityContext.Entities.SingleOrDefault(c => c.Chirper.Value == chirper.Value);
             if(myChirps == null)
             {
                 myChirps = new MyChirps(chirper);

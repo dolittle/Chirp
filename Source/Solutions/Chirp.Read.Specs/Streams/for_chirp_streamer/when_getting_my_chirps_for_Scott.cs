@@ -18,8 +18,8 @@ namespace Chirp.Read.Specs.Streams.for_chirp_streamer
 
         Because of = () => results = streamer.GetMyChirpsFor(Chirpers.Scott.ChirperId);
 
-        It should_retrieve_only_chirps_from_Scott = () => results.All(c => c.ChirpedBy.ChirperId == Chirpers.Scott.ChirperId).ShouldBeTrue();
-        It should_retrieve_all_chirps_from_Scott = () => Chirps.GetAll().Except(results).Any(c => c.ChirpedBy.ChirperId == Chirpers.Scott.ChirperId).ShouldBeFalse();
-        It should_have_ordered_chirps_by_chirped_at_descending = () => results.SequenceEqual(expected_results).ShouldBeTrue();
+        It should_retrieve_only_chirps_from_Scott = () => results.Chirps().All(c => c.ChirpedBy.ChirperId == Chirpers.Scott.ChirperId).ShouldBeTrue();
+        It should_retrieve_all_chirps_from_Scott = () => Chirps.GetAll().Except(results.Chirps()).Any(c => c.ChirpedBy.ChirperId == Chirpers.Scott.ChirperId).ShouldBeFalse();
+        It should_have_ordered_chirps_by_chirped_at_descending = () => results.Chirps().SequenceEqual(expected_results.Chirps()).ShouldBeTrue();
     }
 }

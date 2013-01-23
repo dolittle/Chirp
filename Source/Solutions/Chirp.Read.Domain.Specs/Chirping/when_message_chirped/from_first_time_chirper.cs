@@ -33,7 +33,7 @@ namespace Chirp.Read.Domain.Specs.Chirping.when_message_chirped
 
         Because of = () => event_subscriber.Process(message_chirped);
 
-        It should_try_to_retrieve_an_existing_my_chirps = () => my_chirps_entity_context.Verify(ec => ec.GetById(first_time_chirper), Times.Once());
+        It should_try_to_retrieve_an_existing_my_chirps = () => my_chirps_entity_context.Verify(ec => ec.Entities, Times.Once());
         It should_create_a_new_my_chirps_collection_for_this_chirper = () => newly_created_my_chirps.ShouldNotBeNull();
         It should_add_the_chirp_to_chirpers_chirps = () => newly_created_my_chirps.Exists(chirp).ShouldBeTrue();
         It should_set_the_total_number_of_chirps_to_one = () => newly_created_my_chirps.TotalNumberOfChirps.ShouldEqual(1);

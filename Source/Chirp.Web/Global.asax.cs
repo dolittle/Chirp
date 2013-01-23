@@ -99,6 +99,14 @@ namespace Chirp.Web
                myChirpsEntityContext.Commit();
            }
 
+           var myReadingStreamEntityContext = container.Get<IEntityContext<ReadingStream>>();
+           if (!myReadingStreamEntityContext.Entities.Any(c => c.Reader.Value == hannah || c.Reader.Value == scott))
+           {
+               myReadingStreamEntityContext.Insert(new ReadingStream(scott));
+               myReadingStreamEntityContext.Insert(new ReadingStream(hannah));
+               myReadingStreamEntityContext.Commit();
+           }
+
            var myFollowersEntityContext = container.Get<IEntityContext<MyFollowers>>();
            if (!myFollowersEntityContext.Entities.Any(c => c.Chirper.Value == hannah || c.Chirper.Value == scott))
            {

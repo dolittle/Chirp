@@ -45,7 +45,7 @@ namespace Chirp.Read.Streams
 
             foreach(var reader in readers)
             {
-                var readingStream = _readingStreamEntityContext.Entities.Where(rs => rs.Reader.Value == reader).FirstOrDefault();
+                var readingStream = _readingStreamEntityContext.Entities.FirstOrDefault(rs => rs.Reader.Value == reader);
                 if (readingStream == null) 
                     continue;
                 readingStream.AppendToStream(chirpToAppend);

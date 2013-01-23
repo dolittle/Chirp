@@ -3,7 +3,6 @@ using Bifrost.Entities;
 using Bifrost.Events;
 using Bifrost.Views;
 using Chirp.Events.Chirping;
-using read = Chirp.Read.Streams;
 
 namespace Chirp.Read.Streams
 {
@@ -21,7 +20,7 @@ namespace Chirp.Read.Streams
         public void Process(MessageChirped messageChirped)
         {
             var chirper = _chirperView.Query.Single(c => c.ChirperId.Value == messageChirped.ChirpedBy);
-            var newChirp = new read.Chirp()
+            var newChirp = new Chirp()
                             {
                                 Id = messageChirped.ChirpId,
                                 ChirpedBy = chirper,
