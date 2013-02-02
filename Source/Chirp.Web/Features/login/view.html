@@ -6,7 +6,18 @@
     <div class="alert alert-error" data-bind="text: message, fadeInOrOut: { fadeIn: false, delay: 1000, duration: 3000 }, visible: message().length > 0">
     </div>
 	<div class="row">
-		<div class="span5" >
+		<div class="span12">
+			<form class="form-inline">
+				<input type="text" data-bind="value:login.parameters.userName" />
+				<span data-bind="validationMessageFor: login.parameters.userName"></span>
+				<span data-bind="validationMessageFor: resetPassword.parameters.userName"></span>
+				<input type="password" data-bind="value:login.parameters.password"/>
+				<span data-bind="validationMessageFor: login.parameters.password"></span>
+				<button class="btn btn-primary" data-bind="command: login">Login</button>
+				<a class="btn btn-link" href="#" data-bind="command: resetPassword">Forgot password</a>
+			</form>
+		</div>
+<!--		<div class="span5" >
 	        <div class="hero-unit">
 		        <h2>Login</h2>
 
@@ -31,6 +42,6 @@
                 <a href="#" data-bind="command: resetPassword">Forgot password</a>
 	        </div>
         </div>
-    </div>
+    </div>-->
 </body>
 </html>
