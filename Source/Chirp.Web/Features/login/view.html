@@ -6,16 +6,14 @@
 	<div class="row">
 		<div class="span12">
 			<form class="form-inline">
-				<select data-bind="value:login.parameters.userName">
-					<option>Hannah</option>
-					<option>Scott</option>
+				<select data-bind="value:loginCommand.userName">
+					<option value="hannah">Hannah</option>
+					<option value="scott">Scott</option>
 				</select>
-				<span data-bind="validationMessageFor: login.parameters.userName"></span>
-				<span data-bind="validationMessageFor: resetPassword.parameters.userName"></span>
-				<input type="password" data-bind="value:login.parameters.password"/>
-				<span data-bind="validationMessageFor: login.parameters.password"></span>
-				<button class="btn btn-primary" data-bind="command: login">Login</button>
-				<a class="btn btn-link" href="#" data-bind="command: resetPassword">Forgot password</a>
+				<span data-bind="validationMessageFor: loginCommand.userName"></span>
+				<input type="password" data-bind="value:loginCommand.password" disabled="disabled"/>
+				<span data-bind="validationMessageFor: loginCommand.password"></span>
+				<button class="btn btn-primary" data-bind="click: login">Login</button>
 			</form>
 		</div>
 </body>
