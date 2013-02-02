@@ -191,7 +191,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="css\Collegiate.ttf" />
-    <None Include="css\SegoeUI.ttf" />
+    <None Include="css\SegoeUI.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Chirp.Application\Chirp.Application.csproj">
