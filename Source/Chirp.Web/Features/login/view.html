@@ -6,7 +6,7 @@
     <div class="alert alert-error" data-bind="text: message, fadeInOrOut: { fadeIn: false, delay: 1000, duration: 3000 }, visible: message().length > 0">
     </div>
 	<div class="row">
-		<div class="span12">
+		<div style="text-align:center;">
 			<form class="form-inline">
 				<select data-bind="value:login.parameters.userName">
 					<option>Hannah</option>
@@ -17,7 +17,7 @@
 				<input type="password" data-bind="value:login.parameters.password"/>
 				<span data-bind="validationMessageFor: login.parameters.password"></span>
 				<button class="btn btn-primary" data-bind="command: login">Login</button>
-				<a class="btn btn-link" href="#" data-bind="command: resetPassword">Forgot password</a>
+				<button class="btn btn-link" data-bind="command: resetPassword">Forgot password</a>
 			</form>
 		</div>
 </body>
