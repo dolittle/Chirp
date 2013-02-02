@@ -11,26 +11,26 @@
                     });
         }
 
-        this.chirpMessageCommand = Bifrost.commands.Command.create({
-            options: {
-                name: "ChirpMessage",
-                properties: {
-                    chirper: ko.observable(session.getCurrentUserId()),
-                    chirp: newChirp()
-                },
-                beforeExecute: function (command) {
-                    command = self.chirpMessageCommand;
-                    var chirp = command.chirp();
-                    chirp.id(Bifrost.Guid.create());
-                    command.chirp(chirp);
-                },
-                error: function () { debugger; },
-                complete: function () {
-                    self.chirpMessageCommand.chirp = newChirp()
-                    $.publish("reload");
-                }
-            }
-        });
+        //this.chirpMessageCommand = Bifrost.commands.Command.create({
+        //    options: {
+        //        name: "ChirpMessage",
+        //        properties: {
+        //            chirper: ko.observable(session.getCurrentUserId()),
+        //            chirp: newChirp()
+        //        },
+        //        beforeExecute: function (command) {
+        //            command = self.chirpMessageCommand;
+        //            var chirp = command.chirp();
+        //            chirp.id(Bifrost.Guid.create());
+        //            command.chirp(chirp);
+        //        },
+        //        error: function () { debugger; },
+        //        complete: function () {
+        //            self.chirpMessageCommand.chirp = newChirp()
+        //            $.publish("reload");
+        //        }
+        //    }
+        //});
 
 
 

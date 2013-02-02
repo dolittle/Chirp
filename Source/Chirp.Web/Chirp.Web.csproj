@@ -22,6 +22,10 @@
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <OldToolsVersion>4.0</OldToolsVersion>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -160,6 +164,7 @@
     <Content Include="Scripts\knockout.plugins.js" />
     <Content Include="Scripts\main.js" />
     <Content Include="Scripts\marked.js" />
+    <Content Include="Scripts\noext.js" />
     <Content Include="Scripts\order.js" />
     <Content Include="Scripts\pubsub-min.js" />
     <Content Include="Scripts\require.js" />
