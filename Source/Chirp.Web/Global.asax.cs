@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Configuration;
+using System.Diagnostics;
 using System.Linq;
 using System.Web.Routing;
 using Bifrost.Configuration;
 using Bifrost.Entities;
 using Bifrost.Execution;
 using Bifrost.Ninject;
+using Bifrost.RavenDB;
 using Bifrost.Services.Execution;
 using Bifrost.Web;
 using Chirp.Application.Modules;
@@ -17,6 +19,7 @@ using Chirp.Web.Services;
 using Ninject;
 using System.Net;
 using Chirp.Application.Security;
+using ChirperId = Chirp.Concepts.ChirperId;
 
 namespace Chirp.Web
 {
@@ -37,7 +40,6 @@ namespace Chirp.Web
 
             base.OnStarted();
             EnsureScottAndHannahAreSetup(base.Container);
-
         }
 
         public override void OnConfigure(IConfigure configure)
@@ -45,6 +47,13 @@ namespace Chirp.Web
             var connectionString = ConfigurationManager.AppSettings["Database"];
             var userName = ConfigurationManager.AppSettings["RavenUsername"];
             var password = ConfigurationManager.AppSettings["RavenPassword"];
+
+            var entityIds = new EntityIdPropertyRegister();
+            entityIds.RegisterIdProperty<ReadingStream,ReaderId>(rs => rs.Reader);
+            entityIds.RegisterIdProperty<MyChirps,ChirperId>(c => c.Chirper);
+            entityIds.RegisterIdProperty<Read.Streams.Chirper, ChirperId>(c => c.ChirperId);
+            entityIds.RegisterIdProperty<Read.Domain.Chirping.ChirperId,ChirperId>(c => c.Id);
+            entityIds.RegisterIdProperty<MyFollowers,ChirperId>(c => c.Chirper);
 
             configure
                 .Events.Asynchronous()
@@ -62,6 +71,8 @@ namespace Chirp.Web
                     c.DefaultDatabase = "Chirp";
                     if (!string.IsNullOrEmpty(userName))
                         c.Credentials = new NetworkCredential(userName, password);
+                    c.IdPropertyRegister = entityIds;
+
                 })
                 .AsSinglePageApplication();
                 //.WithMimir();
@@ -70,55 +81,70 @@ namespace Chirp.Web
 
         }
 
+        #region Just For Pav
         static Guid hannah = Guid.Parse("{03F1D667-063B-4D15-B892-06F89818E9A8}");
         static Guid scott = Guid.Parse("{A345577C-28AD-4371-87FE-8A57E84BDE2E}");
 
        void EnsureScottAndHannahAreSetup(IContainer container)
        {
-           var chirpersEntityContext = container.Get<IEntityContext<Chirper>>();
-           if (!chirpersEntityContext.Entities.Any(c => c.ChirperId.Value == hannah || c.ChirperId.Value == scott))
-           {
-               chirpersEntityContext.Insert(new Chirper() { ChirperId = scott, DisplayName = "@Scott" });
-               chirpersEntityContext.Insert(new Chirper() { ChirperId = hannah, DisplayName = "@Hannah" });
-               chirpersEntityContext.Commit();
-           }
-
-           var chirperIdsEntityContext = container.Get<IEntityContext<ChirperId>>();
-           if (!chirperIdsEntityContext.Entities.Any(c => c.Value == hannah || c.Value == scott))
-           {
-               chirperIdsEntityContext.Insert(hannah);
-               chirperIdsEntityContext.Insert(scott);
-               chirperIdsEntityContext.Commit();
-           }
-
-           var myChirpsEntityContext = container.Get<IEntityContext<MyChirps>>();
-           if (!myChirpsEntityContext.Entities.Any(c => c.Chirper.Value == hannah || c.Chirper.Value == scott))
-           {
-               myChirpsEntityContext.Insert(new MyChirps(hannah));
-               myChirpsEntityContext.Insert(new MyChirps(scott));
-               myChirpsEntityContext.Commit();
-           }
-
-           var myReadingStreamEntityContext = container.Get<IEntityContext<ReadingStream>>();
-           if (!myReadingStreamEntityContext.Entities.Any(c => c.Reader.Value == hannah || c.Reader.Value == scott))
-           {
-               myReadingStreamEntityContext.Insert(new ReadingStream(scott));
-               myReadingStreamEntityContext.Insert(new ReadingStream(hannah));
-               myReadingStreamEntityContext.Commit();
-           }
-
-           var myFollowersEntityContext = container.Get<IEntityContext<MyFollowers>>();
-           if (!myFollowersEntityContext.Entities.Any(c => c.Chirper.Value == hannah || c.Chirper.Value == scott))
-           {
-               var hannahsFollowers = new MyFollowers(hannah);
-               hannahsFollowers.AddFollower(scott);
-               var scottsFollowers = new MyFollowers(scott);
-               scottsFollowers.AddFollower(hannah);
-
-               myFollowersEntityContext.Insert(hannahsFollowers);
-               myFollowersEntityContext.Insert(scottsFollowers);
-               myFollowersEntityContext.Commit();
-           }
+           EnsureArtifactsArePresentFor(container,hannah, "@hannah");
+           EnsureArtifactsArePresentFor(container,scott, @"scott");
        }
+
+        void EnsureArtifactsArePresentFor(IContainer container, Guid user, string name)
+        {
+            var chirpersEntityContext = container.Get<IEntityContext<Read.Streams.Chirper>>();
+            var chirperIdsEntityContext = container.Get<IEntityContext<Read.Domain.Chirping.ChirperId>>();
+            var myChirpsEntityContext = container.Get<IEntityContext<MyChirps>>();
+            var myReadingStreamEntityContext = container.Get<IEntityContext<ReadingStream>>();
+            var myFollowersEntityContext = container.Get<IEntityContext<MyFollowers>>();
+
+            var chirperByGetById = chirpersEntityContext.GetById<ChirperId>(user);
+            var chirperByEntities = chirpersEntityContext.Entities.FirstOrDefault(c => c.ChirperId == user);
+            var chirperByEntitiesWithValue = chirpersEntityContext.Entities.FirstOrDefault(c => c.ChirperId.Value == user);
+            if(chirperByGetById == null && chirperByEntities == null && chirperByEntitiesWithValue == null)
+            {
+                chirpersEntityContext.Insert(new Read.Streams.Chirper() { ChirperId = user, DisplayName = name });
+                chirpersEntityContext.Commit();
+            }
+
+            var chirperIdsByGetById = chirperIdsEntityContext.GetById<ChirperId>(user);
+            var chirperIdsByEntities = chirperIdsEntityContext.Entities.FirstOrDefault(c => c.Id == user);
+            var chirperIdsByEntitiesWithValue = chirperIdsEntityContext.Entities.FirstOrDefault(c => c.Id.Value == user);
+            if(chirperIdsByGetById == null && chirperIdsByEntitiesWithValue == null && chirperIdsByEntities == null )
+            {
+                chirperIdsEntityContext.Insert(new Read.Domain.Chirping.ChirperId() { Id = user});
+                chirperIdsEntityContext.Commit();
+            }
+
+            var myChirpsByGetById = myChirpsEntityContext.GetById<ChirperId>(user);
+            var myChirpsByEntities = myChirpsEntityContext.Entities.FirstOrDefault(c => c.Chirper == user);
+            var myChirpsByEntitiesWithValue = myChirpsEntityContext.Entities.FirstOrDefault(c => c.Chirper.Value == user);
+            if(myChirpsByGetById == null && myChirpsByEntities == null && myChirpsByEntitiesWithValue == null)
+            {
+                myChirpsEntityContext.Insert(new MyChirps(user));
+                myChirpsEntityContext.Commit();
+            }
+
+            var myReadingStreamByGetById = myReadingStreamEntityContext.GetById<ReaderId>(user);
+            var myReadingStreamByEntities = myReadingStreamEntityContext.Entities.FirstOrDefault(c => c.Reader == user);
+            var myReadingStreamByEntitiesWithValue = myReadingStreamEntityContext.Entities.FirstOrDefault(c => c.Reader.Value == user);
+
+            if(myReadingStreamByGetById == null && myReadingStreamByEntities == null && myReadingStreamByEntitiesWithValue == null)
+            {
+                myReadingStreamEntityContext.Insert(new ReadingStream(user));
+                myReadingStreamEntityContext.Commit();
+            }
+
+            var myFollowersByGetById = myFollowersEntityContext.GetById<ChirperId>(user);
+            var myFollowersByEntities = myFollowersEntityContext.Entities.FirstOrDefault(c => c.Chirper == user);
+            var myFollowersByEntitiesWithValue = myFollowersEntityContext.Entities.FirstOrDefault(c => c.Chirper.Value == user);
+            if(myFollowersByGetById == null && myFollowersByEntities == null && myFollowersByEntitiesWithValue == null)
+            {
+                myFollowersEntityContext.Insert(new MyFollowers(user));
+                myFollowersEntityContext.Commit();
+            }
+        }
+        #endregion
     }
 } 

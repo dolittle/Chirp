@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Chirping\ChirperId.cs" />
     <Compile Include="Chirping\ChirpingFuncs.cs" />
     <Compile Include="Chirping\MyChirpsSubscriber.cs" />
     <Compile Include="Chirping\MyChirps.cs" />

@@ -5,6 +5,7 @@ using Bifrost.Entities;
 using Chirp.Concepts;
 using Chirp.Read.Domain.Chirping;
 using Moq;
+using ChirperId = Chirp.Concepts.ChirperId;
 
 namespace Chirp.Read.Domain.Specs.Chirping.when_message_chirped.given
 {
@@ -54,8 +55,8 @@ namespace Chirp.Read.Domain.Specs.Chirping.when_message_chirped.given
             initial_chirp_count = has_chirped_before_chirps.TotalNumberOfChirps;
 
             var entities = new List<MyChirps> { has_chirped_before_chirps }.AsQueryable();
-            my_chirps_entity_context.Setup(ec => ec.Entities)
-                .Returns(entities);
+            my_chirps_entity_context.Setup(ec => ec.GetById(It.IsAny<ChirperId>()))
+                .Returns((ChirperId id) => entities.SingleOrDefault(e => e.Chirper == id));
         }
     }
 }

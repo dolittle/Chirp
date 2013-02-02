@@ -18,8 +18,8 @@ namespace Chirp.Read.Domain.Chirping
         public void Process(MessageChirped messageChirped)
         {
             ChirpId chirp = messageChirped.ChirpId;
-            ChirperId chirper = messageChirped.ChirpedBy;
-            var myChirps = _myChirpsEntityContext.Entities.SingleOrDefault(c => c.Chirper.Value == chirper.Value);
+            Concepts.ChirperId chirper = messageChirped.ChirpedBy;
+            var myChirps = _myChirpsEntityContext.GetById(chirper);
             if(myChirps == null)
             {
                 myChirps = new MyChirps(chirper);
