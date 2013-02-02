@@ -34,8 +34,6 @@ namespace Chirp.Web
 
         public override void OnStarted()
         {
-            RouteTable.Routes.AddService<Bifrost.Services.ValidationService>(); 
-            RouteTable.Routes.AddService<Bifrost.Services.Commands.CommandCoordinatorService>();
             RouteTable.Routes.AddService<StreamerService>();
             RouteTable.Routes.AddService<UserService>();
             RouteTable.Routes.AddService<DebugInfoService>();
@@ -59,7 +57,7 @@ namespace Chirp.Web
 
             configure
                 .Events.Asynchronous()
-                .Events.UsingRavenDB( c =>
+                .Events.UsingRavenDB(c =>
                 {
                     c.Url = "http://localhost:8080";
                     c.DefaultDatabase = "Chirp";
@@ -76,8 +74,8 @@ namespace Chirp.Web
                     c.IdPropertyRegister = entityIds;
 
                 })
-                .AsSinglePageApplication()
-                .WithMimir();
+                .AsSinglePageApplication();
+                //.WithMimir();
 
             base.OnConfigure(configure);
 

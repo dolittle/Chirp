@@ -1,6 +1,11 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Forseti", "Forseti", "{A423FECC-6EAE-4C52-84A2-6E192CF3BD3A}"
+	ProjectSection(SolutionItems) = preProject
+		..\forseti.yaml = ..\forseti.yaml
+	EndProjectSection
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chirp.Web", "..\Chirp.Web\Chirp.Web.csproj", "{80B5AE44-3C94-4514-87ED-B4321B46D900}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chirp.Domain", "..\Chirp.Domain\Chirp.Domain.csproj", "{7291BED5-B67C-416A-9EBF-B0E75A0C7B06}"
@@ -28,11 +33,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chirp.Read.Domain.Specs", "Chirp.Read.Domain.Specs\Chirp.Read.Domain.Specs.csproj", "{408CFAAD-1D9F-4092-95F3-92370ACADDB5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chirp.Read.Specs", "Chirp.Read.Specs\Chirp.Read.Specs.csproj", "{E244C388-CD8C-41C5-957F-349E88657C09}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Forseti", "Forseti", "{A423FECC-6EAE-4C52-84A2-6E192CF3BD3A}"
-	ProjectSection(SolutionItems) = preProject
-		..\forseti.yaml = ..\forseti.yaml
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
