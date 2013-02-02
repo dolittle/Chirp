@@ -8,7 +8,7 @@ namespace Chirp.Read.Domain.Chirping
     {
         HashSet<ChirpId> _chirps;
 
-        public MyChirps(ChirperId chirper)
+        public MyChirps(Concepts.ChirperId chirper)
         {
             _chirps = new HashSet<ChirpId>();
             Chirper = chirper;
@@ -21,7 +21,7 @@ namespace Chirp.Read.Domain.Chirping
 
         public int TotalNumberOfChirps { get; set; }
 
-        public ChirperId Chirper { get; set; }
+        public Concepts.ChirperId Chirper { get; set; }
       
         public IEnumerable<ChirpId> Chirps
         {
