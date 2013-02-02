@@ -8,7 +8,10 @@
 	<div class="row">
 		<div class="span12">
 			<form class="form-inline">
-				<input type="text" data-bind="value:login.parameters.userName" />
+				<select data-bind="value:login.parameters.userName">
+					<option>Hannah</option>
+					<option>Scott</option>
+				</select>
 				<span data-bind="validationMessageFor: login.parameters.userName"></span>
 				<span data-bind="validationMessageFor: resetPassword.parameters.userName"></span>
 				<input type="password" data-bind="value:login.parameters.password"/>
