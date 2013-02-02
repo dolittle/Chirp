@@ -76,6 +76,12 @@ body {
 	background-color: #018441;
 }
 
+.nav-pills > .active > a,
+.nav-pills > .active > a:hover {
+  color: #ffffff;
+  background-color: #018441;
+}
+
 [class^="entypo-"],
 [class*=" entypo-"] {
   display: inline-block;
