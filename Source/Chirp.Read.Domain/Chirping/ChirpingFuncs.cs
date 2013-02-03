@@ -25,7 +25,7 @@ namespace Chirp.Read.Domain.Chirping
         {
             return (x, y) =>
                        {
-                           var myChirps = _myChirpsView.Query.SingleOrDefault(c => c.Chirper.Value == x.Value);
+                           var myChirps = _myChirpsView.Query.SingleOrDefault(c => c.Chirper == x);
                            return myChirps == null || !myChirps.Exists(y);
                        };
         }
@@ -34,7 +34,7 @@ namespace Chirp.Read.Domain.Chirping
         {
             return (x, y) =>
             {
-                var myChirps = _myChirpsView.Query.SingleOrDefault(c => c.Chirper.Value == x.Value);
+                var myChirps = _myChirpsView.Query.SingleOrDefault(c => c.Chirper == x);
                 return myChirps != null && myChirps.Exists(y);
             };
         }
