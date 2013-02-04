@@ -11,27 +11,27 @@ namespace Chirp.Read.Streams
 {
     public class ReadingStreamSubscriber : IEventSubscriber
     {
-        readonly IView<Chirper> _chirperView;
-        readonly IView<MyFollowers> _myFollowersView;
+        readonly IEntityContext<Chirper> _chirperEntityContext;
+        readonly IEntityContext<MyFollowers> _myFollowersEntityContext;
         readonly IEntityContext<ReadingStream> _readingStreamEntityContext;
 
-        public ReadingStreamSubscriber(IEntityContext<ReadingStream> readingStreamEntityContext, IView<Chirper> chirperView, IView<MyFollowers> myFollowersView)
+        public ReadingStreamSubscriber(IEntityContext<ReadingStream> readingStreamEntityContext, IEntityContext<Chirper> chirperEntityContext, IEntityContext<MyFollowers> myFollowersEntityContext)
         {
             _readingStreamEntityContext = readingStreamEntityContext;
-            _chirperView = chirperView;
-            _myFollowersView = myFollowersView;
+            _chirperEntityContext = chirperEntityContext;
+            _myFollowersEntityContext = myFollowersEntityContext;
         }
 
         public void Process(MessageChirped messageChirped)
         {
-            var myFollowers = _myFollowersView.Query.SingleOrDefault(f => f.Chirper.Value == messageChirped.ChirpedBy);
+            var myFollowers = _myFollowersEntityContext.GetById(messageChirped.ChirpedBy);
 
             if (myFollowers == null || !myFollowers.Followers.Any())
                 return;
 
 
             var readers = myFollowers.Followers.Select(f => f.Value).ToArray();
-            var chirper = _chirperView.Query.Single(c => c.ChirperId.Value == messageChirped.ChirpedBy);
+            var chirper = _chirperEntityContext.GetById(messageChirped.ChirpedBy);
             var chirpToAppend = new Chirp()
                                {
                                    Id = messageChirped.ChirpId,
@@ -45,7 +45,7 @@ namespace Chirp.Read.Streams
 
             foreach(var reader in readers)
             {
-                var readingStream = _readingStreamEntityContext.Entities.FirstOrDefault(rs => rs.Reader.Value == reader);
+                var readingStream = _readingStreamEntityContext.GetById(reader);
                 if (readingStream == null) 
                     continue;
                 readingStream.AppendToStream(chirpToAppend);

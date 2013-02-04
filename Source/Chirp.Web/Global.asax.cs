@@ -51,7 +51,8 @@ namespace Chirp.Web
             var entityIds = new EntityIdPropertyRegister();
             entityIds.RegisterIdProperty<ReadingStream,ReaderId>(rs => rs.Reader);
             entityIds.RegisterIdProperty<MyChirps,ChirperId>(c => c.Chirper);
-            entityIds.RegisterIdProperty<Read.Streams.Chirper, ChirperId>(c => c.ChirperId);
+            entityIds.RegisterIdProperty<Read.Streams.Chirp, ChirpId>(c => c.Id);
+            entityIds.RegisterIdProperty<Chirper, ChirperId>(c => c.ChirperId);
             entityIds.RegisterIdProperty<Read.Domain.Chirping.ChirperId,ChirperId>(c => c.Id);
             entityIds.RegisterIdProperty<MyFollowers,ChirperId>(c => c.Chirper);
 
@@ -87,13 +88,13 @@ namespace Chirp.Web
 
        void EnsureScottAndHannahAreSetup(IContainer container)
        {
-           EnsureArtifactsArePresentFor(container,hannah, "@hannah");
-           EnsureArtifactsArePresentFor(container,scott, @"scott");
+           EnsureArtifactsArePresentFor(container,hannah, "@hannah", scott);
+           EnsureArtifactsArePresentFor(container,scott, "@scott", hannah);
        }
 
-        void EnsureArtifactsArePresentFor(IContainer container, Guid user, string name)
+        void EnsureArtifactsArePresentFor(IContainer container, Guid user, string name, Guid follower)
         {
-            var chirpersEntityContext = container.Get<IEntityContext<Read.Streams.Chirper>>();
+            var chirpersEntityContext = container.Get<IEntityContext<Chirper>>();
             var chirperIdsEntityContext = container.Get<IEntityContext<Read.Domain.Chirping.ChirperId>>();
             var myChirpsEntityContext = container.Get<IEntityContext<MyChirps>>();
             var myReadingStreamEntityContext = container.Get<IEntityContext<ReadingStream>>();
@@ -101,17 +102,15 @@ namespace Chirp.Web
 
             var chirperByGetById = chirpersEntityContext.GetById<ChirperId>(user);
             var chirperByEntities = chirpersEntityContext.Entities.FirstOrDefault(c => c.ChirperId == user);
-            var chirperByEntitiesWithValue = chirpersEntityContext.Entities.FirstOrDefault(c => c.ChirperId.Value == user);
-            if(chirperByGetById == null && chirperByEntities == null && chirperByEntitiesWithValue == null)
+            if(chirperByGetById == null && chirperByEntities == null)
             {
-                chirpersEntityContext.Insert(new Read.Streams.Chirper() { ChirperId = user, DisplayName = name });
+                chirpersEntityContext.Insert(new Chirper() { ChirperId = user, DisplayName = name });
                 chirpersEntityContext.Commit();
             }
 
             var chirperIdsByGetById = chirperIdsEntityContext.GetById<ChirperId>(user);
             var chirperIdsByEntities = chirperIdsEntityContext.Entities.FirstOrDefault(c => c.Id == user);
-            var chirperIdsByEntitiesWithValue = chirperIdsEntityContext.Entities.FirstOrDefault(c => c.Id.Value == user);
-            if(chirperIdsByGetById == null && chirperIdsByEntitiesWithValue == null && chirperIdsByEntities == null )
+            if(chirperIdsByGetById == null &&  chirperIdsByEntities == null )
             {
                 chirperIdsEntityContext.Insert(new Read.Domain.Chirping.ChirperId() { Id = user});
                 chirperIdsEntityContext.Commit();
@@ -119,8 +118,7 @@ namespace Chirp.Web
 
             var myChirpsByGetById = myChirpsEntityContext.GetById<ChirperId>(user);
             var myChirpsByEntities = myChirpsEntityContext.Entities.FirstOrDefault(c => c.Chirper == user);
-            var myChirpsByEntitiesWithValue = myChirpsEntityContext.Entities.FirstOrDefault(c => c.Chirper.Value == user);
-            if(myChirpsByGetById == null && myChirpsByEntities == null && myChirpsByEntitiesWithValue == null)
+            if(myChirpsByGetById == null && myChirpsByEntities == null)
             {
                 myChirpsEntityContext.Insert(new MyChirps(user));
                 myChirpsEntityContext.Commit();
@@ -128,20 +126,20 @@ namespace Chirp.Web
 
             var myReadingStreamByGetById = myReadingStreamEntityContext.GetById<ReaderId>(user);
             var myReadingStreamByEntities = myReadingStreamEntityContext.Entities.FirstOrDefault(c => c.Reader == user);
-            var myReadingStreamByEntitiesWithValue = myReadingStreamEntityContext.Entities.FirstOrDefault(c => c.Reader.Value == user);
-
-            if(myReadingStreamByGetById == null && myReadingStreamByEntities == null && myReadingStreamByEntitiesWithValue == null)
+            if(myReadingStreamByGetById == null && myReadingStreamByEntities == null)
             {
-                myReadingStreamEntityContext.Insert(new ReadingStream(user));
+                var readingStream = new ReadingStream(user);
+                myReadingStreamEntityContext.Insert(readingStream);
                 myReadingStreamEntityContext.Commit();
             }
 
             var myFollowersByGetById = myFollowersEntityContext.GetById<ChirperId>(user);
             var myFollowersByEntities = myFollowersEntityContext.Entities.FirstOrDefault(c => c.Chirper == user);
-            var myFollowersByEntitiesWithValue = myFollowersEntityContext.Entities.FirstOrDefault(c => c.Chirper.Value == user);
-            if(myFollowersByGetById == null && myFollowersByEntities == null && myFollowersByEntitiesWithValue == null)
+            if(myFollowersByGetById == null && myFollowersByEntities == null)
             {
-                myFollowersEntityContext.Insert(new MyFollowers(user));
+                var followers = new MyFollowers(user);
+                followers.AddFollower(follower);
+                myFollowersEntityContext.Insert(followers);
                 myFollowersEntityContext.Commit();
             }
         }

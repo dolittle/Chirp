@@ -1,3 +1,4 @@
+using Chirp.Concepts;
 using Chirp.Events.Chirping;
 using Chirp.Read.Specs.Streams.for_my_chirps_subscriber.given;
 using Chirp.Read.Streams;
@@ -17,7 +18,7 @@ namespace Chirp.Read.Specs.Streams.for_reading_stream_subscriber
 
         Because of = () => subscriber.Process(message_chirped);
 
-        It should_retrieve_the_chirper = () => chirper_view.Verify(v => v.Query, Moq.Times.Once());
+        It should_retrieve_the_chirper = () => chirper_entity_context.Verify(v => v.GetById(message_chirped.ChirpedBy), Moq.Times.Once());
         It should_create_a_new_chirp_with_the_correct_values = () =>
                                                                    {
                                                                        new_chirp.ShouldNotBeNull();

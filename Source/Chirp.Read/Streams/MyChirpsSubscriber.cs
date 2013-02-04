@@ -8,18 +8,18 @@ namespace Chirp.Read.Streams
 {
     public class MyChirpsSubscriber : IEventSubscriber
     {
-        readonly IView<Chirper> _chirperView;
+        readonly IEntityContext<Chirper> _chirperEntityContext;
         readonly IEntityContext<Chirp> _chirpsEntityContext;
 
-        public MyChirpsSubscriber(IEntityContext<Chirp> chirpsEntityContext, IView<Chirper> chirperView)
+        public MyChirpsSubscriber(IEntityContext<Chirp> chirpsEntityContext, IEntityContext<Chirper> chirperEntityContext)
         {
             _chirpsEntityContext = chirpsEntityContext;
-            _chirperView = chirperView;
+            _chirperEntityContext = chirperEntityContext;
         }
 
         public void Process(MessageChirped messageChirped)
         {
-            var chirper = _chirperView.Query.Single(c => c.ChirperId.Value == messageChirped.ChirpedBy);
+            var chirper = _chirperEntityContext.GetById(messageChirped.ChirpedBy);
             var newChirp = new Chirp()
                             {
                                 Id = messageChirped.ChirpId,

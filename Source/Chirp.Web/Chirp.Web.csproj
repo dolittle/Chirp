@@ -71,7 +71,8 @@
     <Reference Include="Bifrost.Ninject">
       <HintPath>..\Solutions\Packages\Bifrost\Bifrost.Ninject.dll</HintPath>
     </Reference>
-    <Reference Include="Bifrost.RavenDB">
+    <Reference Include="Bifrost.RavenDB, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Solutions\packages\Bifrost\Bifrost.RavenDB.dll</HintPath>
     </Reference>
     <Reference Include="Bifrost.Services">
@@ -195,7 +196,9 @@
     <Compile Include="Services\DebugInfoService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="packages.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\" />
