@@ -9,6 +9,7 @@ using Bifrost.Execution;
 using Bifrost.Ninject;
 using Bifrost.RavenDB;
 using Bifrost.Services.Execution;
+using Bifrost.Views;
 using Bifrost.Web;
 using Chirp.Application.Modules;
 using Chirp.Concepts;
@@ -19,6 +20,7 @@ using Chirp.Web.Services;
 using Ninject;
 using System.Net;
 using Chirp.Application.Security;
+using Chirp = Chirp.Read.Streams.Chirp;
 using ChirperId = Chirp.Concepts.ChirperId;
 
 namespace Chirp.Web
@@ -99,6 +101,7 @@ namespace Chirp.Web
             var myChirpsEntityContext = container.Get<IEntityContext<MyChirps>>();
             var myReadingStreamEntityContext = container.Get<IEntityContext<ReadingStream>>();
             var myFollowersEntityContext = container.Get<IEntityContext<MyFollowers>>();
+            var myFollowsEntityContext = container.Get<IEntityContext<MyFollows>>();
 
             var chirperByGetById = chirpersEntityContext.GetById<ChirperId>(user);
             var chirperByEntities = chirpersEntityContext.Entities.FirstOrDefault(c => c.ChirperId == user);
@@ -141,6 +144,16 @@ namespace Chirp.Web
                 followers.AddFollower(follower);
                 myFollowersEntityContext.Insert(followers);
                 myFollowersEntityContext.Commit();
+            }
+
+            var myFollowsByGetById = myFollowsEntityContext.GetById<ChirperId>(user);
+            var myFollowsByEntities = myFollowsEntityContext.Entities.FirstOrDefault(c => c.Follower == user);
+            if (myFollowsByGetById == null && myFollowsByEntities == null)
+            {
+                var follows = new MyFollows(user);
+                follows.AddFollow(follower);
+                myFollowsEntityContext.Insert(follows);
+                myFollowsEntityContext.Commit();
             }
         }
         #endregion

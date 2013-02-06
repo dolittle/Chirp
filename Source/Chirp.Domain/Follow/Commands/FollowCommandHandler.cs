@@ -12,9 +12,10 @@ namespace Chirp.Domain.Follow.Commands
             _subscriptionsRepository = subscriptionsRepository;
         }
 
-
         public void Handle(FollowChirper command )
         {
+            var following = _subscriptionsRepository.Get(command.Follower);
+            following.Follow(command.Chirper);
         }
     }
 } 

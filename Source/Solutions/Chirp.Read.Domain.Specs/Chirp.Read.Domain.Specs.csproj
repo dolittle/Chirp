@@ -53,11 +53,12 @@
     <Compile Include="Chirping\when_message_chirped\from_chirper.cs" />
     <Compile Include="Chirping\when_message_chirped\from_first_time_chirper.cs" />
     <Compile Include="Chirping\when_message_chirped\given\a_chirping_subscriber.cs" />
+    <Compile Include="Follow\given\a_follow_subscriber.cs" />
+    <Compile Include="Follow\Scenarios.cs" />
+    <Compile Include="Follow\when_chirper_followed.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Follow\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\..\Chirp.Concepts\Chirp.Concepts.csproj">
       <Project>{711ECF13-9FA3-437B-B284-747C24B0C6E5}</Project>

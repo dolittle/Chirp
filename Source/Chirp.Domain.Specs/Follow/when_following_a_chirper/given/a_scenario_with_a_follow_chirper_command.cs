@@ -25,9 +25,11 @@ namespace Chirp.Domain.Specs.Follow.when_following_a_chirper.given
         {
             follower_id = followers.valid;
             following = new Following(follower_id);
+            var followingFuncs = new TestFollowingFuncs();
+            var chirperFuncs = new TestChirperFuncs();
             following_repository = new Mock<IAggregatedRootRepository<Following>>();
             input_validator = new FollowChirperInputValidator();
-            business_validator = new FollowChirperBusinessValidator();
+            business_validator = new FollowChirperBusinessValidator(followingFuncs.Follows(), chirperFuncs.ChirperExists());
             command_handler = new FollowCommandHandler(following_repository.Object);
 
             command_scenario = new CommandScenario<FollowChirper>();

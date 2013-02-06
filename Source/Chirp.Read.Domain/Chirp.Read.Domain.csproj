@@ -43,11 +43,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Chirping\ChirperFuncs.cs" />
     <Compile Include="Chirping\ChirperId.cs" />
     <Compile Include="Chirping\ChirpingFuncs.cs" />
     <Compile Include="Chirping\MyChirpsSubscriber.cs" />
     <Compile Include="Chirping\MyChirps.cs" />
+    <Compile Include="Follow\FollowSubscriber.cs" />
     <Compile Include="Follow\MyFollowers.cs" />
+    <Compile Include="Follow\MyFollows.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

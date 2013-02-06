@@ -45,7 +45,7 @@
   <ItemGroup>
     <Compile Include="Chirping\ChirpDeleted.cs" />
     <Compile Include="Chirping\MessageChirped.cs" />
-    <Compile Include="Follow\ChirpedFollowed.cs" />
+    <Compile Include="Follow\ChirperFollowed.cs" />
     <Compile Include="Streams\DirectMessageSent.cs" />
     <Compile Include="Streams\Published.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

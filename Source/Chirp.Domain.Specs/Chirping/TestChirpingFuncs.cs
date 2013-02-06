@@ -4,12 +4,8 @@ using Chirp.Concepts.Funcs;
 
 namespace Chirp.Domain.Specs.Chirping
 {
-    public class TestFuncs : ChirpingFuncs 
+    public class TestChirpingFuncs : ChirpingFuncs 
     {
-        public override Func<ChirperId, bool> ChirperExists()
-        {
-            return pId => pId == chirpers.valid;
-        }
         public override Func<ChirperId,ChirpId, bool> ChirpIsNotADuplicate()
         {
              return (x,y) => y != chirps.duplicate.Id; 
@@ -18,5 +14,13 @@ namespace Chirp.Domain.Specs.Chirping
         {
             return (x,y) => y != chirps.from_a_different_chirper; 
         } 
+    }
+
+    public class TestChirperFuncs : ChirperFuncs
+    {
+        public override Func<ChirperId, bool> ChirperExists()
+        {
+            return pId => pId == chirpers.valid;
+        }
     }
 }

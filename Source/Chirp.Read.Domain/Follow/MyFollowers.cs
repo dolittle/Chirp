@@ -1,12 +1,13 @@
 using System.Collections.Generic;
 using System.Linq;
+using Bifrost.Read;
 using Chirp.Concepts;
 
 namespace Chirp.Read.Domain.Follow
 {
-    public class MyFollowers
+    public class MyFollowers : IReadModel
     {
-        public HashSet<FollowerId> _followers;
+        HashSet<FollowerId> _followers;
 
         public MyFollowers()
         {

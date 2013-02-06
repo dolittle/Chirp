@@ -35,7 +35,7 @@ namespace Chirp.Application.Modules
 
         bool ChirperExists(ChirperId chirper)
         {
-            var funcs = Kernel.Get<Read.Domain.Chirping.ChirpingFuncs>();
+            var funcs = Kernel.Get<Read.Domain.Chirping.ChirperFuncs>();
             return funcs.ChirperExists().Invoke(chirper);
         }
     }

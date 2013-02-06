@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Linq;
 using Bifrost.Entities;
-using Bifrost.Views;
 using Chirp.Concepts;
 
 namespace Chirp.Read.Domain.Chirping
@@ -9,17 +7,10 @@ namespace Chirp.Read.Domain.Chirping
     public class ChirpingFuncs : Concepts.Funcs.ChirpingFuncs
     {
         readonly IEntityContext<MyChirps> _myChirpsEntityContext;
-        readonly IEntityContext<ChirperId> _chirperEntityContext;
 
-        public ChirpingFuncs(IEntityContext<MyChirps> myChirpsEntityContext, IEntityContext<ChirperId> chirperEntityContext)
+        public ChirpingFuncs(IEntityContext<MyChirps> myChirpsEntityContext)
         {
             _myChirpsEntityContext = myChirpsEntityContext;
-            _chirperEntityContext = chirperEntityContext;
-        }
-
-        public override Func<Concepts.ChirperId, bool> ChirperExists()
-        {
-            return id => _chirperEntityContext.GetById(id) != null;
         }
 
         public override Func<Concepts.ChirperId, ChirpId, bool> ChirpIsNotADuplicate()

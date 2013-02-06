@@ -13,7 +13,7 @@ namespace Chirp.Domain.Follow
 
         public void Follow(ChirperId chirper)
         {
-            Apply(new ChirpedFollowed(Id)
+            Apply(new ChirperFollowed(Id)
                       {
                           Chirper = chirper
                       });
