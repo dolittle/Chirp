@@ -6,31 +6,19 @@
     <div class="alert alert-error" data-bind="text: message, fadeInOrOut: { fadeIn: false, delay: 1000, duration: 3000 }, visible: message().length > 0">
     </div>
 	<div class="row">
-		<div class="span5" >
-	        <div class="hero-unit">
-		        <h2>Login</h2>
-
-                <div>
-                    <label>
-                        Username
-                    </label>
-                    <input type="text" data-bind="value:login.parameters.userName" />
-                    <span data-bind="validationMessageFor: login.parameters.userName"></span>
-                    <span data-bind="validationMessageFor: resetPassword.parameters.userName"></span>
-                </div>
-
-                <div>
-                    <label>
-                        Password
-                    </label>
-                    <input type="password" data-bind="value:login.parameters.password"/>
-                    <span data-bind="validationMessageFor: login.parameters.password"></span>
-                </div>
-                
-                <button data-bind="command: login">Login</button>
-                <a href="#" data-bind="command: resetPassword">Forgot password</a>
-	        </div>
-        </div>
-    </div>
+		<div style="text-align:center;">
+			<form class="form-inline">
+				<select data-bind="value:login.parameters.userName">
+					<option>Hannah</option>
+					<option>Scott</option>
+				</select>
+				<span data-bind="validationMessageFor: login.parameters.userName"></span>
+				<span data-bind="validationMessageFor: resetPassword.parameters.userName"></span>
+				<input type="password" data-bind="value:login.parameters.password"/>
+				<span data-bind="validationMessageFor: login.parameters.password"></span>
+				<button class="btn btn-primary" data-bind="command: login">Login</button>
+				<button class="btn btn-link" data-bind="command: resetPassword">Forgot password</a>
+			</form>
+		</div>
 </body>
 </html>

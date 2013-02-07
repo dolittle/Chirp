@@ -4,11 +4,12 @@
     <title></title>
 </head>
 <body>
-    <pre>
-        <div data-bind="foreach: chirps">
-            <span data-bind="text: message"></span>
-            <hr />
-        </div>
-    </pre>
+	<ul class="unstyled" data-bind="foreach: chirps">
+        <li>
+            <div class="well">
+                <span data-bind="text: message"></span>
+            </div>
+        </li>
+    </ul>
 </body>
 </html>
