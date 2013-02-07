@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{408CFAAD-1D9F-4092-95F3-92370ACADDB5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Chirp.Read.Domain.Specs</RootNamespace>
+    <AssemblyName>Chirp.Read.Domain.Specs</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Bifrost">
+      <HintPath>..\packages\Bifrost\Bifrost.dll</HintPath>
+    </Reference>
+    <Reference Include="Machine.Specifications">
+      <HintPath>..\packages\Machine.Specifications.0.5.8\lib\net40\Machine.Specifications.dll</HintPath>
+    </Reference>
+    <Reference Include="Moq">
+      <HintPath>..\packages\Moq.4.0.10827\lib\NET40\Moq.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Chirping\Scenarios.cs" />
+    <Compile Include="Chirping\when_message_chirped\from_chirper.cs" />
+    <Compile Include="Chirping\when_message_chirped\from_first_time_chirper.cs" />
+    <Compile Include="Chirping\when_message_chirped\given\a_chirping_subscriber.cs" />
+    <Compile Include="Follow\given\a_follow_subscriber.cs" />
+    <Compile Include="Follow\Scenarios.cs" />
+    <Compile Include="Follow\when_chirper_followed.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\..\Chirp.Concepts\Chirp.Concepts.csproj">
+      <Project>{711ECF13-9FA3-437B-B284-747C24B0C6E5}</Project>
+      <Name>Chirp.Concepts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Chirp.Events\Chirp.Events.csproj">
+      <Project>{BBD2E25A-A196-4196-A80B-7978BEEFD0E4}</Project>
+      <Name>Chirp.Events</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Chirp.Read.Domain\Chirp.Read.Domain.csproj">
+      <Project>{9F21173B-3B9F-4706-8AB2-13EFD4E1A0CE}</Project>
+      <Name>Chirp.Read.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

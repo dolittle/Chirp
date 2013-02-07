@@ -46,10 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MessageId.cs" />
+    <Compile Include="ChirpId.cs" />
+    <Compile Include="Funcs\ChirperFuncs.cs" />
+    <Compile Include="Funcs\ChirpingFuncs.cs" />
+    <Compile Include="Funcs\FollowingFuncs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PublisherId.cs" />
-    <Compile Include="Validation\PublisherIdInputValidator.cs" />
+    <Compile Include="ChirperId.cs" />
+    <Compile Include="FollowerId.cs" />
+    <Compile Include="ReaderId.cs" />
+    <Compile Include="Validation\ChirpIdInputValidator.cs" />
+    <Compile Include="Validation\ChirperIdInputValidator.cs" />
+    <Compile Include="Validation\FollowerIdInputValidator.cs" />
+    <Compile Include="Validation\ReaderIdInputValidator.cs" />
     <Compile Include="Validation\ValidationRuleExtensions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

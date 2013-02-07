@@ -43,13 +43,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Messages\MessageChirped.cs" />
+    <Compile Include="Chirping\ChirpDeleted.cs" />
+    <Compile Include="Chirping\MessageChirped.cs" />
+    <Compile Include="Follow\ChirperFollowed.cs" />
     <Compile Include="Streams\DirectMessageSent.cs" />
     <Compile Include="Streams\Published.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Users\LoggedIn.cs" />
-    <Compile Include="Users\PasswordResetted.cs" />
+    <Compile Include="Users\PasswordReset.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

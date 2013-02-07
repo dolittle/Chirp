@@ -18,7 +18,7 @@ namespace Chirp.Domain.Users
 
         public void ResetPassword()
         {
-            Apply(new PasswordResetted(Id));
+            Apply(new PasswordReset(Id));
         }
     }
 }

@@ -14,25 +14,24 @@ require.config({
 	    "bootstrap": "bootstrap",
 	    "bootstrap-collapse": "bootstrap-collapse",
 	    "marked": "marked",
-        "pubsub": "pubsub-min"
+        "pubsub": "pubsub-min",
+        "session": "session",
+        "cookies" : "jquery.cookies.2.2.0"
 	}
 });
 
 // "http://cdn.dolittle.com/Bifrost/Bifrost.debug",
 
-require(
-    ["jquery", "knockout"],
-	function() {
-		require(["jquery.history", "pubsub"],
-		    function () {
-		        require(["knockout.mapping", "bifrost", "bootstrap", "knockout.plugins"],
-		            function () {
-		                Bifrost.features.featureMapper.add("{feature}/{subFeature}", "/Features/{feature}/{subFeature}", false);
-		                Bifrost.features.featureMapper.add("{feature}", "/Features/{feature}", true);
-		                require(["/index.js"]);
-		            }
-		        );
-		    }
-		);
-	}
-);
+
+require(["jquery", "knockout"], function () {
+    require(["jquery.history", "pubsub"], function () {
+        require(["knockout.mapping", "bifrost", "bootstrap", "knockout.plugins"], function () {
+            require(["noext!/Bifrost/Proxies"], function () {
+                Bifrost.features.featureMapper.add("{feature}/{subFeature}", "/Features/{feature}/{subFeature}", false);
+                Bifrost.features.featureMapper.add("{feature}", "/Features/{feature}", true);
+                require(["cookies", "session"]);
+                require(["/index.js"]);
+            });
+        });
+    });
+});

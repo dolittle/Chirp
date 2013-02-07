@@ -2,7 +2,7 @@
 	function index() {
 		var self = this;
 		
-		this.feature = ko.observable("home");
+		this.feature = ko.observable("login");
 		
 		this.uriChanged(function(uri) {
 			self.setFeatureFromUrl(uri);

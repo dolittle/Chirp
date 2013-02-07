@@ -45,13 +45,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Streams\Commands\Chirp.cs" />
-    <Compile Include="Streams\Commands\ChirpMessage.cs" />
-    <Compile Include="Streams\Commands\ChirpMessageBusinessValidator.cs" />
-    <Compile Include="Streams\Commands\ChirpMessageInputValidator.cs" />
-    <Compile Include="Streams\Commands\MessageCommandHandler.cs" />
-    <Compile Include="Streams\Message.cs" />
-    <Compile Include="Streams\Stream.cs" />
+    <Compile Include="Chirping\Commands\ChirpMessage.cs" />
+    <Compile Include="Chirping\Commands\ChirpMessageBusinessValidator.cs" />
+    <Compile Include="Chirping\Commands\ChirpMessageInputValidator.cs" />
+    <Compile Include="Chirping\Commands\DeleteChirp.cs" />
+    <Compile Include="Chirping\Commands\DeleteChirpBusinessValidator.cs" />
+    <Compile Include="Chirping\Commands\DeleteChirpInputValidator.cs" />
+    <Compile Include="Chirping\Commands\ChirpCommandHandler.cs" />
+    <Compile Include="Chirping\Chirp.cs" />
+    <Compile Include="Chirping\ChirpInputValidator.cs" />
+    <Compile Include="Chirping\ChirpStream.cs" />
+    <Compile Include="Chirping\ValidationRuleExtensions.cs" />
+    <Compile Include="Follow\Commands\FollowChirper.cs" />
+    <Compile Include="Follow\Commands\FollowCommandHandler.cs" />
+    <Compile Include="Follow\Commands\FollowChirperBusinessValidator.cs" />
+    <Compile Include="Follow\Commands\FollowChirperInputValidator.cs" />
+    <Compile Include="Follow\Following.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Users\Commands\CommandHandlers.cs" />
     <Compile Include="Users\Commands\Login.cs" />

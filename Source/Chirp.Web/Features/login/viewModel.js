@@ -1,44 +1,103 @@
-﻿(function (undefined) {
-    Bifrost.features.featureManager.get("login").defineViewModel(function () {
+﻿Bifrost.namespace("Chirp", {
+    loginFeature: Bifrost.Type.extend(function (login,Session) {
         var self = this;
+        var session = Session;
+
+        console.log(session);
+
+        function clearMessages() {
+            self.message("");
+        }
 
         this.message = ko.observable("");
 
-        this.login = Bifrost.commands.Command.create({
-            name: "Login",
-            context: self,
-            parameters: {
-                userName: ko.observable(),
-                password: ko.observable()
-            },
-            beforeExecute: function (command) {
-                self.message("");
-            },
-            success: function () {
-                History.pushState({}, "", "/home");
-            },
-            error: function (e) {
-                if (e.validationResults.length > 0) {
-                    self.message(e.validationResults[0].errorMessage);
-                }
-            }
-        });
+        this.canEnterPassword = ko.observable(false);
+        
+        this.loginCommand = login;
+        this.login = function () {
+            self.loginCommand.password(self.loginCommand.userName() + "dummyPassword");
+            self.loginCommand.execute();
 
-        this.resetPassword = Bifrost.commands.Command.create({
-            name: "ResetPassword",
-            context: self,
-            parameters: {
-                userName: ko.computed(function () {
-                    return self.login.parameters.userName();
-                })
-            },
-            beforeExecute: function (command) {
-            },
-            success: function () {
-                self.message("Password has been reset, you will receive an email with the new password");
-            },
-            error: function () {
-            }
-        });
-    });
-})();
+            setTimeout(function myfunction() {
+                session.getUserIdFor(self.loginCommand.userName()).continueWith(function (userId) {
+                    session.setSessionId(userId);
+                    History.pushState({}, "", "/home");
+                });
+            }, 2000);
+        };
+
+        //this.loginCommand = Bifrost.commands.Command.create({
+        //    options: {
+        //        name: "Login",
+        //        context: self,
+        //        properties: {
+        //            userName: ko.observable(""),
+        //            password: ko.observable("")
+        //        },
+        //        beforeExecute: clearMessages,
+        //        success: function () {
+        //            session.getUserIdFor(self.loginCommand.userName()).continueWith(function (userId) {
+        //                session.setSessionId(userId);
+        //                History.pushState({}, "", "/home");
+        //            });
+        //        },
+        //        error: function (e) {
+        //            if (e.validationResults.length) {
+        //                self.message(e.validationResults[0].errorMesssage);
+        //            }
+        //            if (e.commandValidationMessages && e.commandValidationMessages.length) {
+        //                self.message(e.commandValidationMessages[0]);
+        //            }
+        //        }
+        //    }
+        //});
+
+    })
+});
+
+
+//(function (undefined) {
+Bifrost.features.featureManager.get("login").defineViewModel(Chirp.loginFeature);
+//        //function () {
+//        //var self = this;
+//        //var session = Bifrost.dependencyResolver.resolve(Chirp, "Session");
+
+//        //console.log(session);
+
+//        //function clearMessages() {
+//        //    self.message("");
+//        //}
+
+//        //this.message = ko.observable("");
+
+//        //this.canEnterPassword = ko.observable(false);
+
+//        //this.loginCommand = Bifrost.commands.Command.create({
+//        //    options: {
+//        //        name: "Login",
+//        //        context: self,
+//        //        properties: {
+//        //            userName: ko.observable(""),
+//        //            password: ko.observable("")
+//        //        },
+//        //        beforeExecute: clearMessages,
+//        //        success: function () {
+//        //            session.getUserIdFor(self.loginCommand.userName()).continueWith(function (userId) {
+//        //                session.setSessionId(userId);
+//        //                History.pushState({}, "", "/home");
+//        //            });
+//        //        },
+//        //        error: function (e) {
+//        //            if (e.validationResults.length) {
+//        //                self.message(e.validationResults[0].errorMesssage);
+//        //            }
+//        //            if (e.commandValidationMessages && e.commandValidationMessages.length) {
+//        //                self.message(e.commandValidationMessages[0]);
+//        //            }
+//        //        }
+//        //    }
+//        //});
+
+////    }
+//);
+//})();

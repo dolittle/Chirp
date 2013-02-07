@@ -1,19 +1,19 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>
 </head>
 <body>
     <div class="text-area">
-        <textarea class="input-block-level" placeholder="Compose new Chirp..." data-bind="hasfocus: isEditing, value: chirpCommand.parameters.message, valueUpdate: 'afterkeydown'"></textarea>
+        <textarea class="input-block-level" placeholder="Compose new Chirp..." data-bind="hasfocus: isEditing, value: message, valueUpdate: 'afterkeydown'"></textarea>
     </div>
     <div>
-        <div data-bind="visible: isEditing() || availableLettersCount() != 140">
+        <div>
             <span class="badge" data-bind="text: availableLettersCount"></span>
-                <button data-bind="command: chirpCommand" class="btn btn-primary">Chirp</button>
+                <button data-bind="click: chirpMessage" class="btn btn-primary">Chirp</button>
             
         </div>
     </div>
-    <img src="/Images/small_spinner.gif" data-bind="visible: chirpCommand.isBusy" />
+    <img src="/Images/small_spinner.gif" data-bind="visible: chirpMessageCommand.isBusy" />
 </body>
 </html>
