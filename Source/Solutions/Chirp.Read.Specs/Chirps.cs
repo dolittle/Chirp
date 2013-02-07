@@ -1,16 +1,15 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Bifrost.Views;
 using Chirp.Events.Chirping;
 using Moq;
-using read = Chirp.Read.Streams;
 
-namespace Chirp.Read.Specs.Streams
+namespace Chirp.Read.Specs
 {
     public class Chirps
     {
-        public static readonly read.Chirp first_valid_chirp_from_Scott = new read.Chirp()
+        public static readonly Read.Streams.Chirp first_valid_chirp_from_Scott = new Read.Streams.Chirp()
                                                                        {
                                                                            Id = Guid.NewGuid(),
                                                                            ChirpedBy = Chirpers.Scott,
@@ -18,7 +17,7 @@ namespace Chirp.Read.Specs.Streams
                                                                            Content = "This is a chirp from Scott",
                                                                        };
 
-        public static readonly read.Chirp second_valid_chirp_from_Scott = new read.Chirp()
+        public static readonly Read.Streams.Chirp second_valid_chirp_from_Scott = new Read.Streams.Chirp()
                                                                     {
                                                                         Id = Guid.NewGuid(),
                                                                         ChirpedBy = Chirpers.Scott,
@@ -26,7 +25,7 @@ namespace Chirp.Read.Specs.Streams
                                                                         Content = "This is a chirp from Scott",
                                                                     };
 
-        public static readonly read.Chirp third_valid_chirp_from_Scott = new read.Chirp()
+        public static readonly Read.Streams.Chirp third_valid_chirp_from_Scott = new Read.Streams.Chirp()
                                                                     {
                                                                         Id = Guid.NewGuid(),
                                                                         ChirpedBy = Chirpers.Scott,
@@ -34,7 +33,7 @@ namespace Chirp.Read.Specs.Streams
                                                                         Content = "This is a chirp from Scott",
                                                                     };
 
-        public static readonly read.Chirp valid_chirp_from_Hannah = new read.Chirp()
+        public static readonly Read.Streams.Chirp valid_chirp_from_Hannah = new Read.Streams.Chirp()
         {
             Id = Guid.NewGuid(),
             ChirpedBy = Chirpers.Hannah,
@@ -42,9 +41,9 @@ namespace Chirp.Read.Specs.Streams
             Content = "This is a chirp from Hannah",
         }; 
 
-        public static IQueryable<read.Chirp> GetAll()
+        public static IQueryable<Read.Streams.Chirp> GetAll()
         {
-            return new List<read.Chirp>
+            return new List<Read.Streams.Chirp>
                        {
                            valid_chirp_from_Hannah,
                            second_valid_chirp_from_Scott,
@@ -53,7 +52,7 @@ namespace Chirp.Read.Specs.Streams
                        }.AsQueryable();
         }
 
-        public static MessageChirped BuildCorrespondingMessageChirpedEventFrom(read.Chirp chirp)
+        public static MessageChirped BuildCorrespondingMessageChirpedEventFrom(Read.Streams.Chirp chirp)
         {
             return new MessageChirped(chirp.ChirpedBy.ChirperId)
                        {
@@ -64,9 +63,9 @@ namespace Chirp.Read.Specs.Streams
                        };
         }
 
-        public static Mock<IView<read.Chirp>> GetMockedChirpView()
+        public static Mock<IView<Read.Streams.Chirp>> GetMockedChirpView()
         {
-            var view =  new Mock<IView<read.Chirp>>();
+            var view =  new Mock<IView<Read.Streams.Chirp>>();
             view.Setup(v => v.Query)
                 .Returns(GetAll);
             return view;

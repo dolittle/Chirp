@@ -31,10 +31,10 @@ namespace Chirp.Read.Domain.Specs.Follow
         Because of = () => subscriber.Process(chirper_followed);
 
         It should_retrieve_my_followers_for_the_chirper =  () => my_followers_repository.Verify(r => r.GetById(chirper), Moq.Times.Once());
-        It should_add_the_follower_to_the_followers_for_the_chirper = () => my_followers.Followers.Any(f => f == follower_id).ShouldBeTrue();    
-        It should_update_my_followers = () => my_followers_repository.Verify(r => r.Update(my_followers), Moq.Times.Once());
+        It should_add_the_follower_to_the_followers_for_the_chirper = () => chirpers_followers.MyFollowers.Any(f => f == follower_id).ShouldBeTrue();    
+        It should_update_my_followers = () => my_followers_repository.Verify(r => r.Update(chirpers_followers), Moq.Times.Once());
         It should_retrieve_follows_for_the_follower = () => my_follows_repository.Verify(r => r.GetById(follower), Moq.Times.Once());
-        It should_add_the_chirper_to_the_follows_for_the_follower = () => my_follows.Following.Any(f => f == chirper_id).ShouldBeTrue();
-        It should_update_my_followsr = () => my_follows_repository.Verify(r => r.Update(my_follows), Moq.Times.Once());
+        It should_add_the_chirper_to_the_follows_for_the_follower = () => follower_follows.Following.Any(f => f == chirper_id).ShouldBeTrue();
+        It should_update_my_followsr = () => my_follows_repository.Verify(r => r.Update(follower_follows), Moq.Times.Once());
     }
 }

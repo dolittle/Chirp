@@ -2,6 +2,6 @@
 {
     public class Scenarios
     {
-        public const string MessageChirped = " when processing a MessageChirped event";
+        public const string MessageChirped = "when a message is chirped";
     }
 }

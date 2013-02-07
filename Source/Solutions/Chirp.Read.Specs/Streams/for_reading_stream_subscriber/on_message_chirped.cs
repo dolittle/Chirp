@@ -1,13 +1,13 @@
+using System.Linq;
 using Chirp.Concepts;
 using Chirp.Events.Chirping;
-using Chirp.Read.Specs.Streams.for_my_chirps_subscriber.given;
 using Chirp.Read.Streams;
 using Machine.Specifications;
 
 namespace Chirp.Read.Specs.Streams.for_reading_stream_subscriber
 {
     [Subject(typeof(ReadingStreamSubscriber), Scenarios.MessageChirped)]
-    public class on_message_chirped : a_subscriber
+    public class on_message_chirped : given.a_subscriber
     {
         static MessageChirped message_chirped;
 
@@ -18,20 +18,22 @@ namespace Chirp.Read.Specs.Streams.for_reading_stream_subscriber
 
         Because of = () => subscriber.Process(message_chirped);
 
-        It should_retrieve_the_chirper = () => chirper_entity_context.Verify(v => v.GetById(message_chirped.ChirpedBy), Moq.Times.Once());
-        It should_create_a_new_chirp_with_the_correct_values = () =>
+        It should_retrieve_the_chirpers_followers = () =>my_followers_repository.Verify(r => r.GetById((ChirperId)message_chirped.ChirpedBy),Moq.Times.Once());
+        It should_retrieve_the_reading_stream_for_each_follower = () =>
+                                                                      {
+                                                                          reading_stream_repository.Verify(r => r.GetById((ReaderId)first_follower.Value), Moq.Times.Once());
+                                                                          reading_stream_repository.Verify(r => r.GetById((ReaderId)second_follower.Value), Moq.Times.Once());
+                                                                      };
+        It should_append_the_chirp_to_the_reading_stream_of_each_follower = () =>
+                                                                                {
+                                                                                    stream_for_first_follower.Chirps().Count().ShouldEqual(1);
+                                                                                    stream_for_second_follower.Chirps().Count().ShouldEqual(1);
+                                                                                };
+        It should_update_the_reading_stream_of_each_follower = () =>
                                                                    {
-                                                                       new_chirp.ShouldNotBeNull();
-                                                                       new_chirp.ChirpedBy.ShouldEqual(Chirps.valid_chirp_from_Hannah.ChirpedBy);
-                                                                       new_chirp.Content.ShouldEqual(Chirps.valid_chirp_from_Hannah.Content);
-                                                                       new_chirp.ChirpedAt.ShouldEqual(Chirps.valid_chirp_from_Hannah.ChirpedAt);
-                                                                       new_chirp.Id.ShouldEqual(Chirps.valid_chirp_from_Hannah.Id);
+                                                                       reading_stream_repository.Verify(r => r.Update(stream_for_first_follower),Moq.Times.Once());
+                                                                       reading_stream_repository.Verify(r => r.Update(stream_for_second_follower),Moq.Times.Once());
                                                                    };
 
-        It should_retrieve_the_chirpers_followers = () => { };
-        It should_retrieve_the_reading_stream_for_each_follower = () => { };
-        It should_append_the_chirp_to_the_reading_stream_of_each_follower = () => { };
-        It should_update_the_reading_stream_of_each_follower = () => { };
-        It should_commit_the_updates = () => { };
     }
 }

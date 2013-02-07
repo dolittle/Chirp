@@ -1,8 +1,6 @@
-using System.Collections.Generic;
 using System.Linq;
-using Bifrost.Entities;
 using Bifrost.Events;
-using Bifrost.Views;
+using Bifrost.Read;
 using Chirp.Concepts;
 using Chirp.Events.Chirping;
 using Chirp.Read.Domain.Follow;
@@ -11,27 +9,27 @@ namespace Chirp.Read.Streams
 {
     public class ReadingStreamSubscriber : IEventSubscriber
     {
-        readonly IEntityContext<Chirper> _chirperEntityContext;
-        readonly IEntityContext<MyFollowers> _myFollowersEntityContext;
-        readonly IEntityContext<ReadingStream> _readingStreamEntityContext;
+        readonly IReadModelRepositoryFor<Chirper> _chirperRepository;
+        readonly IReadModelRepositoryFor<ChirpersFollowers> _followersRepository;
+        readonly IReadModelRepositoryFor<ReadingStream> _readingStreamRepository;
 
-        public ReadingStreamSubscriber(IEntityContext<ReadingStream> readingStreamEntityContext, IEntityContext<Chirper> chirperEntityContext, IEntityContext<MyFollowers> myFollowersEntityContext)
+        public ReadingStreamSubscriber(IReadModelRepositoryFor<ReadingStream> readingStreamRepository, IReadModelRepositoryFor<Chirper> chirperRepository, IReadModelRepositoryFor<ChirpersFollowers> followersRepository)
         {
-            _readingStreamEntityContext = readingStreamEntityContext;
-            _chirperEntityContext = chirperEntityContext;
-            _myFollowersEntityContext = myFollowersEntityContext;
+            _readingStreamRepository = readingStreamRepository;
+            _chirperRepository = chirperRepository;
+            _followersRepository = followersRepository;
         }
 
         public void Process(MessageChirped messageChirped)
         {
-            var myFollowers = _myFollowersEntityContext.GetById(messageChirped.ChirpedBy);
+            ChirperId chirpedBy = messageChirped.ChirpedBy;
+            var myFollowers = _followersRepository.GetById(chirpedBy);
 
-            if (myFollowers == null || !myFollowers.Followers.Any())
+            if (myFollowers == null || !myFollowers.MyFollowers.Any())
                 return;
 
-
-            var readers = myFollowers.Followers.Select(f => f.Value).ToArray();
-            var chirper = _chirperEntityContext.GetById(messageChirped.ChirpedBy);
+            var readers = myFollowers.MyFollowers.Select(f => f.Value).ToArray();
+            var chirper = _chirperRepository.GetById(chirpedBy);
             var chirpToAppend = new Chirp()
                                {
                                    Id = messageChirped.ChirpId,
@@ -41,17 +39,11 @@ namespace Chirp.Read.Streams
                                };
 
             //ReadingStreams are created on sign-up so we can assume that they are there...
-            //var followersReadingStreams = _readingStreamEntityContext.Entities.Where(rs => readers.Contains(rs.Reader.Value)).ToDictionary(r => r.Reader.Value);.Where(r => r.EmployeeId.In<string>(employeeIds)))
-
-            foreach(var reader in readers)
+            foreach (var readingStream in readers.Select(readerId => _readingStreamRepository.GetById((ReaderId) readerId)).Where(readingStream => readingStream != null))
             {
-                var readingStream = _readingStreamEntityContext.GetById(reader);
-                if (readingStream == null) 
-                    continue;
                 readingStream.AppendToStream(chirpToAppend);
-                _readingStreamEntityContext.Update(readingStream);
+                _readingStreamRepository.Update(readingStream);
             }
-            _readingStreamEntityContext.Commit();
         }
     }
 }

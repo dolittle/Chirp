@@ -1,10 +1,9 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Chirp.Concepts;
-using Chirp.Read.Streams;
 
-namespace Chirp.Read.Specs.Streams
+namespace Chirp.Read.Specs
 {
     public class Chirpers
     {

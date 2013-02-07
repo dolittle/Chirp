@@ -43,9 +43,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Chirper.cs" />
+    <Compile Include="Follower.cs" />
+    <Compile Include="Follow\FollowSubscriber.cs" />
+    <Compile Include="Follow\MyFollowers.cs" />
+    <Compile Include="Follow\MyFollows.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Streams\Chirp.cs" />
-    <Compile Include="Streams\Chirper.cs" />
     <Compile Include="Streams\Content.cs" />
     <Compile Include="Streams\StreamerService.cs" />
     <Compile Include="Streams\IChirpStream.cs" />

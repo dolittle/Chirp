@@ -8,10 +8,10 @@ namespace Chirp.Read.Domain.Follow
 {
     public class FollowSubscriber :   IEventSubscriber
     {
-        readonly IReadModelRepositoryFor<MyFollowers> _myFollowersRepository;
-        readonly IReadModelRepositoryFor<MyFollows> _myFollowsRepository;
+        readonly IReadModelRepositoryFor<ChirpersFollowers> _myFollowersRepository;
+        readonly IReadModelRepositoryFor<FollowerFollows> _myFollowsRepository;
 
-        public FollowSubscriber(IReadModelRepositoryFor<MyFollowers> myFollowersRepository, IReadModelRepositoryFor<MyFollows> myFollowsRepository)
+        public FollowSubscriber(IReadModelRepositoryFor<ChirpersFollowers> myFollowersRepository, IReadModelRepositoryFor<FollowerFollows> myFollowsRepository)
         {
             _myFollowersRepository = myFollowersRepository;
             _myFollowsRepository = myFollowsRepository;

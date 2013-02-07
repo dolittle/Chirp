@@ -1,9 +1,10 @@
 using System.Collections.Generic;
+using Bifrost.Read;
 using Chirp.Concepts;
 
 namespace Chirp.Read.Streams
 {
-    public class ReadingStream : MutableStream
+    public class ReadingStream : MutableStream, IReadModel
     {
         public ReaderId Reader { get; set; }
 

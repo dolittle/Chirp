@@ -5,22 +5,22 @@ using Chirp.Concepts;
 
 namespace Chirp.Read.Domain.Follow
 {
-    public class MyFollowers : IReadModel
+    public class ChirpersFollowers : IReadModel
     {
         HashSet<FollowerId> _followers;
 
-        public MyFollowers()
+        public ChirpersFollowers()
         {
             _followers = new HashSet<FollowerId>();
         }
 
-        public MyFollowers(ChirperId chirper) : this()
+        public ChirpersFollowers(ChirperId chirper) : this()
         {
             Chirper = chirper;
         }
 
         public ChirperId Chirper { get; set; }
-        public IEnumerable<FollowerId> Followers
+        public IEnumerable<FollowerId> MyFollowers
         {
             get { return _followers.ToArray(); }
             set { _followers = new HashSet<FollowerId>(value); }

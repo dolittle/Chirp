@@ -5,16 +5,16 @@ using Chirp.Concepts;
 
 namespace Chirp.Read.Domain.Follow
 {
-    public class MyFollows : IReadModel
+    public class FollowerFollows : IReadModel
     {
         HashSet<ChirperId> _following;
 
-        public MyFollows()
+        public FollowerFollows()
         {
             _following = new HashSet<ChirperId>();
         }
 
-        public MyFollows(FollowerId follower) : this()
+        public FollowerFollows(FollowerId follower) : this()
         {
             Follower = follower;
         }

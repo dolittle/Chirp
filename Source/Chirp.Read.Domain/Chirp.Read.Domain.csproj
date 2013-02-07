@@ -49,8 +49,8 @@
     <Compile Include="Chirping\MyChirpsSubscriber.cs" />
     <Compile Include="Chirping\MyChirps.cs" />
     <Compile Include="Follow\FollowSubscriber.cs" />
-    <Compile Include="Follow\MyFollowers.cs" />
-    <Compile Include="Follow\MyFollows.cs" />
+    <Compile Include="Follow\ChirpersFollowers.cs" />
+    <Compile Include="Follow\FollowerFollows.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

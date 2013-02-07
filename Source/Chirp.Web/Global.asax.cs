@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Configuration;
-using System.Diagnostics;
-using System.Linq;
 using System.Web.Routing;
 using Bifrost.Configuration;
 using Bifrost.Entities;
@@ -9,12 +7,14 @@ using Bifrost.Execution;
 using Bifrost.Ninject;
 using Bifrost.RavenDB;
 using Bifrost.Services.Execution;
-using Bifrost.Views;
 using Bifrost.Web;
 using Chirp.Application.Modules;
 using Chirp.Concepts;
+using Chirp.Events.Follow;
+using Chirp.Read;
 using Chirp.Read.Domain.Chirping;
 using Chirp.Read.Domain.Follow;
+using Chirp.Read.Follow;
 using Chirp.Read.Streams;
 using Chirp.Web.Services;
 using Ninject;
@@ -22,6 +22,8 @@ using System.Net;
 using Chirp.Application.Security;
 using Chirp = Chirp.Read.Streams.Chirp;
 using ChirperId = Chirp.Concepts.ChirperId;
+using viewFollow = Chirp.Read.Follow;
+using domainFollow = Chirp.Read.Domain.Follow;
 
 namespace Chirp.Web
 {
@@ -55,8 +57,12 @@ namespace Chirp.Web
             entityIds.RegisterIdProperty<MyChirps,ChirperId>(c => c.Chirper);
             entityIds.RegisterIdProperty<Read.Streams.Chirp, ChirpId>(c => c.Id);
             entityIds.RegisterIdProperty<Chirper, ChirperId>(c => c.ChirperId);
+            entityIds.RegisterIdProperty<Follower, FollowerId>(c => c.FollowerId);
             entityIds.RegisterIdProperty<Read.Domain.Chirping.ChirperId,ChirperId>(c => c.Id);
-            entityIds.RegisterIdProperty<MyFollowers,ChirperId>(c => c.Chirper);
+            entityIds.RegisterIdProperty<ChirpersFollowers,ChirperId>(c => c.Chirper);
+            entityIds.RegisterIdProperty<FollowerFollows,FollowerId>(c => c.Follower);
+            entityIds.RegisterIdProperty<MyFollowers,ChirperId>(c => c.ChirperId);
+            entityIds.RegisterIdProperty<MyFollows, FollowerId>(c => c.FollowerId);
 
             configure
                 .Events.Asynchronous()
@@ -90,71 +96,86 @@ namespace Chirp.Web
 
        void EnsureScottAndHannahAreSetup(IContainer container)
        {
-           EnsureArtifactsArePresentFor(container,hannah, "@hannah", scott);
-           EnsureArtifactsArePresentFor(container,scott, "@scott", hannah);
+           SignUp(container,hannah, "@hannah");
+           SignUp(container,scott, "@scott");
+           Follow(container,hannah, scott);
+           Follow(container,scott, hannah);
        }
 
-        void EnsureArtifactsArePresentFor(IContainer container, Guid user, string name, Guid follower)
+        void SignUp(IContainer container, Guid id, string userName)
         {
             var chirpersEntityContext = container.Get<IEntityContext<Chirper>>();
             var chirperIdsEntityContext = container.Get<IEntityContext<Read.Domain.Chirping.ChirperId>>();
             var myChirpsEntityContext = container.Get<IEntityContext<MyChirps>>();
             var myReadingStreamEntityContext = container.Get<IEntityContext<ReadingStream>>();
+            var followersEntityContext = container.Get<IEntityContext<ChirpersFollowers>>();
             var myFollowersEntityContext = container.Get<IEntityContext<MyFollowers>>();
+            var followsEntityContext= container.Get<IEntityContext<FollowerFollows>>();
             var myFollowsEntityContext = container.Get<IEntityContext<MyFollows>>();
+            var followerEntityContext = container.Get<IEntityContext<Follower>>();
 
-            var chirperByGetById = chirpersEntityContext.GetById<ChirperId>(user);
-            var chirperByEntities = chirpersEntityContext.Entities.FirstOrDefault(c => c.ChirperId == user);
-            if(chirperByGetById == null && chirperByEntities == null)
-            {
-                chirpersEntityContext.Insert(new Chirper() { ChirperId = user, DisplayName = name });
-                chirpersEntityContext.Commit();
-            }
+            ChirperId chirperId = id;
+            FollowerId followerId = id;
+            ReaderId readerId = id;
+            var domainChirperId = new Read.Domain.Chirping.ChirperId() {Id = chirperId};
+            var chirper = new Chirper() { ChirperId = chirperId, DisplayName = userName };
+            var follower = new Follower { FollowerId = followerId, DisplayName = userName };
+            var follows = new FollowerFollows(followerId);
+            var followers = new ChirpersFollowers(chirperId);
+            var myFollows = new MyFollows(followerId){ Follower = follower };
+            var myFollowers = new MyFollowers(chirperId){ Chirper = chirper };
+            var myChirps = new MyChirps(chirperId);
+            var myReadingStream = new ReadingStream(readerId);
 
-            var chirperIdsByGetById = chirperIdsEntityContext.GetById<ChirperId>(user);
-            var chirperIdsByEntities = chirperIdsEntityContext.Entities.FirstOrDefault(c => c.Id == user);
-            if(chirperIdsByGetById == null &&  chirperIdsByEntities == null )
-            {
-                chirperIdsEntityContext.Insert(new Read.Domain.Chirping.ChirperId() { Id = user});
-                chirperIdsEntityContext.Commit();
-            }
+            myReadingStreamEntityContext.DeleteById(readerId);
+            myReadingStreamEntityContext.Insert(myReadingStream);
+            myReadingStreamEntityContext.Commit();
 
-            var myChirpsByGetById = myChirpsEntityContext.GetById<ChirperId>(user);
-            var myChirpsByEntities = myChirpsEntityContext.Entities.FirstOrDefault(c => c.Chirper == user);
-            if(myChirpsByGetById == null && myChirpsByEntities == null)
-            {
-                myChirpsEntityContext.Insert(new MyChirps(user));
-                myChirpsEntityContext.Commit();
-            }
+            myChirpsEntityContext.DeleteById(chirperId);
+            myChirpsEntityContext.Insert(myChirps);
+            myChirpsEntityContext.Commit();
 
-            var myReadingStreamByGetById = myReadingStreamEntityContext.GetById<ReaderId>(user);
-            var myReadingStreamByEntities = myReadingStreamEntityContext.Entities.FirstOrDefault(c => c.Reader == user);
-            if(myReadingStreamByGetById == null && myReadingStreamByEntities == null)
-            {
-                var readingStream = new ReadingStream(user);
-                myReadingStreamEntityContext.Insert(readingStream);
-                myReadingStreamEntityContext.Commit();
-            }
+            myFollowersEntityContext.DeleteById(chirperId);
+            myFollowersEntityContext.Insert(myFollowers);
+            myFollowersEntityContext.Commit();
 
-            var myFollowersByGetById = myFollowersEntityContext.GetById<ChirperId>(user);
-            var myFollowersByEntities = myFollowersEntityContext.Entities.FirstOrDefault(c => c.Chirper == user);
-            if(myFollowersByGetById == null && myFollowersByEntities == null)
-            {
-                var followers = new MyFollowers(user);
-                followers.AddFollower(follower);
-                myFollowersEntityContext.Insert(followers);
-                myFollowersEntityContext.Commit();
-            }
+            myFollowsEntityContext.DeleteById(followerId);
+            myFollowsEntityContext.Insert(myFollows);
+            myFollowsEntityContext.Commit();
 
-            var myFollowsByGetById = myFollowsEntityContext.GetById<ChirperId>(user);
-            var myFollowsByEntities = myFollowsEntityContext.Entities.FirstOrDefault(c => c.Follower == user);
-            if (myFollowsByGetById == null && myFollowsByEntities == null)
-            {
-                var follows = new MyFollows(user);
-                follows.AddFollow(follower);
-                myFollowsEntityContext.Insert(follows);
-                myFollowsEntityContext.Commit();
-            }
+            followersEntityContext.DeleteById(chirperId);
+            followersEntityContext.Insert(followers);
+            followersEntityContext.Commit();
+
+            followsEntityContext.DeleteById(followerId);
+            followsEntityContext.Insert(follows);
+            followsEntityContext.Commit();
+
+            followerEntityContext.DeleteById(followerId);
+            followerEntityContext.Insert(follower);
+            followerEntityContext.Commit();
+
+            chirpersEntityContext.DeleteById(chirperId);
+            chirpersEntityContext.Insert(chirper);
+            chirpersEntityContext.Commit();
+
+            chirperIdsEntityContext.DeleteById(chirperId);
+            chirperIdsEntityContext.Insert(domainChirperId);
+            chirperIdsEntityContext.Commit();
+        }
+
+        void Follow(IContainer container, FollowerId follower, ChirperId chirperId)
+        {
+            var chirperFollowed = new ChirperFollowed()
+                                      {
+                                          EventSourceId = follower,
+                                          Chirper = chirperId
+                                      };
+
+            var domainSubscriber = container.Get<domainFollow.FollowSubscriber>();
+            domainSubscriber.Process(chirperFollowed);
+            var viewSubscriber = container.Get<viewFollow.FollowSubscriber>();
+            viewSubscriber.Process(chirperFollowed);
         }
         #endregion
     }

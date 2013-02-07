@@ -2,6 +2,7 @@
 using System;
 using System.Linq;
 using Bifrost.Views;
+using Chirp.Read;
 using Chirp.Read.Streams;
 
 namespace Chirp.Application.Security
