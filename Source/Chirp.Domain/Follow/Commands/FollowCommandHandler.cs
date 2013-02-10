@@ -17,5 +17,11 @@ namespace Chirp.Domain.Follow.Commands
             var following = _subscriptionsRepository.Get(command.Follower);
             following.Follow(command.Chirper);
         }
+
+        public void Handle(UnfollowChirper command)
+        {
+            var following = _subscriptionsRepository.Get(command.Follower);
+            following.Unfollow(command.Chirper);
+        }
     }
 } 

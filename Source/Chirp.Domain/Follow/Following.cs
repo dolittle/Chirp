@@ -18,5 +18,13 @@ namespace Chirp.Domain.Follow
                           Chirper = chirper
                       });
         }
+
+        public void Unfollow(ChirperId chirper)
+        {
+            Apply(new ChirperUnfollowed(Id)
+            {
+                Chirper = chirper
+            });
+        }
     }
 }

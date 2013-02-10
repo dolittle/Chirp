@@ -60,6 +60,9 @@
     <Compile Include="Follow\Commands\FollowCommandHandler.cs" />
     <Compile Include="Follow\Commands\FollowChirperBusinessValidator.cs" />
     <Compile Include="Follow\Commands\FollowChirperInputValidator.cs" />
+    <Compile Include="Follow\Commands\UnfollowChirper.cs" />
+    <Compile Include="Follow\Commands\UnfollowChirperBusinessValidator.cs" />
+    <Compile Include="Follow\Commands\UnfollowChirperInputValidator.cs" />
     <Compile Include="Follow\Following.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Users\Commands\CommandHandlers.cs" />
