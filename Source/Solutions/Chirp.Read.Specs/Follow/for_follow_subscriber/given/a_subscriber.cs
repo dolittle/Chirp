@@ -1,9 +1,9 @@
-﻿using Bifrost.Read;
+using Bifrost.Read;
 using Chirp.Read.Follow;
 using Machine.Specifications;
 using Moq;
 
-namespace Chirp.Read.Specs.Follow.given
+namespace Chirp.Read.Specs.Follow.for_follow_subscriber.given
 {
     public class a_subscriber
     {

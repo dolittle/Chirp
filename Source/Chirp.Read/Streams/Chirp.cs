@@ -1,9 +1,10 @@
 using System;
+using Bifrost.Read;
 using Chirp.Concepts;
 
 namespace Chirp.Read.Streams
 {
-    public class Chirp : IEquatable<ChirpId>
+    public class Chirp : IEquatable<ChirpId>, IReadModel
     {
         public ChirpId Id { get; set; }
         public Chirper ChirpedBy { get; set; }

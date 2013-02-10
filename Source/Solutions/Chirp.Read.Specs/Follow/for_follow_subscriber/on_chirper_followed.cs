@@ -1,11 +1,11 @@
-﻿using System.Linq;
+using System.Linq;
 using Chirp.Events.Follow;
 using Chirp.Read.Follow;
 using Machine.Specifications;
 using Moq;
 using It = Machine.Specifications.It;
 
-namespace Chirp.Read.Specs.Follow
+namespace Chirp.Read.Specs.Follow.for_follow_subscriber
 {
     [Subject(typeof(FollowSubscriber), Scenarios.ChirperFollowed)]
     public class on_chirper_followed : given.a_subscriber

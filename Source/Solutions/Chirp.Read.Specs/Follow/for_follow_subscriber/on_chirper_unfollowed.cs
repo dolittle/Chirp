@@ -5,7 +5,7 @@ using Machine.Specifications;
 using Moq;
 using It = Machine.Specifications.It;
 
-namespace Chirp.Read.Specs.Follow
+namespace Chirp.Read.Specs.Follow.for_follow_subscriber
 {
     [Subject(typeof(FollowSubscriber), Scenarios.ChirperUnfollowed)]
     public class on_chirper_unfollowed : given.a_subscriber

@@ -1,9 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
+using Bifrost.Read;
 
 namespace Chirp.Read.Streams
 {
-    public class OrderedStream : IChirpStream
+    public class OrderedStream : IChirpStream, IReadModel
     {
         readonly List<Chirp> _chirps;
 
