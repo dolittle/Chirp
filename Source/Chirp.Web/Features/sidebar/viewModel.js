@@ -1,7 +1,7 @@
 ﻿Bifrost.namespace("Chirp", {
-    sidebar : Bifrost.Type.extend(function (chirpMessage, Session) {
+    sidebar : Bifrost.Type.extend(function (chirpMessage, sessionManager) {
         var self = this;
-        var session = Session;
+        var session = sessionManager;
 
 
         function newChirp(message) {

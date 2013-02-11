@@ -1,7 +1,7 @@
 ﻿Bifrost.namespace("Chirp", {
-    loginFeature: Bifrost.Type.extend(function (login,Session) {
+    loginFeature: Bifrost.Type.extend(function (login,sessionManager) {
         var self = this;
-        var session = Session;
+        var session = sessionManager;
 
         console.log(session);
 

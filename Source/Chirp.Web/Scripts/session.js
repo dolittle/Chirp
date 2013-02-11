@@ -1,5 +1,5 @@
 ﻿Bifrost.namespace("Chirp", {
-    Session: Bifrost.Type.extend(function () {
+    sessionManager: Bifrost.Type.extend(function () {
         var self = this;
         var chirpUserIdKey = "chirpUserId";
 
@@ -11,6 +11,10 @@
 
         this.setSessionId = function (userId) {
             $.cookies.set(chirpUserIdKey, userId);
+        }
+
+        this.clearSession = function () {
+            $.cookies.delete(chirpUserIdKey);
         }
 
         this.getUserIdFor = function (userName) {

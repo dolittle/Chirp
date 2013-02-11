@@ -166,7 +166,7 @@ Bifrost.namespace("Bifrost", {
 		return Object.prototype.toString.call(o) === '[object Array]';
 	}
 });
-﻿Bifrost.namespace("Bifrost", {
+Bifrost.namespace("Bifrost", {
     path: {
         getPathWithoutFilename: function (fullPath) {
             var lastIndex = fullPath.lastIndexOf("/");
@@ -203,7 +203,6 @@ String.prototype.toPascalCase = function () {
     return result;
 };
 
-
 Bifrost.namespace("Bifrost", {
 	functionParser: {
 		parse: function(func) {
@@ -223,7 +222,7 @@ Bifrost.namespace("Bifrost", {
 		}
 	}
 });
-﻿Bifrost.namespace("Bifrost", {
+Bifrost.namespace("Bifrost", {
     assetsManager: {
         initialize: function () {
             var promise = Bifrost.execution.Promise.create();
@@ -363,7 +362,7 @@ Bifrost.namespace("Bifrost", {
         };
     })()
 });
-﻿Bifrost.namespace("Bifrost", {
+Bifrost.namespace("Bifrost", {
     DefaultDependencyResolver: function () {
         var self = this;
 
@@ -446,8 +445,7 @@ Bifrost.namespace("Bifrost", {
         };
     }
 });
-
-﻿Bifrost.namespace("Bifrost", {
+Bifrost.namespace("Bifrost", {
     WellKnownTypesDependencyResolver: function () {
         var self = this;
         this.types = Bifrost.WellKnownTypesDependencyResolver.types;
@@ -464,7 +462,6 @@ Bifrost.namespace("Bifrost", {
 Bifrost.WellKnownTypesDependencyResolver.types = {
     options: {}
 };
-
 Bifrost.namespace("Bifrost", {
     Type: function () {
         var self = this;
@@ -728,7 +725,7 @@ Bifrost.namespace("Bifrost", {
         return promise;
     };
 })();
-﻿Bifrost.namespace("Bifrost", {
+Bifrost.namespace("Bifrost", {
     Singleton: function (typeDefinition) {
         return Bifrost.Type.extend(typeDefinition).scopeTo(window);
     }
@@ -822,7 +819,6 @@ Bifrost.namespace("Bifrost", {
     	empty: "00000000-0000-0000-0000-000000000000"
 	}
 });
-
 Bifrost.namespace("Bifrost");
 Bifrost.hashString = (function() {
 	return {
@@ -847,7 +843,6 @@ Bifrost.hashString = (function() {
 		}
 	}
 })();
-
 Bifrost.namespace("Bifrost");
 Bifrost.Uri = (function(window, undefined) {
 	/* parseUri JS v0.1, by Steven Levithan (http://badassery.blogspot.com)
@@ -938,7 +933,6 @@ Bifrost.namespace("Bifrost.validation");
 Bifrost.validation.ruleHandlers = (function () {
     return Bifrost.validation.ruleHandlers || { };
 })();
-
 Bifrost.namespace("Bifrost.validation");
 Bifrost.validation.Rule = (function () {
     function Rule(ruleName, options) {
@@ -1028,8 +1022,7 @@ Bifrost.validation.Validator = (function () {
         }
     }
 })();
-
-﻿if (typeof ko !== 'undefined') {
+if (typeof ko !== 'undefined') {
     Bifrost.namespace("Bifrost.validation", {
         ValidationSummary: function (commands) {
             var self = this;
@@ -1097,8 +1090,7 @@ if (typeof ko !== 'undefined') {
         return target;
     };
 }
-
-﻿Bifrost.namespace("Bifrost.validation", {
+Bifrost.namespace("Bifrost.validation", {
     validationService: Bifrost.Singleton(function () {
         this.getForCommand = function (name) {
             var promise = Bifrost.execution.Promise.create();
@@ -1117,7 +1109,6 @@ Bifrost.validation.ruleHandlers.required = {
         return !(typeof value == "undefined" || value == "");
     }
 };
-
 Bifrost.namespace("Bifrost.validation.ruleHandlers");
 Bifrost.validation.ruleHandlers.minLength = {
     validate: function (value, options) {
@@ -1135,7 +1126,6 @@ Bifrost.validation.ruleHandlers.minLength = {
         return value.length >= options.length;
     }
 };
-
 Bifrost.namespace("Bifrost.validation.ruleHandlers");
 Bifrost.validation.ruleHandlers.maxLength = {
     validate: function (value, options) {
@@ -1152,7 +1142,6 @@ Bifrost.validation.ruleHandlers.maxLength = {
         return value.length <= options.length;
     }
 };
-
 Bifrost.namespace("Bifrost.validation.ruleHandlers");
 Bifrost.validation.ruleHandlers.range = {
     isNumber: function (number) {
@@ -1192,7 +1181,6 @@ Bifrost.validation.ruleHandlers.range = {
         return value <= options.max && value >= options.min;
     }
 };
-
 Bifrost.namespace("Bifrost.validation.ruleHandlers");
 Bifrost.validation.ruleHandlers.lessThan = {
     throwIfOptionsUndefined: function (options) {
@@ -1221,7 +1209,6 @@ Bifrost.validation.ruleHandlers.lessThan = {
         return parseFloat(value) < parseFloat(options.value);
     }
 };
-
 Bifrost.namespace("Bifrost.validation.ruleHandlers");
 Bifrost.validation.ruleHandlers.greaterThan = {
     throwIfOptionsUndefined: function (options) {
@@ -1250,7 +1237,6 @@ Bifrost.validation.ruleHandlers.greaterThan = {
         return parseFloat(value) > parseFloat(options.value);
     }
 };
-
 Bifrost.namespace("Bifrost.validation.ruleHandlers");
 Bifrost.validation.ruleHandlers.email = {
     regex : /^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))$/,
@@ -1259,7 +1245,6 @@ Bifrost.validation.ruleHandlers.email = {
         return (value.match(this.regex) == null) ? false : true;
     }
 };
-
 Bifrost.namespace("Bifrost.validation.ruleHandlers");
 
 Bifrost.validation.ruleHandlers.regex = {
@@ -1282,7 +1267,6 @@ Bifrost.validation.ruleHandlers.regex = {
         return (value.match(options.expression) == null) ? false : true;
     }
 };
-
 if (typeof ko !== 'undefined') {
     ko.bindingHandlers.command = {
         init: function (element, valueAccessor, allBindingAccessor, viewModel) {
@@ -1388,7 +1372,7 @@ Bifrost.namespace("Bifrost.commands", {
     })
 });
 Bifrost.WellKnownTypesDependencyResolver.types.commandCoordinator = Bifrost.commands.commandCoordinator;
-﻿Bifrost.namespace("Bifrost.commands", {
+Bifrost.namespace("Bifrost.commands", {
     commandValidationService: Bifrost.Singleton(function (validationService) {
         var self = this;
         this.validationService = validationService;
@@ -1698,7 +1682,6 @@ Bifrost.commands.CommandDescriptor.createFrom = function (command) {
     return commandDescriptor;
 };
 
-
 Bifrost.namespace("Bifrost.commands");
 Bifrost.commands.CommandResult = (function () {
     function CommandResult(existing) {
@@ -1731,7 +1714,7 @@ Bifrost.commands.CommandResult = (function () {
         }
     };
 })();
-﻿Bifrost.dependencyResolvers.command = {
+Bifrost.dependencyResolvers.command = {
     canResolve: function (namespace, name) {
         if (typeof commands !== "undefined") {
             return name in commands;
@@ -1787,13 +1770,12 @@ Bifrost.namespace("Bifrost.read", {
         }
     })
 });
-﻿Bifrost.namespace("Bifrost.read", {
+Bifrost.namespace("Bifrost.read", {
     Query: Bifrost.Type.extend(function (queryService) {
         var self = this;
         this.name = "";
         this.queryService = queryService;
-
-        var queryables = {};
+        this.queryables = {};
 
         this.target = this;
 
@@ -1811,18 +1793,22 @@ Bifrost.namespace("Bifrost.read", {
             for (var property in query) {
                 if (ko.isObservable(query[property]) == true) {
                     query[property].subscribe(function () {
-                        for (var queryable in queryables) {
-                            queryables[queryable].execute();
-                        }
+                        query.execute();
                     });
                 }
             }
         }
 
+        this.execute = function () {
+            for (var queryable in self.queryables) {
+                self.queryables[queryable].execute();
+            }
+        };
+
         this.all = function () {
-            if (typeof queryables.all === "undefined") queryables.all = createQueryable();
-            queryables.all.execute();
-            return queryables.all;
+            if (typeof self.queryables.all === "undefined") self.queryables.all = createQueryable();
+            self.queryables.all.execute();
+            return self.queryables.all;
         };
 
         this.onCreated = function (query) {
@@ -1832,15 +1818,47 @@ Bifrost.namespace("Bifrost.read", {
     })
 });
 Bifrost.namespace("Bifrost.read", {
-	ReadModel: Bifrost.Type.extend(function() {
-		var self = this;
+    ReadModel: Bifrost.Type.extend(function () {
+        var self = this;
+    })
+});
+Bifrost.namespace("Bifrost.read", {
+	ReadModelOf: Bifrost.Type.extend(function() {
+	    var self = this;
+	    this.name = "";
+	    this.target = null;
+	    this.readModelType = Bifrost.Type.extend(function () { });
 
-		this.by = function(propertyName, value) {
+		this.instance = ko.observable();
 
-		}
+		this.instanceMatching = function (propertyFilters) {
+		    var methodParameters = {
+		        descriptor: JSON.stringify({
+		            readModel: self.target.name,
+		            propertyFilters: propertyFilters
+		        })
+		    };
+
+		    $.ajax({
+		        url: "/Bifrost/ReadModel/InstanceMatching",
+		        type: 'POST',
+		        dataType: 'json',
+		        data: JSON.stringify(methodParameters),
+		        contentType: 'application/json; charset=utf-8',
+		        complete: function (result) {
+		            var item = $.parseJSON(result.responseText);
+		            self.instance(item);
+		        }
+		    });
+		};
+
+
+		this.onCreated = function (lastDescendant) {
+		    self.target = lastDescendant;
+		};
 	})
 });
-﻿Bifrost.dependencyResolvers.query = {
+Bifrost.dependencyResolvers.query = {
     canResolve: function (namespace, name) {
         if (typeof queries !== "undefined") {
             return name in queries;
@@ -1852,6 +1870,50 @@ Bifrost.namespace("Bifrost.read", {
         return queries[name].create();
     }
 };
+Bifrost.namespace("Bifrost.read", {
+    queryService: Bifrost.Singleton(function () {
+        var self = this;
+
+        function createDescriptorFrom(query) {
+            var descriptor = {
+                nameOfQuery: query.name,
+                parameters: {}
+            };
+
+            for (var property in query) {
+                if (ko.isObservable(query[property]) == true) {
+                    descriptor.parameters[property] = query[property]();
+                }
+            }
+
+            return descriptor;
+        }
+
+
+        this.execute = function (query) {
+            var promise = Bifrost.execution.Promise.create();
+            var descriptor = createDescriptorFrom(query);
+
+            var methodParameters = {
+                descriptor: JSON.stringify(descriptor)
+            };
+
+            $.ajax({
+                url: "/Bifrost/Query/Execute",
+                type: 'POST',
+                dataType: 'json',
+                data: JSON.stringify(methodParameters),
+                contentType: 'application/json; charset=utf-8',
+                complete: function (result) {
+                    var items = $.parseJSON(result.responseText);
+                    promise.signal(items);
+                }
+            });
+
+            return promise;
+        }
+    })
+});
 Bifrost.namespace("Bifrost.sagas");
 Bifrost.sagas.Saga = (function () {
     function Saga() {
@@ -1883,7 +1945,6 @@ Bifrost.sagas.Saga = (function () {
         }
     }
 })();
-
 Bifrost.namespace("Bifrost.sagas");
 Bifrost.sagas.sagaNarrator = (function () {
     var baseUrl = "/Bifrost/SagaNarrator";
@@ -1930,7 +1991,6 @@ Bifrost.sagas.sagaNarrator = (function () {
         }
     }
 })();
-
 Bifrost.namespace("Bifrost.features");
 Bifrost.features.UriNotSpecified = function(message) {
 	this.prototype = Error.prototype;
@@ -1995,7 +2055,6 @@ Bifrost.features.FeatureMapping = (function () {
         }
     }
 })();
-
 Bifrost.namespace("Bifrost.features");
 Bifrost.features.featureMapper = (function () {
     var mappings = [];
@@ -2237,7 +2296,6 @@ Bifrost.features.Feature = (function () {
         }
     }
 })();
-
 Bifrost.namespace("Bifrost.features");
 Bifrost.features.featureManager = (function () {
     var allFeatures = {};
@@ -2292,7 +2350,6 @@ if (typeof ko !== 'undefined') {
         }
     };
 }
-
 Bifrost.namespace("Bifrost.messaging", {
     Messenger: Bifrost.Type.extend(function () {
         var subscribers = [];
@@ -2325,8 +2382,7 @@ Bifrost.namespace("Bifrost.messaging", {
     })
 });
 Bifrost.messaging.Messenger.global = Bifrost.messaging.Messenger.create();
-
-﻿if (typeof ko !== 'undefined') {
+if (typeof ko !== 'undefined') {
     ko.observableMessage = function (message, defaultValue) {
         var observable = ko.observable(defaultValue);
 
@@ -2367,7 +2423,7 @@ Bifrost.namespace("Bifrost.navigation", {
 
         // TODO: Support title somehow
         if (typeof History !== "undefined" && typeof History.Adapter !== "undefined") {
-            History.pushState({ feature: featureName }, "", url);
+            History.pushState({}, "", url);
         }
     },
     navigationManager: {
@@ -2404,7 +2460,7 @@ Bifrost.namespace("Bifrost.navigation", {
         }
     }
 });
-﻿if (typeof History !== "undefined" && typeof History.Adapter !== "undefined" && typeof ko !== "undefined") {
+if (typeof History !== "undefined" && typeof History.Adapter !== "undefined" && typeof ko !== "undefined") {
     ko.observableQueryParameter = function (parameterName, defaultValue) {
         var self = this;
         var observable = null;
@@ -2509,8 +2565,7 @@ if (typeof ko !== 'undefined') {
         }
     };
 }
-
-﻿Bifrost.namespace("Bifrost.views", {
+Bifrost.namespace("Bifrost.views", {
     viewFactory: Bifrost.Singleton(function () {
         var self = this;
 
@@ -2527,36 +2582,49 @@ if (typeof ko !== 'undefined') {
         };
     })
 });
-﻿Bifrost.namespace("Bifrost.views", {
+Bifrost.namespace("Bifrost.views", {
     viewLocationMapper: Bifrost.Singleton(function () {
     })
 });
-﻿Bifrost.namespace("Bifrost.views", {
-    viewManager: Bifrost.Singleton(function (viewLocationMapper, viewFactory) {
+Bifrost.namespace("Bifrost.views", {
+    viewManager: Bifrost.Singleton(function (viewResolvers) {
         var self = this;
 
-        this.viewLocationMapper = viewLocationMapper;
-        this.viewFactory = viewFactory;
+        this.viewResolvers = viewResolvers;
 
-        this.expandFor = function (element) {
-            $("[data-view]", element).each(function () {
-                var target = $(this)[0];
-                var viewName = $(this).attr("data-view");
-                var path = self.viewLocationMapper.resolve(viewName);
-                self.viewFactory.createFrom(path).continueWith(function (view) {
-                    target.view = view;
-                    $(target).append($(view.content));
+        function resolveChildren(element) {
+            if(element.hasChildNodes() == true) {
+                for (var child = element.firstChild; child; child = child.nextSibling) {
+                    self.resolve(child);
+                }
+            }
+        }
+
+        this.resolve = function (element) {
+            var promise = Bifrost.execution.Promise.create();
+
+            if( self.viewResolvers.canResolve(element) ) {
+                var view = self.viewResolvers.resolve(element);
+                view.load().continueWith(function() {
+                    var newElement = view.element;
+                    newElement.view = view;
+                    resolveChildren(newElement);
+                    element.parentNode.replaceChild(newElement, element);
+                    
                 });
-            });
+            } else {
+                resolveChildren(element);
+            }
+
+            return promise;
         };
     })
 });
-
-﻿Bifrost.namespace("Bifrost.views", {
+Bifrost.namespace("Bifrost.views", {
     ViewModel: Bifrost.Type.extend(function () {
     })
 });
-﻿Bifrost.namespace("Bifrost", {
+Bifrost.namespace("Bifrost", {
     configure: (function () {
         var self = this;
 
@@ -2584,10 +2652,9 @@ if (typeof ko !== 'undefined') {
             var promise = Bifrost.assetsManager.initialize();
             promise.continueWith(function () {
                 self.onReady();
+                Bifrost.navigation.navigationManager.hookup();
+                Bifrost.features.featureManager.hookup($);
             });
-
-            Bifrost.navigation.navigationManager.hookup();
-            Bifrost.features.featureManager.hookup($);
         }
 
         function reset() {
@@ -2613,76 +2680,3 @@ if (typeof ko !== 'undefined') {
         }
     });
 })(jQuery);
-/*
-@depends utils/extend.js
-@depends utils/namespace.js
-@depends utils/namespaces.js
-@depends execution/Promise.js
-@depends utils/isNumber.js
-@depends utils/isArray.js
-@depends utils/path.js
-@depends utils/stringExtensions.js
-@depends utils/functionParser.js
-@depends utils/assetsManager.js
-@depends utils/dependencyResolver.js
-@depends utils/dependencyResolvers.js
-@depends utils/defaultDependencyResolver.js
-@depends utils/WellKnownTypesDependencyResolver.js
-@depends utils/Type.js
-@depends utils/Singleton.js
-@depends utils/Exception.js
-@depends utils/exceptions.js
-@depends utils/guid.js
-@depends utils/hashString.js
-@depends utils/Uri.js
-@depends validation/exceptions.js
-@depends validation/ruleHandlers.js
-@depends validation/Rule.js
-@depends validation/Validator.js
-@depends validation/validationSummaryFor.js
-@depends validation/validationMessageFor.js
-@depends validation/validation.js
-@depends validation/validationService.js
-@depends validation/required.js
-@depends validation/minLength.js
-@depends validation/maxLength.js
-@depends validation/range.js
-@depends validation/lessThan.js
-@depends validation/greaterThan.js
-@depends validation/email.js
-@depends validation/regex.js
-@depends commands/bindingHandlers.js
-@depends commands/CommandCoordinator.js
-@depends commands/commandValidationService.js
-@depends commands/Command.js
-@depends commands/CommandDescriptor.js
-@depends commands/CommandResult.js
-@depends commands/commandDependencyResolver.js
-@depends read/queryService.js
-@depends read/Query.js
-@depends read/ReadModel.js
-@depends read/queryDependencyResolver.js
-@depends read/queryService.js
-@depends sagas/Saga.js
-@depends sagas/sagaNarrator.js
-@depends features/exceptions.js
-@depends features/FeatureMapping.js
-@depends features/featureMapper.js
-@depends features/ViewModel.js
-@depends features/ViewModelDefinition.js
-@depends features/Feature.js
-@depends features/featureManager.js
-@depends features/featureBindingHandler.js
-@depends messaging/Messenger.js
-@depends messaging/observableMessage.js
-@depends navigation/navigateTo.js
-@depends navigation/navigationManager.js
-@depends navigation/observableQueryParameter.js
-@depends views/View.js
-@depends views/viewBindingHandler.js
-@depends views/viewFactory.js
-@depends views/viewLocationMapper.js
-@depends views/viewManager.js
-@depends views/ViewModel.js
-@depends utils/configure.js
-*/
