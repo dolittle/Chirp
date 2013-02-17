@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Bifrost.Read;
 using Chirp.Concepts;
@@ -7,9 +8,9 @@ namespace Chirp.Read.Streams
 {
     public class ReadingStreamForReader : IQueryFor<ReadingStream>
     {
-        readonly IReadModelRepositoryFor<ReadingStream> _readingStreamRespository; 
+        readonly IReadModelRepositoryFor<ReadingStream> _readingStreamRespository;
 
-        public ReaderId ReaderId;
+        public Guid ReaderId { get; set; }
 
         public ReadingStreamForReader(IReadModelRepositoryFor<ReadingStream> readingStreamRespository)
         {
