@@ -7,7 +7,8 @@
 	<ul class="unstyled" data-bind="foreach: chirps">
         <li>
             <div class="well">
-                <span data-bind="text: message"></span>
+                <span data-bind="text: chirpedBy.displayName"></span>
+                <span data-bind="text: content"></span>
             </div>
         </li>
     </ul>
