@@ -1474,8 +1474,7 @@ Bifrost.namespace("Bifrost.commands", {
                         if (step in member) {
                             member = member[step];
                         } else {
-//                            throw "Error applying validation rules: " + step + " is not a member of " + member + " (" + rule + ")";
-                            console.log( "Error applying validation rules: " + step + " is not a member of " + member + " (" + rule + ")");
+                            throw "Error applying validation rules: " + step + " is not a member of " + member + " (" + rule + ")";
                         }
                     }
 
@@ -1591,7 +1590,7 @@ Bifrost.namespace("Bifrost.commands", {
 
             if (commandResult.success === false || commandResult.invalid === true) {
                 if (commandResult.invalid && typeof commandResult.validationResults !== "undefined") {
-                    self.commandValidationService.applyValidationResultToProperties(self, commandResult.validationResults);
+                    self.commandValidationService.applyValidationResultToProperties(self.targetCommand, commandResult.validationResults);
                 }
                 self.onError(commandResult);
             } else {

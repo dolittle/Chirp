@@ -11,6 +11,8 @@
         <div>
             <span class="badge" data-bind="text: availableLettersCount"></span>
                 <button data-bind="click: chirpMessage" class="btn btn-primary">Chirp</button>
+            <span data-bind="validationMessageFor: chirpMessageCommand.chirp.content"></span>
+
             
         </div>
     </div>

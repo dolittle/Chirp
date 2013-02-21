@@ -3,14 +3,7 @@
         var self = this;
         var session = sessionManager;
 
-
-        function newChirp(message) {
-            return {
-                id: ko.observable(Bifrost.Guid.create()),
-                content: ko.observable(message || "")
-            };
-        }
-
+        
         this.message = ko.observable("");
 
         this.chirpMessageCommand = chirpMessage;
@@ -18,7 +11,8 @@
         this.chirpMessage = function () {
             var command = self.chirpMessageCommand;
             command.chirper(session.getCurrentUserId());
-            command.chirp = newChirp(self.message());
+            command.chirp.id(Bifrost.Guid.create());
+            command.chirp.content(self.message());
             command.execute();
 
 
