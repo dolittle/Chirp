@@ -7,7 +7,7 @@ using Chirp.Read.Domain.Follow;
 
 namespace Chirp.Read.Streams
 {
-    public class ReadingStreamSubscriber : IEventSubscriber
+    public class ReadingStreamSubscriber : IProcessEvents
     {
         readonly IReadModelRepositoryFor<Chirper> _chirperRepository;
         readonly IReadModelRepositoryFor<ChirpersFollowers> _followersRepository;

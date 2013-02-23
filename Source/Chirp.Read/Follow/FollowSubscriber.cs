@@ -6,7 +6,7 @@ using Chirp.Events.Follow;
 
 namespace Chirp.Read.Follow
 {
-    public class FollowSubscriber :   IEventSubscriber
+    public class FollowSubscriber :   IProcessEvents
     {
         readonly IReadModelRepositoryFor<MyFollowers> _myFollowersRepository;
         readonly IReadModelRepositoryFor<MyFollows> _myFollowsRepository;

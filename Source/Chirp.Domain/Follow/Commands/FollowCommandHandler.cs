@@ -3,7 +3,7 @@ using Bifrost.Domain;
 
 namespace Chirp.Domain.Follow.Commands
 {
-    public class FollowCommandHandler : ICommandHandler
+    public class FollowCommandHandler : IHandleCommands
     {
         IAggregatedRootRepository<Following> _subscriptionsRepository;
 

@@ -3,7 +3,7 @@ using Bifrost.Domain;
 
 namespace Chirp.Domain.Chirping.Commands
 {
-    public class ChirpCommandHandler : ICommandHandler
+    public class ChirpCommandHandler : IHandleCommands
     {
         readonly IAggregatedRootRepository<ChirpStream> _streamRepository;
 

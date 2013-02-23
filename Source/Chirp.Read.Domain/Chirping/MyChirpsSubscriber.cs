@@ -6,7 +6,7 @@ using Chirp.Events.Chirping;
 
 namespace Chirp.Read.Domain.Chirping
 {
-    public class MyChirpsSubscriber : IEventSubscriber
+    public class MyChirpsSubscriber : IProcessEvents
     {
         readonly IEntityContext<MyChirps> _myChirpsEntityContext;
 

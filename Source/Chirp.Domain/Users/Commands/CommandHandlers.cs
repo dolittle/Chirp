@@ -4,7 +4,7 @@ using Bifrost.Domain;
 
 namespace Chirp.Domain.Users.Commands
 {
-    public class CommandHandlers : ICommandHandler
+    public class CommandHandlers : IHandleCommands
     {
         IUserService _userService;
         IAggregatedRootRepository<User> _userAggregatedRootRepository;
