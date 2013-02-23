@@ -4,7 +4,7 @@ using Chirp.Events.Users;
 
 namespace Chirp.Domain.Users
 {
-    public class User : AggregatedRoot
+    public class User : AggregateRoot
     {
         public User(Guid id)
             : base(id)

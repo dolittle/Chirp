@@ -14,7 +14,7 @@ namespace Chirp.Domain.Specs.Follow.when_following_a_chirper.given
     {
         protected static FollowerId follower_id;
         protected static Following following;
-        protected static Mock<IAggregatedRootRepository<Following>> following_repository;
+        protected static Mock<IAggregateRootRepository<Following>> following_repository;
         static FollowCommandHandler command_handler;
         static ICanValidate<FollowChirper> input_validator;
         static ICanValidate<FollowChirper> business_validator;
@@ -27,7 +27,7 @@ namespace Chirp.Domain.Specs.Follow.when_following_a_chirper.given
             following = new Following(follower_id);
             var followingFuncs = new TestFollowingFuncs();
             var chirperFuncs = new TestChirperFuncs();
-            following_repository = new Mock<IAggregatedRootRepository<Following>>();
+            following_repository = new Mock<IAggregateRootRepository<Following>>();
             input_validator = new FollowChirperInputValidator();
             business_validator = new FollowChirperBusinessValidator(followingFuncs.Follows(), chirperFuncs.ChirperExists());
             command_handler = new FollowCommandHandler(following_repository.Object);

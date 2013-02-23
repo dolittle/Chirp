@@ -5,7 +5,7 @@ using Chirp.Events.Chirping;
 
 namespace Chirp.Domain.Chirping
 {
-    public class ChirpStream : AggregatedRoot
+    public class ChirpStream : AggregateRoot
     {
         public ChirpStream(Guid publishedBy)
             : base(publishedBy)

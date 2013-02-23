@@ -14,7 +14,7 @@ namespace Chirp.Domain.Specs.Chirping.when_chirping.given
     {
         protected static ChirperId chirper_id;
         protected static ChirpStream chirp_stream;
-        protected static Mock<IAggregatedRootRepository<ChirpStream>> stream_repository; 
+        protected static Mock<IAggregateRootRepository<ChirpStream>> stream_repository; 
         static ChirpCommandHandler command_handler;
         static ICanValidate<ChirpMessage> input_validator;
         static ICanValidate<ChirpMessage> business_validator;
@@ -27,7 +27,7 @@ namespace Chirp.Domain.Specs.Chirping.when_chirping.given
                                     var chirperFuncs = new TestChirperFuncs();
                                     chirper_id = chirpers.valid;
                                     chirp_stream = new ChirpStream(chirper_id);
-                                    stream_repository = new Mock<IAggregatedRootRepository<ChirpStream>>();
+                                    stream_repository = new Mock<IAggregateRootRepository<ChirpStream>>();
                                     input_validator = new ChirpMessageInputValidator();
                                     business_validator = new ChirpMessageBusinessValidator(chirperFuncs.ChirperExists(), chirpingFuncs.ChirpIsNotADuplicate());
                                     command_handler = new ChirpCommandHandler(stream_repository.Object);

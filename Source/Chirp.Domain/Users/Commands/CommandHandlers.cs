@@ -7,18 +7,18 @@ namespace Chirp.Domain.Users.Commands
     public class CommandHandlers : IHandleCommands
     {
         IUserService _userService;
-        IAggregatedRootRepository<User> _userAggregatedRootRepository;
+        IAggregateRootRepository<User> _userAggregateRootRepository;
 
-        public CommandHandlers(IAggregatedRootRepository<User> userAggregatedRootRepository, IUserService userService)
+        public CommandHandlers(IAggregateRootRepository<User> userAggregateRootRepository, IUserService userService)
         {
-            _userAggregatedRootRepository = userAggregatedRootRepository;
+            _userAggregateRootRepository = userAggregateRootRepository;
             _userService = userService;
         }
 
         public void Handle(Login @command)
         {
             var id = _userService.GetUserId(@command.UserName);
-            var user = _userAggregatedRootRepository.Get(id);
+            var user = _userAggregateRootRepository.Get(id);
             user.Login();
             _userService.Login(@command.UserName);
         }
@@ -26,7 +26,7 @@ namespace Chirp.Domain.Users.Commands
         public void Handle(ResetPassword @command)
         {
             var id = _userService.GetUserId(@command.UserName);
-            var user = _userAggregatedRootRepository.Get(id);
+            var user = _userAggregateRootRepository.Get(id);
             user.ResetPassword();
         }
     }

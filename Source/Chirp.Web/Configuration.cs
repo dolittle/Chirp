@@ -63,11 +63,12 @@ namespace Chirp.Web
                         c.Credentials = new NetworkCredential(userName, password);
                 })
                 .Serialization.UsingJson()
-                .DefaultStorage.UsingRavenDB(connectionString, c =>
+                .DefaultStorage.UsingRavenDB(c =>
                 {
-                    c.DefaultDatabase = "Chirp";
+                    c.WithUrl(connectionString);
+                    c.WithDefaultDatabase("Chirp");
                     if (!string.IsNullOrEmpty(userName))
-                        c.Credentials = new NetworkCredential(userName, password);
+                        c.WithCredentials(new NetworkCredential(userName, password));
                     c.IdPropertyRegister = entityIds;
 
                 })

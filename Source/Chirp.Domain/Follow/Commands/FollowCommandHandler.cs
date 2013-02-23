@@ -5,9 +5,9 @@ namespace Chirp.Domain.Follow.Commands
 {
     public class FollowCommandHandler : IHandleCommands
     {
-        IAggregatedRootRepository<Following> _subscriptionsRepository;
+        IAggregateRootRepository<Following> _subscriptionsRepository;
 
-        public FollowCommandHandler(IAggregatedRootRepository<Following> subscriptionsRepository)
+        public FollowCommandHandler(IAggregateRootRepository<Following> subscriptionsRepository)
         {
             _subscriptionsRepository = subscriptionsRepository;
         }

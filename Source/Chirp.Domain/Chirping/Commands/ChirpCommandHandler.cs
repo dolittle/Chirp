@@ -5,9 +5,9 @@ namespace Chirp.Domain.Chirping.Commands
 {
     public class ChirpCommandHandler : IHandleCommands
     {
-        readonly IAggregatedRootRepository<ChirpStream> _streamRepository;
+        readonly IAggregateRootRepository<ChirpStream> _streamRepository;
 
-        public ChirpCommandHandler(IAggregatedRootRepository<ChirpStream> streamRepository)
+        public ChirpCommandHandler(IAggregateRootRepository<ChirpStream> streamRepository)
         {
             _streamRepository = streamRepository;
         }

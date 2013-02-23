@@ -5,7 +5,7 @@ using Chirp.Events.Follow;
 
 namespace Chirp.Domain.Follow
 {
-    public class Following : AggregatedRoot
+    public class Following : AggregateRoot
     {
         public Following(Guid id) : base(id)
         {
