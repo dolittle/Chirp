@@ -1,5 +1,5 @@
 ﻿Bifrost.namespace("Chirp", {
-    sidebar : Bifrost.Type.extend(function (chirpMessage, sessionManager) {
+    chirping : Bifrost.Type.extend(function (chirpMessage, sessionManager) {
         var self = this;
         var session = sessionManager;
 
@@ -56,4 +56,4 @@
 });
 
 
-Bifrost.features.featureManager.get("sidebar").defineViewModel(Chirp.sidebar);
+Bifrost.features.featureManager.get("chirping").defineViewModel(Chirp.chirping);
