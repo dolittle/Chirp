@@ -1,5 +1,5 @@
-﻿Bifrost.namespace("Chirp", {
-    streamFeature: Bifrost.Type.extend(function (readingStreamForReader, sessionManager) {
+﻿Bifrost.namespace("Chirp.Features", {
+    stream: Bifrost.Type.extend(function (readingStreamForReader, sessionManager) {
 
             var self = this;
             var session = sessionManager;
@@ -26,4 +26,4 @@
     })
 });
 
-Bifrost.features.featureManager.get("stream").defineViewModel(Chirp.streamFeature);
+Bifrost.features.featureManager.get("stream").defineViewModel(Chirp.Features.stream);

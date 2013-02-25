@@ -1,4 +1,4 @@
-﻿Bifrost.namespace("Chirp", {
+﻿Bifrost.namespace("Chirp.Features", {
     chirping : Bifrost.Type.extend(function (chirpMessage, sessionManager) {
         var self = this;
         var session = sessionManager;
@@ -7,6 +7,17 @@
         this.message = ko.observable("");
 
         this.chirpMessageCommand = chirpMessage;
+
+        this.chirpMessageCommand.setOptions({
+            error: function (commandResult) {
+                console.log(commandResult);
+            },
+            success: function () {
+                $.publish("reload");
+                self.message("");
+            }
+
+        });
 
         this.chirpMessage = function () {
             var command = self.chirpMessageCommand;
@@ -21,28 +32,6 @@
             }, 1000);
         };
 
-        //this.chirpMessageCommand = Bifrost.commands.Command.create({
-        //    options: {
-        //        name: "ChirpMessage",
-        //        properties: {
-        //            chirper: ko.observable(session.getCurrentUserId()),
-        //            chirp: newChirp()
-        //        },
-        //        beforeExecute: function (command) {
-        //            command = self.chirpMessageCommand;
-        //            var chirp = command.chirp();
-        //            chirp.id(Bifrost.Guid.create());
-        //            command.chirp(chirp);
-        //        },
-        //        error: function () { debugger; },
-        //        complete: function () {
-        //            self.chirpMessageCommand.chirp = newChirp()
-        //            $.publish("reload");
-        //        }
-        //    }
-        //});
-
-
 
         this.isEditing = ko.observable(false);
         this.availableLettersCount = ko.computed(function () {
@@ -56,4 +45,4 @@
 });
 
 
-Bifrost.features.featureManager.get("chirping").defineViewModel(Chirp.chirping);
+Bifrost.features.featureManager.get("chirping").defineViewModel(Chirp.Features.chirping);

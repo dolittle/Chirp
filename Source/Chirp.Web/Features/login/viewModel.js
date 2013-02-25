@@ -1,5 +1,5 @@
-﻿Bifrost.namespace("Chirp", {
-    loginFeature: Bifrost.Type.extend(function (login,sessionManager) {
+﻿Bifrost.namespace("Chirp.Features", {
+    loginUser: Bifrost.Type.extend(function (login,sessionManager) {
         var self = this;
         var session = sessionManager;
 
@@ -14,18 +14,20 @@
         this.canEnterPassword = ko.observable(false);
         
         this.loginCommand = login;
-        this.login = function () {
-            self.loginCommand.password(self.loginCommand.userName() + "dummyPassword");
-            self.loginCommand.execute();
 
-            setTimeout(function myfunction() {
+        this.loginCommand.setOptions({
+            success: function () {
                 session.getUserIdFor(self.loginCommand.userName()).continueWith(function (userId) {
                     session.setSessionId(userId);
                     History.pushState({}, "", "/home");
                 });
-            }, 2000);
+            }
+        });
+        this.login = function () {
+            self.loginCommand.password(self.loginCommand.userName() + "dummyPassword");
+            self.loginCommand.execute();
         };
     })
 });
 
-Bifrost.features.featureManager.get("login").defineViewModel(Chirp.loginFeature);
+Bifrost.features.featureManager.get("login").defineViewModel(Chirp.Features.loginUser);
