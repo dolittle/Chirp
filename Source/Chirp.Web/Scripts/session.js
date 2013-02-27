@@ -25,9 +25,13 @@
         }
 
         this.isUserLoggedIn = function () {
-            var currentUser = self.getCurrentUserId();
+            var currentUserId = self.getCurrentUserId();
+            var currentUserName = self.getCurrentUserName();
 
-            if (!currentUser || currentUser == Bifrost.Guid.empty)
+            if(!currentUserName || currentUserName == "")
+                return false;
+
+            if (!currentUserId || currentUserId == Bifrost.Guid.empty)
                 return false;
             return true;
         }
