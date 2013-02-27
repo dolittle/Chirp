@@ -3,8 +3,6 @@
         var self = this;
         var session = sessionManager;
 
-        console.log(session);
-
         function clearMessages() {
             self.message("");
         }
@@ -18,8 +16,9 @@
         this.loginCommand.setOptions({
             success: function () {
                 session.getUserIdFor(self.loginCommand.userName()).continueWith(function (userId) {
-                    session.setSessionId(userId);
+                    session.setSessionId(userId, self.loginCommand.userName());
                     History.pushState({}, "", "/home");
+                    $.publish("loggedIn");
                 });
             }
         });

@@ -151,6 +151,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Features\empty\view.html" />
+    <Content Include="Features\empty\viewModel.js" />
     <Content Include="Features\home\view.html" />
     <Content Include="Features\home\viewModel.js" />
     <Content Include="Features\login\view.html" />
@@ -161,6 +163,10 @@
     <Content Include="Features\chirping\viewModel.js" />
     <Content Include="Features\stream\view.html" />
     <Content Include="Features\stream\viewModel.js" />
+    <Content Include="Features\status\view.html" />
+    <Content Include="Features\status\viewModel.js" />
+    <Content Include="Features\userstatus\view.html" />
+    <Content Include="Features\userstatus\viewModel.js" />
     <Content Include="Global.asax" />
     <Content Include="Images\small_spinner.gif" />
     <Content Include="index.html" />

@@ -2,7 +2,8 @@
 	function index() {
 		var self = this;
 		
-		this.feature = ko.observable("login");
+		this.feature = ko.observable("empty");
+
 		
 		this.uriChanged(function(uri) {
 			self.setFeatureFromUrl(uri);

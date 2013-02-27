@@ -2,6 +2,7 @@
     sessionManager: Bifrost.Type.extend(function () {
         var self = this;
         var chirpUserIdKey = "chirpUserId";
+        var chirpUserNameKey = "chirpUserName";
 
         this.getCurrentUserId = function () {
             //            return "03F1D667-063B-4D15-B892-06F89818E9A8";
@@ -9,12 +10,26 @@
             return currentUserId;
         }
 
-        this.setSessionId = function (userId) {
+        this.setSessionId = function (userId, userName) {
             $.cookies.set(chirpUserIdKey, userId);
+            $.cookies.set(chirpUserNameKey, userName);
         }
 
         this.clearSession = function () {
             $.cookies.delete(chirpUserIdKey);
+        }
+
+        this.getCurrentUserName = function () {
+            var currentUserName = $.cookies.get(chirpUserNameKey);
+            return currentUserName;
+        }
+
+        this.isUserLoggedIn = function () {
+            var currentUser = self.getCurrentUserId();
+
+            if (!currentUser || currentUser == Bifrost.Guid.empty)
+                return false;
+            return true;
         }
 
         this.getUserIdFor = function (userName) {

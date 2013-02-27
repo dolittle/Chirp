@@ -25,11 +25,6 @@
             command.chirp.id(Bifrost.Guid.create());
             command.chirp.content(self.message());
             command.execute();
-
-
-            setTimeout(function () {
-                $.publish("reload");
-            }, 1000);
         };
 
 
