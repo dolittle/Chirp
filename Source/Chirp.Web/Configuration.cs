@@ -57,10 +57,10 @@ namespace Chirp.Web
                 .Events.Asynchronous()
                 .Events.UsingRavenDB(c =>
                 {
-                    c.Url = "http://localhost:8080";
-                    c.DefaultDatabase = "Chirp";
+                    c.WithUrl(connectionString);
+                    c.WithDefaultDatabase("Chirp");
                     if (!string.IsNullOrEmpty(userName))
-                        c.Credentials = new NetworkCredential(userName, password);
+                        c.WithCredentials(new NetworkCredential(userName, password));
                 })
                 .Serialization.UsingJson()
                 .DefaultStorage.UsingRavenDB(c =>
