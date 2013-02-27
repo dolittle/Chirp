@@ -25,7 +25,7 @@
         $.subscribe("changeUser", switchToLogin);
         $.subscribe("loggedIn", switchToStatus);
 
-        if (session.isUserLoggedIn)
+        if (session.isUserLoggedIn())
             switchToStatus();
 
     })
