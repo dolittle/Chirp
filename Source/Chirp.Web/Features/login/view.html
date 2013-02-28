@@ -4,15 +4,13 @@
 </head>
 <body>    
 	<div class="row">
-		<div class="offset1 span10">
+		<div class="offset2 span8">
 			<form class="form-inline">
 				<select data-bind="value:loginCommand.userName">
 					<option value="hannah">Hannah</option>
 					<option value="scott">Scott</option>
 				</select>
 				<span data-bind="validationMessageFor: loginCommand.userName"></span>
-				<input type="password" data-bind="value:loginCommand.password" disabled="disabled"/>
-				<span data-bind="validationMessageFor: loginCommand.password"></span>
 				<button class="btn btn-primary" data-bind="click: login">Login</button>
 			</form>
 		</div>

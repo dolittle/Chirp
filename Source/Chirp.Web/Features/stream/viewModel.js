@@ -4,13 +4,13 @@
             var self = this;
             var session = sessionManager;
             
-            readingStreamForReader.readerId(session.getCurrentUserId());
 
             this.loadChirps = function () {
                 readingStreamForReader.execute();
             };
 
             $.subscribe("reload", function () {
+                readingStreamForReader.readerId(session.getCurrentUserId());
                 self.loadChirps();
             });
 

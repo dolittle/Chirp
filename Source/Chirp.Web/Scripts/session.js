@@ -16,7 +16,8 @@
         }
 
         this.clearSession = function () {
-            $.cookies.delete(chirpUserIdKey);
+            $.cookies.del(chirpUserIdKey);
+            $.cookies.del(chirpUserNameKey);
         }
 
         this.getCurrentUserName = function () {

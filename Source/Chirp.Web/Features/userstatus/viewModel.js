@@ -6,6 +6,7 @@
         this.changeUser = function () {
             $.publish("changeUser");
         }
+
         this.userName(session.getCurrentUserName());
     })
 });

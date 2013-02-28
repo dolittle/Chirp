@@ -19,6 +19,7 @@
                     session.setSessionId(userId, self.loginCommand.userName());
                     History.pushState({}, "", "/home");
                     $.publish("loggedIn");
+                    $.publish("reload");
                 });
             }
         });
